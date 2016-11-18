@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+  <title>Shaker | The distributed data-plane testing tool for OpenStack</title>
+
+  <!-- LIBS -->
+
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js"></script>
+  <script type="text/javascript"
+          src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.2.7/js-yaml.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+
+  <!-- STYLES -->
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/simplex/bootstrap.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
+  <link rel='stylesheet' type='text/css'
+        href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic'>
+
+  <script type="application/javascript">
+    var report = {"scenarios": {"OpenStack L3 East-West": {"file_name": "shaker/shaker/scenarios/openstack/full_l3_east_west_iperf3_64m.yaml", "title": "OpenStack L3 East-West", "execution": {"tests": [{"buffer_size": 64000, "title": "Download", "threads": 10, "method": "tcp_download", "class": "iperf3"}, {"buffer_size": 64000, "title": "Upload", "threads": 10, "method": "tcp_upload", "class": "iperf3"}], "progression": "quadratic"}, "description": "In this scenario Shaker launches pairs of instances, each instance on its own compute node. All available compute nodes are utilized. Instances are connected to one of 2 tenant networks, which plugged into single router. The traffic goes from one network to the other (L3 east-west).", "deployment": {"accommodation": ["pair", "single_room"], "template": "l3_east_west.hot"}}}, "records": {"4f5ac799-10d9-43fc-82c3-46815b316251": {"meta": [["concurrency", ""], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "scenario": "OpenStack L3 East-West", "test": "Upload", "type": "test", "chart": [["concurrency", 1], ["bandwidth", 11380.514780680338], ["retransmits", 2]], "id": "4f5ac799-10d9-43fc-82c3-46815b316251"}, "e0161bd1-9128-438b-964f-5400eb9ab2ba": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471349800.587663, "stats": {"bandwidth": {"max": 11788.368225097656, "avg": 11380.514780680338, "unit": "Mbit/s", "min": 10593.891143798828}, "retransmits": {"max": 68, "avg": 2, "unit": "", "min": 0}}, "verbose": "end:\n  cpu_utilization_percent:\n    host_system: 24.4532\n    host_total: 25.0069\n    host_user: 0.553663\n    remote_system: 36.9713\n    remote_total: 38.1936\n    remote_user: 1.22232\n  streams:\n  - receiver:\n      bits_per_second: 1228540000.0\n      bytes: 9214085720\n      end: 60.0002\n      seconds: 60.0002\n      socket: 4\n      start: 0\n    sender:\n      bits_per_second: 1228680000.0\n      bytes: 9215120696\n      end: 60.0002\n      retransmits: 12\n      seconds: 60.0002\n      socket: 4\n      start: 0\n  - receiver:\n      bits_per_second: 1184890000.0\n      bytes: 8886681440\n      end: 60.0002\n      seconds: 60.0002\n      socket: 6\n      start: 0\n    sender:\n      bits_per_second: 1185050000.0\n      bytes: 8887902080\n      end: 60.0002\n      retransmits: 13\n      seconds: 60.0002\n      socket: 6\n      start: 0\n  - receiver:\n      bits_per_second: 1201530000.0\n      bytes: 9011485890\n      end: 60.0002\n      seconds: 60.0002\n      socket: 8\n      start: 0\n    sender:\n      bits_per_second: 1201770000.0\n      bytes: 9013324284\n      end: 60.0002\n      retransmits: 20\n      seconds: 60.0002\n      socket: 8\n      start: 0\n  - receiver:\n      bits_per_second: 1150220000.0\n      bytes: 8626677540\n      end: 60.0002\n      seconds: 60.0002\n      socket: 10\n      start: 0\n    sender:\n      bits_per_second: 1150480000.0\n      bytes: 8628621998\n      end: 60.0002\n      retransmits: 13\n      seconds: 60.0002\n      socket: 10\n      start: 0\n  - receiver:\n      bits_per_second: 1210090000.0\n      bytes: 9075681048\n      end: 60.0002\n      seconds: 60.0002\n      socket: 12\n      start: 0\n    sender:\n      bits_per_second: 1210410000.0\n      bytes: 9078123792\n      end: 60.0002\n      retransmits: 7\n      seconds: 60.0002\n      socket: 12\n      start: 0\n  - receiver:\n      bits_per_second: 1181260000.0\n      bytes: 8859467488\n      end: 60.0002\n      seconds: 60.0002\n      socket: 14\n      start: 0\n    sender:\n      bits_per_second: 1181630000.0\n      bytes: 8862221998\n      end: 60.0002\n      retransmits: 16\n      seconds: 60.0002\n      socket: 14\n      start: 0\n  - receiver:\n      bits_per_second: 1186030000.0\n      bytes: 8895289422\n      end: 60.0002\n      seconds: 60.0002\n      socket: 16\n      start: 0\n    sender:\n      bits_per_second: 1186330000.0\n      bytes: 8897528118\n      end: 60.0002\n      retransmits: 9\n      seconds: 60.0002\n      socket: 16\n      start: 0\n  - receiver:\n      bits_per_second: 1191800000.0\n      bytes: 8938543962\n      end: 60.0002\n      seconds: 60.0002\n      socket: 18\n      start: 0\n    sender:\n      bits_per_second: 1191940000.0\n      bytes: 8939573018\n      end: 60.0002\n      retransmits: 25\n      seconds: 60.0002\n      socket: 18\n      start: 0\n  - receiver:\n      bits_per_second: 1211450000.0\n      bytes: 9085870470\n      end: 60.0002\n      seconds: 60.0002\n      socket: 20\n      start: 0\n    sender:\n      bits_per_second: 1211800000.0\n      bytes: 9088548682\n      end: 60.0002\n      retransmits: 7\n      seconds: 60.0002\n      socket: 20\n      start: 0\n  - receiver:\n      bits_per_second: 1184960000.0\n      bytes: 8887260702\n      end: 60.0002\n      seconds: 60.0002\n      socket: 22\n      start: 0\n    sender:\n      bits_per_second: 1185240000.0\n      bytes: 8889366970\n      end: 60.0002\n      retransmits: 13\n      seconds: 60.0002\n      socket: 22\n      start: 0\n  sum_received:\n    bits_per_second: 11930800000.0\n    bytes: 89481043682\n    end: 60.0002\n    seconds: 60.0002\n    start: 0\n  sum_sent:\n    bits_per_second: 11933300000.0\n    bytes: 89500331636\n    end: 60.0002\n    retransmits: 135\n    seconds: 60.0002\n    start: 0\nstart:\n  connected:\n  - local_host: 10.1.0.3\n    local_port: 49964\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 4\n  - local_host: 10.1.0.3\n    local_port: 49965\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 6\n  - local_host: 10.1.0.3\n    local_port: 49966\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 8\n  - local_host: 10.1.0.3\n    local_port: 49967\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 10\n  - local_host: 10.1.0.3\n    local_port: 49968\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 12\n  - local_host: 10.1.0.3\n    local_port: 49969\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 14\n  - local_host: 10.1.0.3\n    local_port: 49970\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 16\n  - local_host: 10.1.0.3\n    local_port: 49971\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 18\n  - local_host: 10.1.0.3\n    local_port: 49972\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 20\n  - local_host: 10.1.0.3\n    local_port: 49973\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 22\n  connecting_to:\n    host: 10.2.0.5\n    port: 5201\n  cookie: shaker-mzftup-master-0.1471349740.40\n  system_info: 'Linux shaker-mzftup-master-0 3.13.0-93-generic #140-Ubuntu SMP Mon\n    Jul 18 21:21:05 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux\n\n    '\n  tcp_mss_default: 8898\n  test_start:\n    blksize: 64000\n    blocks: 0\n    bytes: 0\n    duration: 60\n    num_streams: 10\n    omit: 0\n    protocol: TCP\n    reverse: 0\n  timestamp:\n    time: Tue, 16 Aug 2016 12:15:40 GMT\n    timesecs: 1471349740\n  version: iperf 3.0.7\n", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471349740.394604, "agent": "shaker_mzftup_master_0", "id": "e0161bd1-9128-438b-964f-5400eb9ab2ba", "start": 1471349740.404783, "meta": [["time", "s"], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "command": {"data": "iperf3 --client 10.2.0.5 --format m --len 64000 --time 60 --parallel 10 --interval 1 --json", "type": "program"}, "samples": [[1.0, 10835.456848144531, 29], [2.0, 11098.289489746094, 0], [3.0, 11635.780334472656, 14], [4.0, 11270.427703857422, 5], [5.0, 11464.309692382812, 6], [6.0, 11279.296875, 0], [7.0, 11440.372467041016, 0], [8.0, 11567.401885986328, 0], [9.0, 11430.6640625, 0], [10.0, 11479.759216308594, 5], [11.0, 11301.136016845703, 0], [12.0, 11349.964141845703, 0], [13.0, 11093.807220458984, 0], [14.0, 11494.064331054688, 0], [15.0, 11435.794830322266, 0], [16.0, 11328.125, 0], [17.0, 11669.82650756836, 0], [18.0, 10926.246643066406, 0], [19.0, 11420.536041259766, 0], [20.0, 11222.362518310547, 0], [21.0, 11523.4375, 0], [22.0, 11537.551879882812, 0], [23.0, 11509.79995727539, 0], [24.0, 10873.603820800781, 5], [25.0, 10941.123962402344, 0], [26.0, 11109.638214111328, 3], [27.0, 11352.5390625, 0], [28.0, 11318.359375, 0], [29.0, 11342.144012451172, 0], [30.0, 11270.04623413086, 0], [31.0, 11528.396606445312, 0], [32.0, 11380.386352539062, 0], [33.0, 11471.176147460938, 0], [34.0, 11045.455932617188, 0], [35.0, 11528.396606445312, 0], [36.0, 11788.368225097656, 0], [37.0, 11628.913879394531, 0], [38.0, 11510.848999023438, 0], [39.0, 11130.237579345703, 0], [40.0, 11381.912231445312, 0], [41.0, 11538.505554199219, 0], [42.0, 11328.125, 0], [43.0, 11694.526672363281, 0], [44.0, 11738.109588623047, 0], [45.0, 11750.79345703125, 0], [46.0, 11335.086822509766, 0], [47.0, 11240.291595458984, 0], [48.0, 11113.548278808594, 68], [49.0, 11584.47265625, 0], [50.0, 11281.299591064453, 0], [51.0, 11665.43960571289, 0], [52.0, 10593.891143798828, 0], [53.0, 11580.944061279297, 0], [54.0, 11745.452880859375, 0], [55.0, 11717.891693115234, 0], [56.0, 11211.872100830078, 0], [57.0, 11440.467834472656, 0], [58.0, 11460.208892822266, 0], [59.0, 11499.0234375, 0], [60.0, 11394.977569580078, 0]], "executor": "iperf3", "test": "Upload", "type": "agent", "stderr": ""}, "66710685-a7a8-4c4e-997f-7ec0f05dd888": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471349720.220072, "stats": {"bandwidth": {"max": 11674.690246582031, "avg": 11104.085763295492, "unit": "Mbit/s", "min": 8740.415573120117}, "retransmits": {"max": 62, "avg": 2, "unit": "", "min": 0}}, "verbose": "end:\n  cpu_utilization_percent:\n    host_system: 24.3585\n    host_total: 24.9501\n    host_user: 0.591657\n    remote_system: 34.7209\n    remote_total: 35.7774\n    remote_user: 1.05645\n  streams:\n  - receiver:\n      bits_per_second: 1211060000.0\n      bytes: 9082981042\n      end: 60.0002\n      seconds: 60.0002\n      socket: 4\n      start: 0\n    sender:\n      bits_per_second: 1211230000.0\n      bytes: 9084275304\n      end: 60.0002\n      retransmits: 5\n      seconds: 60.0002\n      socket: 4\n      start: 0\n  - receiver:\n      bits_per_second: 1130270000.0\n      bytes: 8477044402\n      end: 60.0002\n      seconds: 60.0002\n      socket: 6\n      start: 0\n    sender:\n      bits_per_second: 1130590000.0\n      bytes: 8479413018\n      end: 60.0002\n      retransmits: 49\n      seconds: 60.0002\n      socket: 6\n      start: 0\n  - receiver:\n      bits_per_second: 1150180000.0\n      bytes: 8626381824\n      end: 60.0002\n      seconds: 60.0002\n      socket: 8\n      start: 0\n    sender:\n      bits_per_second: 1150520000.0\n      bytes: 8628914976\n      end: 60.0002\n      retransmits: 7\n      seconds: 60.0002\n      socket: 8\n      start: 0\n  - receiver:\n      bits_per_second: 1114830000.0\n      bytes: 8361222636\n      end: 60.0002\n      seconds: 60.0002\n      socket: 10\n      start: 0\n    sender:\n      bits_per_second: 1115210000.0\n      bytes: 8364124694\n      end: 60.0002\n      retransmits: 6\n      seconds: 60.0002\n      socket: 10\n      start: 0\n  - receiver:\n      bits_per_second: 1159250000.0\n      bytes: 8694362528\n      end: 60.0002\n      seconds: 60.0002\n      socket: 12\n      start: 0\n    sender:\n      bits_per_second: 1159380000.0\n      bytes: 8695367544\n      end: 60.0002\n      retransmits: 11\n      seconds: 60.0002\n      socket: 12\n      start: 0\n  - receiver:\n      bits_per_second: 1176640000.0\n      bytes: 8824854706\n      end: 60.0002\n      seconds: 60.0002\n      socket: 14\n      start: 0\n    sender:\n      bits_per_second: 1176770000.0\n      bytes: 8825803628\n      end: 60.0002\n      retransmits: 10\n      seconds: 60.0002\n      socket: 14\n      start: 0\n  - receiver:\n      bits_per_second: 1158130000.0\n      bytes: 8685988616\n      end: 60.0002\n      seconds: 60.0002\n      socket: 16\n      start: 0\n    sender:\n      bits_per_second: 1158390000.0\n      bytes: 8687955140\n      end: 60.0002\n      retransmits: 21\n      seconds: 60.0002\n      socket: 16\n      start: 0\n  - receiver:\n      bits_per_second: 1187710000.0\n      bytes: 8907853214\n      end: 60.0002\n      seconds: 60.0002\n      socket: 18\n      start: 0\n    sender:\n      bits_per_second: 1188050000.0\n      bytes: 8910397990\n      end: 60.0002\n      retransmits: 32\n      seconds: 60.0002\n      socket: 18\n      start: 0\n  - receiver:\n      bits_per_second: 1155110000.0\n      bytes: 8663335518\n      end: 60.0002\n      seconds: 60.0002\n      socket: 20\n      start: 0\n    sender:\n      bits_per_second: 1155450000.0\n      bytes: 8665900850\n      end: 60.0002\n      retransmits: 18\n      seconds: 60.0002\n      socket: 20\n      start: 0\n  - receiver:\n      bits_per_second: 1197560000.0\n      bytes: 8981714436\n      end: 60.0002\n      seconds: 60.0002\n      socket: 22\n      start: 0\n    sender:\n      bits_per_second: 1197880000.0\n      bytes: 8984156842\n      end: 60.0002\n      retransmits: 9\n      seconds: 60.0002\n      socket: 22\n      start: 0\n  sum_received:\n    bits_per_second: 11640700000.0\n    bytes: 87305738922\n    end: 60.0002\n    seconds: 60.0002\n    start: 0\n  sum_sent:\n    bits_per_second: 11643500000.0\n    bytes: 87326309986\n    end: 60.0002\n    retransmits: 168\n    seconds: 60.0002\n    start: 0\nstart:\n  connected:\n  - local_host: 10.1.0.3\n    local_port: 49953\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 4\n  - local_host: 10.1.0.3\n    local_port: 49954\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 6\n  - local_host: 10.1.0.3\n    local_port: 49955\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 8\n  - local_host: 10.1.0.3\n    local_port: 49956\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 10\n  - local_host: 10.1.0.3\n    local_port: 49957\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 12\n  - local_host: 10.1.0.3\n    local_port: 49958\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 14\n  - local_host: 10.1.0.3\n    local_port: 49959\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 16\n  - local_host: 10.1.0.3\n    local_port: 49960\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 18\n  - local_host: 10.1.0.3\n    local_port: 49961\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 20\n  - local_host: 10.1.0.3\n    local_port: 49962\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 22\n  connecting_to:\n    host: 10.2.0.5\n    port: 5201\n  cookie: shaker-mzftup-master-0.1471349660.04\n  system_info: 'Linux shaker-mzftup-master-0 3.13.0-93-generic #140-Ubuntu SMP Mon\n    Jul 18 21:21:05 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux\n\n    '\n  tcp_mss_default: 8898\n  test_start:\n    blksize: 64000\n    blocks: 0\n    bytes: 0\n    duration: 60\n    num_streams: 10\n    omit: 0\n    protocol: TCP\n    reverse: 0\n  timestamp:\n    time: Tue, 16 Aug 2016 12:14:20 GMT\n    timesecs: 1471349660\n  version: iperf 3.0.7\n", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471349660.027657, "agent": "shaker_mzftup_master_0", "id": "66710685-a7a8-4c4e-997f-7ec0f05dd888", "start": 1471349660.039239, "meta": [["time", "s"], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "command": {"data": "iperf3 --client 10.2.0.5 --format m --len 64000 --time 60 --parallel 10 --interval 1 --json", "type": "program"}, "samples": [[1.0, 10498.905181884766, 31], [2.0, 10781.288146972656, 15], [3.0, 10732.173919677734, 0], [4.0, 11088.943481445312, 0], [5.0, 10024.452209472656, 7], [6.0, 10537.147521972656, 0], [7.0, 11215.591430664062, 0], [8.0, 10787.105560302734, 0], [9.0, 11291.980743408203, 7], [10.0, 11368.370056152344, 0], [11.0, 11351.490020751953, 0], [12.0, 11026.09634399414, 0], [13.0, 10107.135772705078, 0], [14.0, 8740.415573120117, 7], [15.0, 10874.080657958984, 16], [16.0, 11331.748962402344, 0], [17.0, 11143.016815185547, 0], [18.0, 11275.577545166016, 0], [19.0, 11342.811584472656, 0], [20.0, 10883.99887084961, 0], [21.0, 10633.75473022461, 0], [22.0, 10580.062866210938, 23], [23.0, 10753.726959228516, 0], [24.0, 10463.428497314453, 0], [25.0, 11074.447631835938, 0], [26.0, 11284.351348876953, 0], [27.0, 10747.528076171875, 0], [28.0, 11169.242858886719, 0], [29.0, 11242.294311523438, 0], [30.0, 11203.289031982422, 0], [31.0, 11287.02163696289, 0], [32.0, 11005.878448486328, 0], [33.0, 10761.71875, 62], [34.0, 11111.4501953125, 0], [35.0, 11266.422271728516, 0], [36.0, 11330.604553222656, 0], [37.0, 11423.397064208984, 0], [38.0, 11411.094665527344, 0], [39.0, 11674.690246582031, 0], [40.0, 11406.04019165039, 0], [41.0, 11631.202697753906, 0], [42.0, 11328.125, 0], [43.0, 11655.044555664062, 0], [44.0, 11015.510559082031, 0], [45.0, 11553.287506103516, 0], [46.0, 11532.402038574219, 0], [47.0, 11358.070373535156, 0], [48.0, 11401.3671875, 0], [49.0, 11474.51400756836, 0], [50.0, 11577.796936035156, 0], [51.0, 11586.380004882812, 0], [52.0, 11373.329162597656, 0], [53.0, 11444.377899169922, 0], [54.0, 11562.156677246094, 0], [55.0, 11489.295959472656, 0], [56.0, 11669.921875, 0], [57.0, 11578.750610351562, 0], [58.0, 11526.679992675781, 0], [59.0, 10961.81869506836, 0], [60.0, 10292.339324951172, 0]], "executor": "iperf3", "test": "Download", "type": "agent", "stderr": ""}, "0a1bc0a2-f4ce-4917-8fc6-b6d120d38758": {"meta": [["concurrency", ""], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "scenario": "OpenStack L3 East-West", "test": "Download", "type": "test", "chart": [["concurrency", 1], ["bandwidth", 11104.085763295492], ["retransmits", 2]], "id": "0a1bc0a2-f4ce-4917-8fc6-b6d120d38758"}, "42dd3288-f8b0-4e9c-8369-4ce08333fb6b": {"stats": {"bandwidth": {"max": 11788.368225097656, "avg": 11380.514780680338, "unit": "Mbit/s", "min": 10593.891143798828}, "retransmits": {"max": 68, "avg": 2, "unit": "", "min": 0}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Upload", "type": "concurrency", "id": "42dd3288-f8b0-4e9c-8369-4ce08333fb6b", "node_chart": [["x", "node-2.domain.tld"], ["Avg bandwidth, Mbit/s", 11380.514780680338], ["Max bandwidth, Mbit/s", 11788.368225097656], ["Min bandwidth, Mbit/s", 10593.891143798828], ["Avg retransmits, ", 2], ["Max retransmits, ", 68], ["Min retransmits, ", 0]]}, "f8f408b4-d4ed-4925-ae5e-2ccef3676b9f": {"stats": {"bandwidth": {"max": 11674.690246582031, "avg": 11104.085763295492, "unit": "Mbit/s", "min": 8740.415573120117}, "retransmits": {"max": 62, "avg": 2, "unit": "", "min": 0}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Download", "type": "concurrency", "id": "f8f408b4-d4ed-4925-ae5e-2ccef3676b9f", "node_chart": [["x", "node-2.domain.tld"], ["Avg bandwidth, Mbit/s", 11104.085763295492], ["Max bandwidth, Mbit/s", 11674.690246582031], ["Min bandwidth, Mbit/s", 8740.415573120117], ["Avg retransmits, ", 2], ["Max retransmits, ", 62], ["Min retransmits, ", 0]]}}, "tests": {"Download": {"title": "Download", "interval": 1, "method": "tcp_download", "threads": 10, "buffer_size": 64000, "class": "iperf3"}, "Upload": {"title": "Upload", "interval": 1, "method": "tcp_upload", "threads": 10, "buffer_size": 64000, "class": "iperf3"}}, "agents": {"shaker_mzftup_slave_0": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.2.0.5", "master": {"node": "node-2.domain.tld", "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.3", "mode": "master", "slave_id": "shaker_mzftup_slave_0", "id": "shaker_mzftup_master_0"}, "mode": "slave", "master_id": "shaker_mzftup_master_0", "id": "shaker_mzftup_slave_0"}, "shaker_mzftup_master_0": {"node": "node-2.domain.tld", "slave": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.2.0.5", "mode": "slave", "master_id": "shaker_mzftup_master_0", "id": "shaker_mzftup_slave_0"}, "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.3", "mode": "master", "slave_id": "shaker_mzftup_slave_0", "id": "shaker_mzftup_master_0"}}, "sla": []};
+  </script>
+
+  <script type="text/javascript">
+    "use strict";
+
+    $(function () {
+
+      var fields = ["scenario", "test", "concurrency", "node", "agent"];
+      var state = {
+        scenario: "",
+        test: "",
+        concurrency: "",
+        node: "",
+        agent: ""
+      };
+      var tablePageSize = 10;
+
+      // compiled templates
+      var scenario_source_template = Handlebars.compile($("#scenario_source_template").html());
+      var test_specification_template = Handlebars.compile($("#test_specification_template").html());
+      var agents_table_template = Handlebars.compile($("#agents_table_template").html());
+      var records_table_template = Handlebars.compile($("#records_table_template").html());
+      var executor_template = Handlebars.compile($("#executor_template").html());
+      var concurrency_summary_template = Handlebars.compile($("#concurrency_summary_template").html());
+      var test_summary_template = Handlebars.compile($("#test_summary_template").html());
+      var sla_table_template = Handlebars.compile($("#sla_table_template").html());
+      var errors_template = Handlebars.compile($("#errors_template").html());
+
+      function concatenate(strings) {
+        // returns strings concatenated via comma (like join() but omits empty strings)
+        var f = false;
+        var result = "";
+        $.each(strings, function (_i, string) {
+          if (string.length > 0) {
+            if (f) result += ", ";
+            result += string;
+            f = true;
+          }
+        });
+        return result;
+      }
+
+      function initSingleSelector(name, values) {
+        var selectorId = "#" + name + "_selector";
+
+        var selector_inst = $(selectorId);
+        selector_inst.empty();
+        selector_inst.append($("<option>", {
+          style: "font-style: italic; text-decoration: underline;",
+          value: "",
+          text: selector_inst.data('placeholder')
+        }));
+
+        $.each(values, function (key, item) {
+          selector_inst.append($('<option>', {
+            value: item, //(key + 1),
+            text: item
+          }));
+        });
+
+        selector_inst.val(state[name]);
+
+        selector_inst.
+            on("change", function (e) {
+              state[name] = this.value;
+
+              // convert state -> url
+              var tokens = [];
+              $.each(fields.sort(), function (i, field) {
+                if (state[field] != "") {
+                  tokens.push(field + "=" + state[field]);
+                }
+              });
+              window.location.href = "#" + tokens.join(":");
+            });
+      }
+
+      function getFieldValues(field, records) {
+        var values_set = {};
+
+        $.each(records, function (j, record) {
+          if (record[field]) {
+            values_set["" + record[field]] = true;
+          }
+        });
+
+        return $.map(values_set, function (_i, value) {
+          return value;
+        }).sort();
+      }
+
+      function updateSelectors() {
+        $.each(fields, function (i, field) {
+          var values = getFieldValues(field, filterRecords(report.records, null, field));
+          console.log(values);
+          initSingleSelector(field, values);
+        });
+      }
+
+      function filterRecords(records, type, except_field) {
+        var res = [];
+        $.each(records, function(_i, record){
+          if (!type || typeof type === 'undefined' || record.type == type) {
+            var flag = true;
+            $.each(state, function (key, value) {
+              if (key != except_field && value) {
+                flag &= record[key] == value;
+              }
+            });
+            if (flag) {
+              res.push(record);
+            }
+          }
+        });
+        return res;
+      }
+
+      function getAgentsByIds(agent_ids) {
+        var agents = [];
+        $.each(agent_ids, function(agent_id){
+          agents.push(report.agents[agent_id]);
+        });
+        return agents;
+      }
+
+      /* Template Rendering Funcs */
+
+      function showScenarioSource(contentArea, scenario) {
+        contentArea.append(scenario_source_template(
+            {data: jsyaml.safeDump(scenario)}));
+      }
+
+      function showTestSpecification(contentArea, test) {
+        contentArea.append(test_specification_template(
+            {data: jsyaml.safeDump(test)}
+        ))
+      }
+
+      function showAgentRecord(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = {
+          command_yaml: jsyaml.safeDump(record["command"]),
+          chart_id: chart_id};
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        if ((record["start"]) && (record["finish"])) {
+          ext_options["time_info"] = jsyaml.safeDump({
+            "start": new Date(record["start"] * 1000).toISOString(),
+            "finish": new Date(record["finish"] * 1000).toISOString()
+          });
+        }
+        contentArea.append(executor_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["samples"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          var chart = [];
+          $.each(meta, function(_i, meta_item){  // row titles
+            chart.push([meta_item[0]]);
+          });
+          var samples = record["samples"];
+          for (var i=0; i < samples.length; i++) {
+            var point = samples[i];
+            for (var j=0; j < point.length; j++) {
+              chart[j].push(point[j]);
+            }
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'time',
+              columns: chart,
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showConcurrencySummary(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var node_chart_id = "node_chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id, node_chart_id: node_chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        console.log(record);
+        contentArea.append(concurrency_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["node_chart"]) {
+          c3.generate({
+            bindto: "#" + node_chart_id,
+            data: {
+              x: 'x',
+              columns: record["node_chart"],
+              type: 'step',
+              order: null
+            },
+            axis: {
+              x: { type: 'category' }
+            }
+          });
+        }
+      }
+
+      function showTestSummary(contentArea, record) {
+        console.log(record);
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        contentArea.append(test_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["chart"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'concurrency',
+              columns: record["chart"],
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showAgentsTable(contentArea, filteredRecords) {
+        var agent_ids = {};
+        $.each(filteredRecords, function(_i, record){
+          if (record.agent) {
+            agent_ids[record.agent] = true;
+          }
+        });
+
+        var agents = getAgentsByIds(agent_ids);
+        if (agents.length == 0) return;
+
+        // add slave agents
+        var slave_agent_ids = {};
+        $.each(agents, function(_i, agent){
+          if (agent.slave_id) {
+            slave_agent_ids[agent.slave_id] = true;
+          }
+        });
+        agents = $.merge(agents, getAgentsByIds(slave_agent_ids));
+
+        contentArea.append(agents_table_template({
+          agents: agents,
+          table_id: "agents_table"
+        }));
+        $("#agents_table").dataTable({
+          "autoWidth": true,
+          "paging": false,
+          "ordering": true,
+          "info": false
+        });
+      }
+
+      function makeURL(record, s) {
+        var extra = {};
+        extra[s] = record[s];
+        return "#" + $.map($.extend({}, state, extra), function (val, index) {
+          return val? (index + "=" + val) : null;
+        }).join(":")
+      }
+
+      function showRecordsTable(contentArea, filteredRecords) {
+        $.each(filteredRecords, function(_i, record) {
+          $.each(fields, function(_j, field){
+            if (record[field]) {
+              record[field + "_url"] = makeURL(record, field);
+            }
+          });
+        });
+
+        contentArea.append(records_table_template({
+          records: filteredRecords,
+          table_id: "records_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: filteredRecords.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: filteredRecords.length > tablePageSize
+        });
+      }
+
+      function showSlaTable(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(sla_table_template({
+          records: records,
+          table_id: "sla_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: records.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: records.length > tablePageSize
+        });
+      }
+
+      function showErrors(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(errors_template({
+          records: records,
+          table_id: "errors_list"
+        }));
+      }
+
+      /* Update cycle */
+
+      function update() {
+        var filteredRecords = filterRecords(report.records);
+        console.log(filteredRecords);
+        var slaRecords = [];
+        var errorRecords = [];
+        $.each(filterRecords(report.records), function(_i, record) {
+          if (record["sla_info"]) {
+            slaRecords.push(record);
+          }
+          if (record["is_status_error"]) {
+            errorRecords.push(record);
+          }
+        });
+
+        var contentArea = $("#content_area");
+        contentArea.empty();
+
+        updateSelectors();
+
+        showRecordsTable(contentArea, filteredRecords);
+        showSlaTable(contentArea, slaRecords);
+        showErrors(contentArea, errorRecords);
+
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" &&
+                state["agent"] != "") {
+          showAgentRecord(contentArea, filteredRecords[0]);
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var agg_recs = filterRecords(report.records, "concurrency");
+          if (agg_recs.length > 0) {
+            showConcurrencySummary(contentArea, agg_recs[0]);
+          }
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] == "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var test_recs = filterRecords(report.records, "test");
+          if (test_recs.length > 0) {
+            showTestSummary(contentArea, test_recs[0]);
+          }
+        }
+        if (state["test"] != "") {
+          showTestSpecification(contentArea, report.tests[state["test"]]);
+        }
+        if (state["agent"] == "") {
+          showAgentsTable(contentArea, filteredRecords);
+        }
+        if (state["scenario"] != "") {
+          showScenarioSource(contentArea, report.scenarios[state["scenario"]]);
+        }
+      }
+
+      function parseUrlToState() {
+        var hashUrl = window.location.hash.substr(1);
+
+        $.each(hashUrl.split(":"), function (_i, pair) {
+          var kv = pair.split("=");
+          if (kv.length == 2) {
+            state[kv[0]] = decodeURIComponent(kv[1]);
+          }
+        });
+      }
+
+      // entry-point
+      parseUrlToState();
+      console.log(state);
+
+      // pre-process records
+      $.each(report.records, function(_i, record) {
+        if (record.status) {
+          record["is_status_ok"] = record.status == "ok";
+          record["is_status_lost"] = record.status == "lost";
+          record["is_status_interrupted"] = record.status == "interrupted";
+          record["is_status_error"] = record.status == "error";
+        }
+      });
+
+      // auto-select filters with 1 option
+      $.each(fields, function(_i, field) {
+        var values = getFieldValues(field, report.records);
+        if (values.length == 1) {
+          state[field] = values[0];
+        }
+      });
+
+      update();
+
+      $(window).on('hashchange', function() {
+        parseUrlToState();
+        update()
+      });
+
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+
+<div class="container" id="container">
+  <div class="row text-center">
+    <h1>Shaker | The Report</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <label for="scenario_selector" title="Scenario name">Scenario</label>
+      <select id="scenario_selector" class="form-control" data-placeholder="- Any scenario -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="test_selector" title="Test name">Test Case</label>
+      <select id="test_selector" class="form-control" data-placeholder="- Any test case -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="concurrency_selector" title="Concurrency">Concurrency</label>
+      <select id="concurrency_selector" class="form-control" data-placeholder="- Any concurrency -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="node_selector" title="Host / Compute node">Host</label>
+      <select id="node_selector" class="form-control" data-placeholder="- Any node -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="agent_selector" title="Agent">Agent</label>
+      <select id="agent_selector" class="form-control" data-placeholder="- Any agent -"></select>
+    </div>
+  </div>
+
+  <div id="content_area" class="row">
+    <!-- Container for the screen content -->
+  </div>
+
+  <div id="footer" class="row">&nbsp;</div>
+</div>
+
+<!-- TEMPLATES --------------------------------------------------------------->
+
+<!-- Scenario File -->
+<script id="scenario_source_template" type="text/x-handlebars-template">
+  <h3>Scenario</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Test Specification -->
+<script id="test_specification_template" type="text/x-handlebars-template">
+  <h3>Test Specification</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Executor Result -->
+<script id="executor_template" type="text/x-handlebars-template">
+  <h3>Execution Summary</h3>
+  {{#with record}}
+  <div id="{{ chart_id }}"></div>
+  {{#if is_status_ok}}<span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>success</span>{{/if}}
+  {{#if is_status_lost}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>lost</span>{{/if}}
+  {{#if is_status_interrupted}}<span class="label label-warning"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>interrupted</span>{{/if}}
+  {{#if is_status_error}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>error</span>{{/if}}
+  {{#if stats_yaml}}
+    <h4>Stats</h4>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{#if time_info}}
+    <h4>Time Info</h4>
+    <pre>{{ time_info }}</pre>
+  {{/if}}
+  <h4>Command</h4>
+  <pre>{{ command_yaml }}</pre>
+  {{#if stdout}}
+    <h4>Stdout</h4>
+    <pre>{{ stdout }}</pre>
+  {{/if}}
+  {{#if verbose}}
+    <h4>Verbose Info</h4>
+    <pre>{{ verbose }}</pre>
+  {{/if}}
+  {{#if stderr}}
+    <h4>Stderr</h4>
+    <pre>{{ stderr }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Concurrency summary -->
+<script id="concurrency_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id  }}"></div>
+  <h3>Per-node chart</h3>
+  <div id="{{ node_chart_id  }}"></div>
+  <h3>Stats</h3>
+  <pre>{{ stats_yaml }}</pre>
+  {{/with}}
+</script>
+
+<!-- Test summary -->
+<script id="test_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id   }}"></div>
+  {{#if stats_yaml}}
+    <h3>Stats</h3>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Records Table -->
+<script id="records_table_template" type="text/x-handlebars-template">
+  <h3>Records</h3>
+  <table class="table table-striped" id="{{ table_id  }}">
+    <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Test Case</th>
+      <th>Concurrency</th>
+      <th>Host / Compute Node</th>
+      <th>Agent</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td><a href="{{ scenario_url }}">{{ scenario }}</a></td>
+      <td><a href="{{ test_url }}">{{ test }}</a></td>
+      <td><a href="{{ concurrency_url }}">{{ concurrency }}</a></td>
+      <td><a href="{{ node_url }}">{{ node }}</a></td>
+      <td><a href="{{ agent_url }}">{{ agent }}</a></td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="label label-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            success
+          </span>
+        {{/if}}
+        {{#if is_status_lost }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            lost
+          </span>
+        {{/if}}
+        {{#if is_status_interrupted }}
+          <span class="label label-warning">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            interrupted
+          </span>
+        {{/if}}
+        {{#if is_status_error }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            error
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Agents List -->
+<script id="agents_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{ table_id }}">
+    <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Mode</th>
+      <th>IP</th>
+      <th>Node</th>
+      <th>AZ</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#agents}}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ mode }}</td>
+      <td>{{ ip }}</td>
+      <td>{{ node }}</td>
+      <td>{{ zone }}</td>
+    </tr>
+    {{/agents}}
+    </tbody>
+  </table>
+</script>
+
+<!-- SLA List -->
+<script id="sla_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{  table_id }}">
+    <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td>{{ sla }}</td>
+      <td>{{ location }}</td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="text-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{else}}
+          <span class="text-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Errors -->
+<script id="errors_template" type="text/x-handlebars-template">
+  <h3>Errors</h3>
+  <div class="text-danger">
+    <ul>
+    {{#records}}
+      <li>{{ info }}<br/>{{ stderr }}{{ traceback }}</li>
+    {{/records}}
+    </ul>
+  </div>
+</script>
+
+</body>
+</html>

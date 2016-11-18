@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+  <title>Shaker | The distributed data-plane testing tool for OpenStack</title>
+
+  <!-- LIBS -->
+
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js"></script>
+  <script type="text/javascript"
+          src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.2.7/js-yaml.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+
+  <!-- STYLES -->
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/simplex/bootstrap.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
+  <link rel='stylesheet' type='text/css'
+        href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic'>
+
+  <script type="application/javascript">
+    var report = {"scenarios": {"OpenStack L3 East-West": {"file_name": "shaker/shaker/scenarios/openstack/full_l3_east_west.yaml", "title": "OpenStack L3 East-West", "execution": {"tests": [{"title": "Download", "method": "tcp_download", "class": "flent"}, {"title": "Upload", "method": "tcp_upload", "class": "flent"}, {"title": "Bi-directional", "method": "tcp_bidirectional", "class": "flent"}], "progression": "quadratic"}, "description": "In this scenario Shaker launches pairs of instances, each instance on its own compute node. All available compute nodes are utilized. Instances are connected to one of 2 tenant networks, which plugged into single router. The traffic goes from one network to the other (L3 east-west).", "deployment": {"accommodation": ["pair", "single_room"], "template": "l3_east_west.hot"}}}, "records": {"21db6806-9e6a-4eb8-8937-b6068b23c951": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471341296.202416, "stats": {"ping_icmp": {"max": 4.322346249430536, "avg": 2.516975863588511, "unit": "ms", "min": 0.3662982297717909}, "tcp_download": {"max": 6345.73, "avg": 4714.107995387939, "unit": "Mbits/s", "min": 4166.695506778853}, "tcp_upload": {"max": 5432.5653938943415, "avg": 4721.259470502164, "unit": "Mbits/s", "min": 3394.91}}, "stderr": "", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471341225.794527, "agent": "shaker_eomzpt_master_0", "start": 1471341225.804645, "meta": [["time", "s"], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"], ["tcp_upload", "Mbits/s"]], "command": {"data": "zcat `flent -H 10.2.0.5 -l 60 -s 1 tcp_bidirectional 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.05, null, null], [1.0, 0.579344942485523, null, null], [2.0, 0.3800650513710398, null, null], [3.0, 0.5099236585701087, null, null], [4.0, 0.45379675399646247, null, null], [5.0, 0.3662982297717909, null, null], [6.0, 2.2181813653384688, 6345.73, 3394.91], [7.0, 2.5690740366077165, 5857.307141561508, 4240.071904309136], [8.0, 2.619804149832879, 5112.73553003788, 4669.789747518971], [9.0, 2.2519365851428486, 5219.253704776764, 5290.073147689959], [10.0, 1.8922516173317563, 5285.578788795471, 5387.573430478573], [11.0, 3.870974669171692, 4525.815390637318, 4657.9267252063755], [12.0, 3.286150889174306, 4586.9088146209715, 4700.219162226131], [13.0, 1.9537420777881525, 4654.589373779297, 4743.5237528936805], [14.0, 3.1053015276028306, 5127.787591357671, 5269.553847059115], [15.0, 3.080509983238913, 4674.717917509079, 4834.173541965485], [16.0, 2.241282782535426, 4479.859632167816, 4595.296648614407], [17.0, 3.6763793454737037, 4325.999733080864, 4493.327396669388], [18.0, 2.490979568999644, 4472.201521396637, 4553.096610858441], [19.0, 3.0486787850931316, 4420.748785624504, 4538.8111577362415], [20.0, 2.77601689770963, 4859.503120684321, 5076.330264742296], [21.0, 2.5547076427332773, 4654.007870264054, 4790.9987738843465], [22.0, 3.7794776521066034, 4656.998461561203, 4759.36595262289], [23.0, 2.1817059545013997, 5181.4102030964405, 5384.6356798176785], [24.0, 2.403075418750831, 5257.024577047825, 5402.174062633515], [25.0, 2.3029767341979004, 5124.411951162815, 5323.522523121364], [26.0, 2.290287821118211, 5278.899476612827, 5388.503793134689], [27.0, 2.2318038853376545, 5238.117758462429, 5370.46622145848], [28.0, 3.362015278225045, 5042.714618122578, 5160.6833199822095], [29.0, 3.2647391615426278, 4667.276640319824, 4813.409259623389], [30.0, 3.8192487020185903, 4700.87738599062, 4847.6421632867305], [31.0, 2.606638980935064, 4633.422801366108, 4735.085463584896], [32.0, 3.242021709594949, 4630.960650684833, 4746.205649164868], [33.0, 3.2796015715196853, 4487.517264788151, 4572.2036788009755], [34.0, 3.2991866872613653, 4380.845021408842, 4493.003150268173], [35.0, 1.6308063872778966, 4469.432194552422, 4625.123606119157], [36.0, 2.153428051013954, 5180.066740064621, 5328.91785157454], [37.0, 2.7441218356088686, 5214.129531641007, 5373.4357123212485], [38.0, 2.540918573697259, 5236.012541065877, 5292.899485368339], [39.0, 2.5204712315059172, 5197.747227706909, 5432.5653938943415], [40.0, 3.5283023198189674, 5238.166051826477, 5296.6590411859825], [41.0, 3.4375947939254217, 4395.442379226684, 4463.845530819466], [42.0, 3.780577171989328, 4334.019355354309, 4405.654281926156], [43.0, 3.4501516939005494, 4255.984592928233, 4337.453665932436], [44.0, 2.9861016395293363, 4295.517302660943, 4315.637990098142], [45.0, 2.724122065946881, 4249.075339484215, 4306.760997941319], [46.0, 3.8022759383453293, 4713.560773730278, 4646.001163584855], [47.0, 2.7224691335970093, 4540.4848938608175, 4619.678923339031], [48.0, 3.0534671678941665, 4540.777559776306, 4634.112438514916], [49.0, 2.592473609570319, 4546.251906819343, 4605.1376372721015], [50.0, 2.3634022448091407, 4547.440992407049, 4596.773941597939], [51.0, 2.8824669218336716, 4539.704035627841, 4589.627480195565], [52.0, 2.5092830588978705, 4464.0058705592155, 4583.844157802587], [53.0, 3.383116223254925, 4757.534777457714, 4806.311487154961], [54.0, 3.533633301591374, 4816.361433787346, 4778.203962769543], [55.0, 3.038884942897692, 4543.255755636693, 4574.570991428591], [56.0, 1.9519694993208303, 4189.909169533962, 4263.039824655057], [57.0, 3.285321641000958, 4166.695506778853, 4242.9742543530465], [58.0, 4.322346249430536, 4446.22332346201, 4467.464452454187], [59.0, 2.943776450840517, 4473.055494272709, 4468.233566846848], [60.0, 2.396245082441492, 4453.133619043827, 4506.67571768523], [61.0, 2.0196425165951735, 4229.638226866722, 4308.579799037703], [62.0, 3.622294145332668, 4277.7060464572905, 4304.542905873846], [63.0, 2.90901113342555, 4309.404799146076, 4357.43834390473], [64.0, 3.4511635373197183, 4292.507386512756, 4365.519255085986], [65.0, 0.8013024571663494, 4381.741163497173, 4433.026810541823], [66.0, 0.5461716832434887, 4382.38, 4433.54], [67.0, 0.4600649203249474, null, null], [68.0, 0.6046527886707227, null, null], [69.0, 0.45809992209774764, null, null]], "executor": "flent", "test": "Bi-directional", "type": "agent", "id": "21db6806-9e6a-4eb8-8937-b6068b23c951"}, "c8dbb0b3-a9e0-40ca-bcaa-af75ceccfeb7": {"meta": [["concurrency", ""], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"], ["tcp_upload", "Mbits/s"]], "scenario": "OpenStack L3 East-West", "test": "Bi-directional", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 2.516975863588511], ["tcp_download", 4714.107995387939], ["tcp_upload", 4721.259470502164]], "id": "c8dbb0b3-a9e0-40ca-bcaa-af75ceccfeb7"}, "a544a0ac-a156-4d93-8a73-8c871350e067": {"stats": {"ping_icmp": {"max": 2.596198132250489, "avg": 1.3459290471243692, "unit": "ms", "min": 0.37598678928254736}, "tcp_download": {"max": 9307.462936565875, "avg": 8419.455725773694, "unit": "Mbits/s", "min": 6473.829019212723}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Download", "type": "concurrency", "id": "a544a0ac-a156-4d93-8a73-8c871350e067", "node_chart": [["x", "node-2.domain.tld"], ["Avg ping_icmp, ms", 1.3459290471243692], ["Max ping_icmp, ms", 2.596198132250489], ["Min ping_icmp, ms", 0.37598678928254736], ["Avg tcp_download, Mbits/s", 8419.455725773694], ["Max tcp_download, Mbits/s", 9307.462936565875], ["Min tcp_download, Mbits/s", 6473.829019212723]]}, "60913610-329b-4aae-b0f5-5ea5005b7f46": {"meta": [["concurrency", ""], ["ping_icmp", "ms"], ["tcp_upload", "Mbits/s"]], "scenario": "OpenStack L3 East-West", "test": "Upload", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 1.5407097147396895], ["tcp_upload", 8408.341054189896]], "id": "60913610-329b-4aae-b0f5-5ea5005b7f46"}, "7fae4039-e100-44a4-83cf-97f7b4fceefb": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471341115.370115, "stats": {"ping_icmp": {"max": 2.596198132250489, "avg": 1.3459290471243692, "unit": "ms", "min": 0.37598678928254736}, "tcp_download": {"max": 9307.462936565875, "avg": 8419.455725773694, "unit": "Mbits/s", "min": 6473.829019212723}}, "stderr": "", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471341044.938394, "agent": "shaker_eomzpt_master_0", "start": 1471341044.948511, "meta": [["time", "s"], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"]], "command": {"data": "zcat `flent -H 10.2.0.5 -l 60 -s 1 tcp_download 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.05, null], [1.0, 1.429447154626388, null], [2.0, 0.44797755387838856, null], [3.0, 0.4769491755280074, null], [4.0, 0.527855186297702, null], [5.0, 0.5708631823306075, null], [6.0, 1.4855037679310534, 8141.55], [7.0, 2.1254501821282163, 7510.008341202735], [8.0, 2.169664826019559, 6823.196450405121], [9.0, 1.297698858531177, 6735.2123158741], [10.0, 2.596198132250489, 6665.868099098206], [11.0, 1.72013221746557, 6647.765280564621], [12.0, 1.838285656564503, 6822.041829824448], [13.0, 1.4261710125496236, 6982.24630613327], [14.0, 2.471503336282008, 8852.794710531236], [15.0, 1.3013875372637027, 8950.631705169679], [16.0, 1.0837640295582223, 9007.494302272797], [17.0, 1.3250327470485501, 9134.207367286683], [18.0, 1.3495746216740385, 9224.125143346786], [19.0, 1.222929968459066, 8978.846885099412], [20.0, 0.8352218503173128, 9234.090296239854], [21.0, 0.932439454916279, 9301.88054386139], [22.0, 2.3245356571979823, 9041.426525707246], [23.0, 1.619412452596777, 9172.168482847213], [24.0, 1.6389114213643792, 9211.068877849579], [25.0, 2.105877728378803, 9039.215320720674], [26.0, 1.7902985461114298, 9122.9711577066], [27.0, 1.6251099960155513, 9073.305530333519], [28.0, 1.562013222295378, 9268.495924434661], [29.0, 1.5021058660534472, 9077.514122238159], [30.0, 1.6928167084759733, 8874.74235432148], [31.0, 1.6422571126509484, 7821.3374878788], [32.0, 2.062492942782416, 7487.890436968803], [33.0, 1.2449559005336268, 8052.509911212921], [34.0, 1.3250120359906, 9160.658004822732], [35.0, 1.4161247512844648, 9114.327575650215], [36.0, 1.6302852235387475, 7436.114036688805], [37.0, 1.3632149304822307, 9307.462936565875], [38.0, 0.8074181350144671, 9203.71433985916], [39.0, 0.8229922808595, 9197.861167340277], [40.0, 0.5172832688414157, 8717.80953785658], [41.0, 1.5513108014005397, 7126.088396968842], [42.0, 1.8193612637378982, 6473.829019212723], [43.0, 1.5443590473576578, 7013.242601053715], [44.0, 1.396905104105487, 8927.040384597778], [45.0, 1.5418464162238394, 9161.103201744556], [46.0, 1.1232262062931397, 9262.292821955682], [47.0, 1.3272908891563426, 9123.186067757606], [48.0, 1.8409268891293857, 9152.805670809747], [49.0, 1.0345043753443077, 9198.019508914855], [50.0, 1.3667669880168611, 9155.909516339303], [51.0, 1.2017360153721972, 8960.729209766389], [52.0, 0.9455183248667127, 9169.328663761617], [53.0, 0.40867380215066695, 9094.712855341435], [54.0, 1.0944271977933622, 9142.876004779338], [55.0, 1.1775659196750443, 9115.45771003008], [56.0, 1.189379120732583, 9139.914803593158], [57.0, 1.5177202304411392, 9023.220768565146], [58.0, 1.409121254842809, 9122.47365922451], [59.0, 1.9130844052401388, 7927.56867380619], [60.0, 1.4000493814453376, 6716.926269354821], [61.0, 1.397228792352741, 8972.246200146676], [62.0, 2.022175829639833, 7838.782179956436], [63.0, 1.299283607955609, 7110.157965331077], [64.0, 1.8985695158319507, 8076.030275859833], [65.0, 0.561406363364285, 6605.993535410075], [66.0, 0.5382795298081673, 6584.31], [67.0, 0.5301397888521476, null], [68.0, 0.4110208162044818, null], [69.0, 0.37598678928254736, null]], "executor": "flent", "test": "Download", "type": "agent", "id": "7fae4039-e100-44a4-83cf-97f7b4fceefb"}, "f0f6f981-4613-4015-94c4-f1576a40c36d": {"meta": [["concurrency", ""], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"]], "scenario": "OpenStack L3 East-West", "test": "Download", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 1.3459290471243692], ["tcp_download", 8419.455725773694]], "id": "f0f6f981-4613-4015-94c4-f1576a40c36d"}, "0948f82a-3b86-4ab5-a1b2-d9a05565a6a1": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471341205.786681, "stats": {"ping_icmp": {"max": 2.5770750915702965, "avg": 1.5407097147396895, "unit": "ms", "min": 0.4453708030112654}, "tcp_upload": {"max": 9409.403731727394, "avg": 8408.341054189896, "unit": "Mbits/s", "min": 6448.055525465012}}, "stderr": "", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471341135.378613, "agent": "shaker_eomzpt_master_0", "start": 1471341135.388739, "meta": [["time", "s"], ["ping_icmp", "ms"], ["tcp_upload", "Mbits/s"]], "command": {"data": "zcat `flent -H 10.2.0.5 -l 60 -s 1 tcp_upload 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.2, null], [1.0, 0.5600715557194633, null], [2.0, 0.46819744793867385, null], [3.0, 0.6669262810487186, null], [4.0, 0.6019296172305737, null], [5.0, 0.5405888364570196, null], [6.0, 1.7700705364206333, 6587.74], [7.0, 2.4881559519741714, 6541.054389250632], [8.0, 2.370470457254871, 6448.055525465012], [9.0, 2.1411402892450773, 7556.2761186386915], [10.0, 2.5770750915702965, 7556.971869737701], [11.0, 1.3777879936518764, 7841.063018774987], [12.0, 1.4791202953645757, 9071.053090093172], [13.0, 1.737448598766951, 9032.27701792717], [14.0, 1.631241160204882, 9131.922636394578], [15.0, 1.8273435368573436, 9179.196852769728], [16.0, 1.4753476173110232, 9158.030439405442], [17.0, 2.0209571283221566, 9149.05450753212], [18.0, 1.2825468908456283, 9098.41595410347], [19.0, 1.8098867336441626, 9169.055692396163], [20.0, 2.299811117197242, 8218.25430737373], [21.0, 2.0361506901804876, 7160.368478317261], [22.0, 1.687952686365513, 7938.030744047165], [23.0, 2.1089944660966657, 7851.036383056641], [24.0, 1.847278120828645, 7501.298717098352], [25.0, 1.898324149244341, 7818.992718709711], [26.0, 1.8126847224291207, 8962.698477457892], [27.0, 1.5194330123654978, 9034.401844962267], [28.0, 1.7033572217015416, 9326.385002031679], [29.0, 1.9511897493611492, 9031.390759909853], [30.0, 1.6322295695184363, 9071.083059940338], [31.0, 1.5237212705739147, 9099.093893153244], [32.0, 1.9235542180715484, 9246.953895001412], [33.0, 1.076245064710699, 9146.139565013487], [34.0, 1.7105611314444036, 9126.74148209095], [35.0, 1.9598633631054212, 9005.340631435756], [36.0, 1.3202736901010206, 8772.184255912303], [37.0, 1.538020332915186, 9062.330847510028], [38.0, 1.55, 8945.730372309336], [39.0, 2.1200634430523078, 9269.637883052827], [40.0, 1.0861492225489182, 9008.23659796238], [41.0, 1.3430006330384154, 8896.326848954079], [42.0, 1.9089575392832474, 8129.453237540369], [43.0, 0.9443837885742364, 7043.356812362671], [44.0, 0.6520471264430926, 8810.98100600282], [45.0, 1.2277291241769892, 9144.332345023155], [46.0, 1.307335159556878, 9321.618694267272], [47.0, 1.1019793955356993, 9051.698041954995], [48.0, 1.5053405998377092, 9250.697212657928], [49.0, 1.6430694411585918, 9193.526110066028], [50.0, 1.9320695657677434, 9270.26654346466], [51.0, 1.1887094815058115, 7915.020740531494], [52.0, 1.262014688095238, 8952.314048995971], [53.0, 1.607283441796301, 9195.248599309922], [54.0, 1.3961413141554133, 9335.264664150212], [55.0, 2.0426819255667663, 9409.403731727394], [56.0, 1.9594830219696073, 6954.9056141376495], [57.0, 1.8941784863788564, 7935.482974385125], [58.0, 1.6021036384275573, 7937.173878879547], [59.0, 1.5614561363163486, 7925.25161863838], [60.0, 2.0040758051856313, 7878.703421891967], [61.0, 1.9106286980592526, 7235.555242803498], [62.0, 2.3516357192596598, 6732.775258789063], [63.0, 2.5188096926519794, 6734.355348555603], [64.0, 2.144080791108177, 7223.669262981842], [65.0, 0.5675539923405646, 7656.636018676373], [66.0, 0.528605656562957, 7658.29], [67.0, 0.5213416527643528, null], [68.0, 0.4453708030112654, null], [69.0, 0.4454494516097423, null]], "executor": "flent", "test": "Upload", "type": "agent", "id": "0948f82a-3b86-4ab5-a1b2-d9a05565a6a1"}, "4a7618d1-50a0-4062-8591-37803ba345f7": {"stats": {"ping_icmp": {"max": 2.5770750915702965, "avg": 1.5407097147396895, "unit": "ms", "min": 0.4453708030112654}, "tcp_upload": {"max": 9409.403731727394, "avg": 8408.341054189896, "unit": "Mbits/s", "min": 6448.055525465012}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Upload", "type": "concurrency", "id": "4a7618d1-50a0-4062-8591-37803ba345f7", "node_chart": [["x", "node-2.domain.tld"], ["Avg ping_icmp, ms", 1.5407097147396895], ["Max ping_icmp, ms", 2.5770750915702965], ["Min ping_icmp, ms", 0.4453708030112654], ["Avg tcp_upload, Mbits/s", 8408.341054189896], ["Max tcp_upload, Mbits/s", 9409.403731727394], ["Min tcp_upload, Mbits/s", 6448.055525465012]]}, "fadadfa0-bf47-4653-bccc-2ec3d8d1a8f1": {"stats": {"ping_icmp": {"max": 4.322346249430536, "avg": 2.516975863588511, "unit": "ms", "min": 0.3662982297717909}, "tcp_download": {"max": 6345.73, "avg": 4714.107995387939, "unit": "Mbits/s", "min": 4166.695506778853}, "tcp_upload": {"max": 5432.5653938943415, "avg": 4721.259470502164, "unit": "Mbits/s", "min": 3394.91}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Bi-directional", "type": "concurrency", "id": "fadadfa0-bf47-4653-bccc-2ec3d8d1a8f1", "node_chart": [["x", "node-2.domain.tld"], ["Avg ping_icmp, ms", 2.516975863588511], ["Max ping_icmp, ms", 4.322346249430536], ["Min ping_icmp, ms", 0.3662982297717909], ["Avg tcp_download, Mbits/s", 4714.107995387939], ["Max tcp_download, Mbits/s", 6345.73], ["Min tcp_download, Mbits/s", 4166.695506778853], ["Avg tcp_upload, Mbits/s", 4721.259470502164], ["Max tcp_upload, Mbits/s", 5432.5653938943415], ["Min tcp_upload, Mbits/s", 3394.91]]}}, "tests": {"Download": {"class": "flent", "method": "tcp_download", "title": "Download"}, "Bi-directional": {"class": "flent", "method": "tcp_bidirectional", "title": "Bi-directional"}, "Upload": {"class": "flent", "method": "tcp_upload", "title": "Upload"}}, "agents": {"shaker_eomzpt_slave_0": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.2.0.5", "master": {"node": "node-2.domain.tld", "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.4", "mode": "master", "slave_id": "shaker_eomzpt_slave_0", "id": "shaker_eomzpt_master_0"}, "mode": "slave", "master_id": "shaker_eomzpt_master_0", "id": "shaker_eomzpt_slave_0"}, "shaker_eomzpt_master_0": {"node": "node-2.domain.tld", "slave": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.2.0.5", "mode": "slave", "master_id": "shaker_eomzpt_master_0", "id": "shaker_eomzpt_slave_0"}, "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.4", "mode": "master", "slave_id": "shaker_eomzpt_slave_0", "id": "shaker_eomzpt_master_0"}}, "sla": []};
+  </script>
+
+  <script type="text/javascript">
+    "use strict";
+
+    $(function () {
+
+      var fields = ["scenario", "test", "concurrency", "node", "agent"];
+      var state = {
+        scenario: "",
+        test: "",
+        concurrency: "",
+        node: "",
+        agent: ""
+      };
+      var tablePageSize = 10;
+
+      // compiled templates
+      var scenario_source_template = Handlebars.compile($("#scenario_source_template").html());
+      var test_specification_template = Handlebars.compile($("#test_specification_template").html());
+      var agents_table_template = Handlebars.compile($("#agents_table_template").html());
+      var records_table_template = Handlebars.compile($("#records_table_template").html());
+      var executor_template = Handlebars.compile($("#executor_template").html());
+      var concurrency_summary_template = Handlebars.compile($("#concurrency_summary_template").html());
+      var test_summary_template = Handlebars.compile($("#test_summary_template").html());
+      var sla_table_template = Handlebars.compile($("#sla_table_template").html());
+      var errors_template = Handlebars.compile($("#errors_template").html());
+
+      function concatenate(strings) {
+        // returns strings concatenated via comma (like join() but omits empty strings)
+        var f = false;
+        var result = "";
+        $.each(strings, function (_i, string) {
+          if (string.length > 0) {
+            if (f) result += ", ";
+            result += string;
+            f = true;
+          }
+        });
+        return result;
+      }
+
+      function initSingleSelector(name, values) {
+        var selectorId = "#" + name + "_selector";
+
+        var selector_inst = $(selectorId);
+        selector_inst.empty();
+        selector_inst.append($("<option>", {
+          style: "font-style: italic; text-decoration: underline;",
+          value: "",
+          text: selector_inst.data('placeholder')
+        }));
+
+        $.each(values, function (key, item) {
+          selector_inst.append($('<option>', {
+            value: item, //(key + 1),
+            text: item
+          }));
+        });
+
+        selector_inst.val(state[name]);
+
+        selector_inst.
+            on("change", function (e) {
+              state[name] = this.value;
+
+              // convert state -> url
+              var tokens = [];
+              $.each(fields.sort(), function (i, field) {
+                if (state[field] != "") {
+                  tokens.push(field + "=" + state[field]);
+                }
+              });
+              window.location.href = "#" + tokens.join(":");
+            });
+      }
+
+      function getFieldValues(field, records) {
+        var values_set = {};
+
+        $.each(records, function (j, record) {
+          if (record[field]) {
+            values_set["" + record[field]] = true;
+          }
+        });
+
+        return $.map(values_set, function (_i, value) {
+          return value;
+        }).sort();
+      }
+
+      function updateSelectors() {
+        $.each(fields, function (i, field) {
+          var values = getFieldValues(field, filterRecords(report.records, null, field));
+          console.log(values);
+          initSingleSelector(field, values);
+        });
+      }
+
+      function filterRecords(records, type, except_field) {
+        var res = [];
+        $.each(records, function(_i, record){
+          if (!type || typeof type === 'undefined' || record.type == type) {
+            var flag = true;
+            $.each(state, function (key, value) {
+              if (key != except_field && value) {
+                flag &= record[key] == value;
+              }
+            });
+            if (flag) {
+              res.push(record);
+            }
+          }
+        });
+        return res;
+      }
+
+      function getAgentsByIds(agent_ids) {
+        var agents = [];
+        $.each(agent_ids, function(agent_id){
+          agents.push(report.agents[agent_id]);
+        });
+        return agents;
+      }
+
+      /* Template Rendering Funcs */
+
+      function showScenarioSource(contentArea, scenario) {
+        contentArea.append(scenario_source_template(
+            {data: jsyaml.safeDump(scenario)}));
+      }
+
+      function showTestSpecification(contentArea, test) {
+        contentArea.append(test_specification_template(
+            {data: jsyaml.safeDump(test)}
+        ))
+      }
+
+      function showAgentRecord(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = {
+          command_yaml: jsyaml.safeDump(record["command"]),
+          chart_id: chart_id};
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        if ((record["start"]) && (record["finish"])) {
+          ext_options["time_info"] = jsyaml.safeDump({
+            "start": new Date(record["start"] * 1000).toISOString(),
+            "finish": new Date(record["finish"] * 1000).toISOString()
+          });
+        }
+        contentArea.append(executor_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["samples"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          var chart = [];
+          $.each(meta, function(_i, meta_item){  // row titles
+            chart.push([meta_item[0]]);
+          });
+          var samples = record["samples"];
+          for (var i=0; i < samples.length; i++) {
+            var point = samples[i];
+            for (var j=0; j < point.length; j++) {
+              chart[j].push(point[j]);
+            }
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'time',
+              columns: chart,
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showConcurrencySummary(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var node_chart_id = "node_chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id, node_chart_id: node_chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        console.log(record);
+        contentArea.append(concurrency_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["node_chart"]) {
+          c3.generate({
+            bindto: "#" + node_chart_id,
+            data: {
+              x: 'x',
+              columns: record["node_chart"],
+              type: 'step',
+              order: null
+            },
+            axis: {
+              x: { type: 'category' }
+            }
+          });
+        }
+      }
+
+      function showTestSummary(contentArea, record) {
+        console.log(record);
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        contentArea.append(test_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["chart"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'concurrency',
+              columns: record["chart"],
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showAgentsTable(contentArea, filteredRecords) {
+        var agent_ids = {};
+        $.each(filteredRecords, function(_i, record){
+          if (record.agent) {
+            agent_ids[record.agent] = true;
+          }
+        });
+
+        var agents = getAgentsByIds(agent_ids);
+        if (agents.length == 0) return;
+
+        // add slave agents
+        var slave_agent_ids = {};
+        $.each(agents, function(_i, agent){
+          if (agent.slave_id) {
+            slave_agent_ids[agent.slave_id] = true;
+          }
+        });
+        agents = $.merge(agents, getAgentsByIds(slave_agent_ids));
+
+        contentArea.append(agents_table_template({
+          agents: agents,
+          table_id: "agents_table"
+        }));
+        $("#agents_table").dataTable({
+          "autoWidth": true,
+          "paging": false,
+          "ordering": true,
+          "info": false
+        });
+      }
+
+      function makeURL(record, s) {
+        var extra = {};
+        extra[s] = record[s];
+        return "#" + $.map($.extend({}, state, extra), function (val, index) {
+          return val? (index + "=" + val) : null;
+        }).join(":")
+      }
+
+      function showRecordsTable(contentArea, filteredRecords) {
+        $.each(filteredRecords, function(_i, record) {
+          $.each(fields, function(_j, field){
+            if (record[field]) {
+              record[field + "_url"] = makeURL(record, field);
+            }
+          });
+        });
+
+        contentArea.append(records_table_template({
+          records: filteredRecords,
+          table_id: "records_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: filteredRecords.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: filteredRecords.length > tablePageSize
+        });
+      }
+
+      function showSlaTable(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(sla_table_template({
+          records: records,
+          table_id: "sla_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: records.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: records.length > tablePageSize
+        });
+      }
+
+      function showErrors(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(errors_template({
+          records: records,
+          table_id: "errors_list"
+        }));
+      }
+
+      /* Update cycle */
+
+      function update() {
+        var filteredRecords = filterRecords(report.records);
+        console.log(filteredRecords);
+        var slaRecords = [];
+        var errorRecords = [];
+        $.each(filterRecords(report.records), function(_i, record) {
+          if (record["sla_info"]) {
+            slaRecords.push(record);
+          }
+          if (record["is_status_error"]) {
+            errorRecords.push(record);
+          }
+        });
+
+        var contentArea = $("#content_area");
+        contentArea.empty();
+
+        updateSelectors();
+
+        showRecordsTable(contentArea, filteredRecords);
+        showSlaTable(contentArea, slaRecords);
+        showErrors(contentArea, errorRecords);
+
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" &&
+                state["agent"] != "") {
+          showAgentRecord(contentArea, filteredRecords[0]);
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var agg_recs = filterRecords(report.records, "concurrency");
+          if (agg_recs.length > 0) {
+            showConcurrencySummary(contentArea, agg_recs[0]);
+          }
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] == "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var test_recs = filterRecords(report.records, "test");
+          if (test_recs.length > 0) {
+            showTestSummary(contentArea, test_recs[0]);
+          }
+        }
+        if (state["test"] != "") {
+          showTestSpecification(contentArea, report.tests[state["test"]]);
+        }
+        if (state["agent"] == "") {
+          showAgentsTable(contentArea, filteredRecords);
+        }
+        if (state["scenario"] != "") {
+          showScenarioSource(contentArea, report.scenarios[state["scenario"]]);
+        }
+      }
+
+      function parseUrlToState() {
+        var hashUrl = window.location.hash.substr(1);
+
+        $.each(hashUrl.split(":"), function (_i, pair) {
+          var kv = pair.split("=");
+          if (kv.length == 2) {
+            state[kv[0]] = decodeURIComponent(kv[1]);
+          }
+        });
+      }
+
+      // entry-point
+      parseUrlToState();
+      console.log(state);
+
+      // pre-process records
+      $.each(report.records, function(_i, record) {
+        if (record.status) {
+          record["is_status_ok"] = record.status == "ok";
+          record["is_status_lost"] = record.status == "lost";
+          record["is_status_interrupted"] = record.status == "interrupted";
+          record["is_status_error"] = record.status == "error";
+        }
+      });
+
+      // auto-select filters with 1 option
+      $.each(fields, function(_i, field) {
+        var values = getFieldValues(field, report.records);
+        if (values.length == 1) {
+          state[field] = values[0];
+        }
+      });
+
+      update();
+
+      $(window).on('hashchange', function() {
+        parseUrlToState();
+        update()
+      });
+
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+
+<div class="container" id="container">
+  <div class="row text-center">
+    <h1>Shaker | The Report</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <label for="scenario_selector" title="Scenario name">Scenario</label>
+      <select id="scenario_selector" class="form-control" data-placeholder="- Any scenario -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="test_selector" title="Test name">Test Case</label>
+      <select id="test_selector" class="form-control" data-placeholder="- Any test case -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="concurrency_selector" title="Concurrency">Concurrency</label>
+      <select id="concurrency_selector" class="form-control" data-placeholder="- Any concurrency -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="node_selector" title="Host / Compute node">Host</label>
+      <select id="node_selector" class="form-control" data-placeholder="- Any node -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="agent_selector" title="Agent">Agent</label>
+      <select id="agent_selector" class="form-control" data-placeholder="- Any agent -"></select>
+    </div>
+  </div>
+
+  <div id="content_area" class="row">
+    <!-- Container for the screen content -->
+  </div>
+
+  <div id="footer" class="row">&nbsp;</div>
+</div>
+
+<!-- TEMPLATES --------------------------------------------------------------->
+
+<!-- Scenario File -->
+<script id="scenario_source_template" type="text/x-handlebars-template">
+  <h3>Scenario</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Test Specification -->
+<script id="test_specification_template" type="text/x-handlebars-template">
+  <h3>Test Specification</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Executor Result -->
+<script id="executor_template" type="text/x-handlebars-template">
+  <h3>Execution Summary</h3>
+  {{#with record}}
+  <div id="{{ chart_id }}"></div>
+  {{#if is_status_ok}}<span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>success</span>{{/if}}
+  {{#if is_status_lost}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>lost</span>{{/if}}
+  {{#if is_status_interrupted}}<span class="label label-warning"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>interrupted</span>{{/if}}
+  {{#if is_status_error}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>error</span>{{/if}}
+  {{#if stats_yaml}}
+    <h4>Stats</h4>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{#if time_info}}
+    <h4>Time Info</h4>
+    <pre>{{ time_info }}</pre>
+  {{/if}}
+  <h4>Command</h4>
+  <pre>{{ command_yaml }}</pre>
+  {{#if stdout}}
+    <h4>Stdout</h4>
+    <pre>{{ stdout }}</pre>
+  {{/if}}
+  {{#if verbose}}
+    <h4>Verbose Info</h4>
+    <pre>{{ verbose }}</pre>
+  {{/if}}
+  {{#if stderr}}
+    <h4>Stderr</h4>
+    <pre>{{ stderr }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Concurrency summary -->
+<script id="concurrency_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id  }}"></div>
+  <h3>Per-node chart</h3>
+  <div id="{{ node_chart_id  }}"></div>
+  <h3>Stats</h3>
+  <pre>{{ stats_yaml }}</pre>
+  {{/with}}
+</script>
+
+<!-- Test summary -->
+<script id="test_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id   }}"></div>
+  {{#if stats_yaml}}
+    <h3>Stats</h3>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Records Table -->
+<script id="records_table_template" type="text/x-handlebars-template">
+  <h3>Records</h3>
+  <table class="table table-striped" id="{{ table_id  }}">
+    <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Test Case</th>
+      <th>Concurrency</th>
+      <th>Host / Compute Node</th>
+      <th>Agent</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td><a href="{{ scenario_url }}">{{ scenario }}</a></td>
+      <td><a href="{{ test_url }}">{{ test }}</a></td>
+      <td><a href="{{ concurrency_url }}">{{ concurrency }}</a></td>
+      <td><a href="{{ node_url }}">{{ node }}</a></td>
+      <td><a href="{{ agent_url }}">{{ agent }}</a></td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="label label-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            success
+          </span>
+        {{/if}}
+        {{#if is_status_lost }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            lost
+          </span>
+        {{/if}}
+        {{#if is_status_interrupted }}
+          <span class="label label-warning">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            interrupted
+          </span>
+        {{/if}}
+        {{#if is_status_error }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            error
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Agents List -->
+<script id="agents_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{ table_id }}">
+    <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Mode</th>
+      <th>IP</th>
+      <th>Node</th>
+      <th>AZ</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#agents}}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ mode }}</td>
+      <td>{{ ip }}</td>
+      <td>{{ node }}</td>
+      <td>{{ zone }}</td>
+    </tr>
+    {{/agents}}
+    </tbody>
+  </table>
+</script>
+
+<!-- SLA List -->
+<script id="sla_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{  table_id }}">
+    <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td>{{ sla }}</td>
+      <td>{{ location }}</td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="text-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{else}}
+          <span class="text-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Errors -->
+<script id="errors_template" type="text/x-handlebars-template">
+  <h3>Errors</h3>
+  <div class="text-danger">
+    <ul>
+    {{#records}}
+      <li>{{ info }}<br/>{{ stderr }}{{ traceback }}</li>
+    {{/records}}
+    </ul>
+  </div>
+</script>
+
+</body>
+</html>

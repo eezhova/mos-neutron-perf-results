@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+  <title>Shaker | The distributed data-plane testing tool for OpenStack</title>
+
+  <!-- LIBS -->
+
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js"></script>
+  <script type="text/javascript"
+          src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.2.7/js-yaml.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+
+  <!-- STYLES -->
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/simplex/bootstrap.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
+  <link rel='stylesheet' type='text/css'
+        href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic'>
+
+  <script type="application/javascript">
+    var report = {"scenarios": {"OpenStack L3 East-West": {"file_name": "shaker/shaker/scenarios/openstack/full_l3_east_west_iperf3_64m.yaml", "title": "OpenStack L3 East-West", "execution": {"tests": [{"buffer_size": 64000, "title": "Download", "threads": 50, "method": "tcp_download", "class": "iperf3"}, {"buffer_size": 64000, "title": "Upload", "threads": 50, "method": "tcp_upload", "class": "iperf3"}], "progression": "quadratic"}, "description": "In this scenario Shaker launches pairs of instances, each instance on its own compute node. All available compute nodes are utilized. Instances are connected to one of 2 tenant networks, which plugged into single router. The traffic goes from one network to the other (L3 east-west).", "deployment": {"accommodation": ["pair", "single_room"], "template": "l3_east_west.hot"}}}, "records": {"7a5a1893-7378-45e1-8808-adbe19f874fc": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471350572.433524, "stats": {"bandwidth": {"max": 10660.171508789062, "avg": 10137.153471628824, "unit": "Mbit/s", "min": 8449.959182739258}, "retransmits": {"max": 649, "avg": 49, "unit": "", "min": 0}}, "verbose": "end:\n  cpu_utilization_percent:\n    host_system: 27.0153\n    host_total: 28.4859\n    host_user: 1.47052\n    remote_system: 43.6632\n    remote_total: 45.6928\n    remote_user: 2.02952\n  streams:\n  - receiver:\n      bits_per_second: 183109000.0\n      bytes: 1373323572\n      end: 60.0001\n      seconds: 60.0001\n      socket: 4\n      start: 0\n    sender:\n      bits_per_second: 183163000.0\n      bytes: 1373723982\n      end: 60.0001\n      retransmits: 42\n      seconds: 60.0001\n      socket: 4\n      start: 0\n  - receiver:\n      bits_per_second: 185170000.0\n      bytes: 1388777028\n      end: 60.0001\n      seconds: 60.0001\n      socket: 6\n      start: 0\n    sender:\n      bits_per_second: 185198000.0\n      bytes: 1388990580\n      end: 60.0001\n      retransmits: 46\n      seconds: 60.0001\n      socket: 6\n      start: 0\n  - receiver:\n      bits_per_second: 188028000.0\n      bytes: 1410215008\n      end: 60.0001\n      seconds: 60.0001\n      socket: 8\n      start: 0\n    sender:\n      bits_per_second: 188080000.0\n      bytes: 1410606520\n      end: 60.0001\n      retransmits: 71\n      seconds: 60.0001\n      socket: 8\n      start: 0\n  - receiver:\n      bits_per_second: 186842000.0\n      bytes: 1401316278\n      end: 60.0001\n      seconds: 60.0001\n      socket: 10\n      start: 0\n    sender:\n      bits_per_second: 186877000.0\n      bytes: 1401583218\n      end: 60.0001\n      retransmits: 31\n      seconds: 60.0001\n      socket: 10\n      start: 0\n  - receiver:\n      bits_per_second: 184366000.0\n      bytes: 1382750712\n      end: 60.0001\n      seconds: 60.0001\n      socket: 12\n      start: 0\n    sender:\n      bits_per_second: 184396000.0\n      bytes: 1382973162\n      end: 60.0001\n      retransmits: 22\n      seconds: 60.0001\n      socket: 12\n      start: 0\n  - receiver:\n      bits_per_second: 185086000.0\n      bytes: 1388145524\n      end: 60.0001\n      seconds: 60.0001\n      socket: 14\n      start: 0\n    sender:\n      bits_per_second: 185121000.0\n      bytes: 1388412464\n      end: 60.0001\n      retransmits: 44\n      seconds: 60.0001\n      socket: 14\n      start: 0\n  - receiver:\n      bits_per_second: 268753000.0\n      bytes: 2015649822\n      end: 60.0001\n      seconds: 60.0001\n      socket: 16\n      start: 0\n    sender:\n      bits_per_second: 268838000.0\n      bytes: 2016289822\n      end: 60.0001\n      retransmits: 78\n      seconds: 60.0001\n      socket: 16\n      start: 0\n  - receiver:\n      bits_per_second: 187526000.0\n      bytes: 1406449038\n      end: 60.0001\n      seconds: 60.0001\n      socket: 18\n      start: 0\n    sender:\n      bits_per_second: 187562000.0\n      bytes: 1406715978\n      end: 60.0001\n      retransmits: 41\n      seconds: 60.0001\n      socket: 18\n      start: 0\n  - receiver:\n      bits_per_second: 184208000.0\n      bytes: 1381560750\n      end: 60.0001\n      seconds: 60.0001\n      socket: 20\n      start: 0\n    sender:\n      bits_per_second: 184258000.0\n      bytes: 1381934466\n      end: 60.0001\n      retransmits: 70\n      seconds: 60.0001\n      socket: 20\n      start: 0\n  - receiver:\n      bits_per_second: 189179000.0\n      bytes: 1418843698\n      end: 60.0001\n      seconds: 60.0001\n      socket: 22\n      start: 0\n    sender:\n      bits_per_second: 189232000.0\n      bytes: 1419244108\n      end: 60.0001\n      retransmits: 24\n      seconds: 60.0001\n      socket: 22\n      start: 0\n  - receiver:\n      bits_per_second: 180994000.0\n      bytes: 1357455190\n      end: 60.0001\n      seconds: 60.0001\n      socket: 24\n      start: 0\n    sender:\n      bits_per_second: 181022000.0\n      bytes: 1357668742\n      end: 60.0001\n      retransmits: 47\n      seconds: 60.0001\n      socket: 24\n      start: 0\n  - receiver:\n      bits_per_second: 180540000.0\n      bytes: 1354051890\n      end: 60.0001\n      seconds: 60.0001\n      socket: 26\n      start: 0\n    sender:\n      bits_per_second: 180570000.0\n      bytes: 1354274340\n      end: 60.0001\n      retransmits: 54\n      seconds: 60.0001\n      socket: 26\n      start: 0\n  - receiver:\n      bits_per_second: 182295000.0\n      bytes: 1367218010\n      end: 60.0001\n      seconds: 60.0001\n      socket: 28\n      start: 0\n    sender:\n      bits_per_second: 182345000.0\n      bytes: 1367591726\n      end: 60.0001\n      retransmits: 55\n      seconds: 60.0001\n      socket: 28\n      start: 0\n  - receiver:\n      bits_per_second: 182852000.0\n      bytes: 1371390590\n      end: 60.0001\n      seconds: 60.0001\n      socket: 30\n      start: 0\n    sender:\n      bits_per_second: 182881000.0\n      bytes: 1371613040\n      end: 60.0001\n      retransmits: 39\n      seconds: 60.0001\n      socket: 30\n      start: 0\n  - receiver:\n      bits_per_second: 215273000.0\n      bytes: 1614552870\n      end: 60.0001\n      seconds: 60.0001\n      socket: 32\n      start: 0\n    sender:\n      bits_per_second: 215352000.0\n      bytes: 1615140138\n      end: 60.0001\n      retransmits: 103\n      seconds: 60.0001\n      socket: 32\n      start: 0\n  - receiver:\n      bits_per_second: 181650000.0\n      bytes: 1362376768\n      end: 60.0001\n      seconds: 60.0001\n      socket: 34\n      start: 0\n    sender:\n      bits_per_second: 181703000.0\n      bytes: 1362777178\n      end: 60.0001\n      retransmits: 61\n      seconds: 60.0001\n      socket: 34\n      start: 0\n  - receiver:\n      bits_per_second: 194635000.0\n      bytes: 1459761950\n      end: 60.0001\n      seconds: 60.0001\n      socket: 36\n      start: 0\n    sender:\n      bits_per_second: 194684000.0\n      bytes: 1460135666\n      end: 60.0001\n      retransmits: 65\n      seconds: 60.0001\n      socket: 36\n      start: 0\n  - receiver:\n      bits_per_second: 216882000.0\n      bytes: 1626619256\n      end: 60.0001\n      seconds: 60.0001\n      socket: 38\n      start: 0\n    sender:\n      bits_per_second: 216957000.0\n      bytes: 1627179830\n      end: 60.0001\n      retransmits: 26\n      seconds: 60.0001\n      socket: 38\n      start: 0\n  - receiver:\n      bits_per_second: 328210000.0\n      bytes: 2461583024\n      end: 60.0001\n      seconds: 60.0001\n      socket: 40\n      start: 0\n    sender:\n      bits_per_second: 328210000.0\n      bytes: 2461583024\n      end: 60.0001\n      retransmits: 95\n      seconds: 60.0001\n      socket: 40\n      start: 0\n  - receiver:\n      bits_per_second: 264414000.0\n      bytes: 1983109414\n      end: 60.0001\n      seconds: 60.0001\n      socket: 42\n      start: 0\n    sender:\n      bits_per_second: 264514000.0\n      bytes: 1983856846\n      end: 60.0001\n      retransmits: 145\n      seconds: 60.0001\n      socket: 42\n      start: 0\n  - receiver:\n      bits_per_second: 299657000.0\n      bytes: 2247434120\n      end: 60.0001\n      seconds: 60.0001\n      socket: 44\n      start: 0\n    sender:\n      bits_per_second: 299874000.0\n      bytes: 2249059846\n      end: 60.0001\n      retransmits: 72\n      seconds: 60.0001\n      socket: 44\n      start: 0\n  - receiver:\n      bits_per_second: 260712000.0\n      bytes: 1955347284\n      end: 60.0001\n      seconds: 60.0001\n      socket: 46\n      start: 0\n    sender:\n      bits_per_second: 260862000.0\n      bytes: 1956468432\n      end: 60.0001\n      retransmits: 64\n      seconds: 60.0001\n      socket: 46\n      start: 0\n  - receiver:\n      bits_per_second: 231365000.0\n      bytes: 1735237724\n      end: 60.0001\n      seconds: 60.0001\n      socket: 48\n      start: 0\n    sender:\n      bits_per_second: 231464000.0\n      bytes: 1735985156\n      end: 60.0001\n      retransmits: 63\n      seconds: 60.0001\n      socket: 48\n      start: 0\n  - receiver:\n      bits_per_second: 261315000.0\n      bytes: 1959867902\n      end: 60.0001\n      seconds: 60.0001\n      socket: 50\n      start: 0\n    sender:\n      bits_per_second: 261434000.0\n      bytes: 1960757046\n      end: 60.0001\n      retransmits: 69\n      seconds: 60.0001\n      socket: 50\n      start: 0\n  - receiver:\n      bits_per_second: 240889000.0\n      bytes: 1806669122\n      end: 60.0001\n      seconds: 60.0001\n      socket: 52\n      start: 0\n    sender:\n      bits_per_second: 240981000.0\n      bytes: 1807363166\n      end: 60.0001\n      retransmits: 91\n      seconds: 60.0001\n      socket: 52\n      start: 0\n  - receiver:\n      bits_per_second: 249061000.0\n      bytes: 1867962524\n      end: 60.0001\n      seconds: 60.0001\n      socket: 54\n      start: 0\n    sender:\n      bits_per_second: 249153000.0\n      bytes: 1868647670\n      end: 60.0001\n      retransmits: 96\n      seconds: 60.0001\n      socket: 54\n      start: 0\n  - receiver:\n      bits_per_second: 200239000.0\n      bytes: 1501793732\n      end: 60.0001\n      seconds: 60.0001\n      socket: 56\n      start: 0\n    sender:\n      bits_per_second: 200310000.0\n      bytes: 1502327612\n      end: 60.0001\n      retransmits: 60\n      seconds: 60.0001\n      socket: 56\n      start: 0\n  - receiver:\n      bits_per_second: 192630000.0\n      bytes: 1444728890\n      end: 60.0001\n      seconds: 60.0001\n      socket: 58\n      start: 0\n    sender:\n      bits_per_second: 192694000.0\n      bytes: 1445209382\n      end: 60.0001\n      retransmits: 72\n      seconds: 60.0001\n      socket: 58\n      start: 0\n  - receiver:\n      bits_per_second: 192755000.0\n      bytes: 1445665476\n      end: 60.0001\n      seconds: 60.0001\n      socket: 60\n      start: 0\n    sender:\n      bits_per_second: 192820000.0\n      bytes: 1446154866\n      end: 60.0001\n      retransmits: 49\n      seconds: 60.0001\n      socket: 60\n      start: 0\n  - receiver:\n      bits_per_second: 227330000.0\n      bytes: 1704978218\n      end: 60.0001\n      seconds: 60.0001\n      socket: 62\n      start: 0\n    sender:\n      bits_per_second: 227423000.0\n      bytes: 1705672262\n      end: 60.0001\n      retransmits: 86\n      seconds: 60.0001\n      socket: 62\n      start: 0\n  - receiver:\n      bits_per_second: 188818000.0\n      bytes: 1416140896\n      end: 60.0001\n      seconds: 60.0001\n      socket: 64\n      start: 0\n    sender:\n      bits_per_second: 188872000.0\n      bytes: 1416541306\n      end: 60.0001\n      retransmits: 27\n      seconds: 60.0001\n      socket: 64\n      start: 0\n  - receiver:\n      bits_per_second: 177287000.0\n      bytes: 1329653828\n      end: 60.0001\n      seconds: 60.0001\n      socket: 66\n      start: 0\n    sender:\n      bits_per_second: 177311000.0\n      bytes: 1329831788\n      end: 60.0001\n      retransmits: 39\n      seconds: 60.0001\n      socket: 66\n      start: 0\n  - receiver:\n      bits_per_second: 183100000.0\n      bytes: 1373253298\n      end: 60.0001\n      seconds: 60.0001\n      socket: 68\n      start: 0\n    sender:\n      bits_per_second: 183124000.0\n      bytes: 1373431258\n      end: 60.0001\n      retransmits: 58\n      seconds: 60.0001\n      socket: 68\n      start: 0\n  - receiver:\n      bits_per_second: 181669000.0\n      bytes: 1362523368\n      end: 60.0001\n      seconds: 60.0001\n      socket: 70\n      start: 0\n    sender:\n      bits_per_second: 181698000.0\n      bytes: 1362736920\n      end: 60.0001\n      retransmits: 77\n      seconds: 60.0001\n      socket: 70\n      start: 0\n  - receiver:\n      bits_per_second: 177740000.0\n      bytes: 1333054102\n      end: 60.0001\n      seconds: 60.0001\n      socket: 72\n      start: 0\n    sender:\n      bits_per_second: 177782000.0\n      bytes: 1333365532\n      end: 60.0001\n      retransmits: 33\n      seconds: 60.0001\n      socket: 72\n      start: 0\n  - receiver:\n      bits_per_second: 175940000.0\n      bytes: 1319553540\n      end: 60.0001\n      seconds: 60.0001\n      socket: 74\n      start: 0\n    sender:\n      bits_per_second: 175940000.0\n      bytes: 1319553540\n      end: 60.0001\n      retransmits: 35\n      seconds: 60.0001\n      socket: 74\n      start: 0\n  - receiver:\n      bits_per_second: 254957000.0\n      bytes: 1912183516\n      end: 60.0001\n      seconds: 60.0001\n      socket: 76\n      start: 0\n    sender:\n      bits_per_second: 255126000.0\n      bytes: 1913446376\n      end: 60.0001\n      retransmits: 111\n      seconds: 60.0001\n      socket: 76\n      start: 0\n  - receiver:\n      bits_per_second: 179875000.0\n      bytes: 1349062154\n      end: 60.0001\n      seconds: 60.0001\n      socket: 78\n      start: 0\n    sender:\n      bits_per_second: 179894000.0\n      bytes: 1349204522\n      end: 60.0001\n      retransmits: 22\n      seconds: 60.0001\n      socket: 78\n      start: 0\n  - receiver:\n      bits_per_second: 189625000.0\n      bytes: 1422190658\n      end: 60.0001\n      seconds: 60.0001\n      socket: 80\n      start: 0\n    sender:\n      bits_per_second: 189680000.0\n      bytes: 1422599966\n      end: 60.0001\n      retransmits: 17\n      seconds: 60.0001\n      socket: 80\n      start: 0\n  - receiver:\n      bits_per_second: 191022000.0\n      bytes: 1432666704\n      end: 60.0001\n      seconds: 60.0001\n      socket: 82\n      start: 0\n    sender:\n      bits_per_second: 191106000.0\n      bytes: 1433297806\n      end: 60.0001\n      retransmits: 61\n      seconds: 60.0001\n      socket: 82\n      start: 0\n  - receiver:\n      bits_per_second: 236146000.0\n      bytes: 1771095606\n      end: 60.0001\n      seconds: 60.0001\n      socket: 84\n      start: 0\n    sender:\n      bits_per_second: 236203000.0\n      bytes: 1771522710\n      end: 60.0001\n      retransmits: 34\n      seconds: 60.0001\n      socket: 84\n      start: 0\n  - receiver:\n      bits_per_second: 255465000.0\n      bytes: 1915993652\n      end: 60.0001\n      seconds: 60.0001\n      socket: 86\n      start: 0\n    sender:\n      bits_per_second: 255573000.0\n      bytes: 1916803370\n      end: 60.0001\n      retransmits: 49\n      seconds: 60.0001\n      socket: 86\n      start: 0\n  - receiver:\n      bits_per_second: 242051000.0\n      bytes: 1815385332\n      end: 60.0001\n      seconds: 60.0001\n      socket: 88\n      start: 0\n    sender:\n      bits_per_second: 242122000.0\n      bytes: 1815919212\n      end: 60.0001\n      retransmits: 44\n      seconds: 60.0001\n      socket: 88\n      start: 0\n  - receiver:\n      bits_per_second: 186628000.0\n      bytes: 1399713982\n      end: 60.0001\n      seconds: 60.0001\n      socket: 90\n      start: 0\n    sender:\n      bits_per_second: 186705000.0\n      bytes: 1400289982\n      end: 60.0001\n      retransmits: 100\n      seconds: 60.0001\n      socket: 90\n      start: 0\n  - receiver:\n      bits_per_second: 199449000.0\n      bytes: 1495874118\n      end: 60.0001\n      seconds: 60.0001\n      socket: 92\n      start: 0\n    sender:\n      bits_per_second: 199516000.0\n      bytes: 1496372406\n      end: 60.0001\n      retransmits: 67\n      seconds: 60.0001\n      socket: 92\n      start: 0\n  - receiver:\n      bits_per_second: 190320000.0\n      bytes: 1427405542\n      end: 60.0001\n      seconds: 60.0001\n      socket: 94\n      start: 0\n    sender:\n      bits_per_second: 190382000.0\n      bytes: 1427868238\n      end: 60.0001\n      retransmits: 63\n      seconds: 60.0001\n      socket: 94\n      start: 0\n  - receiver:\n      bits_per_second: 226324000.0\n      bytes: 1697430154\n      end: 60.0001\n      seconds: 60.0001\n      socket: 96\n      start: 0\n    sender:\n      bits_per_second: 226407000.0\n      bytes: 1698053014\n      end: 60.0001\n      retransmits: 40\n      seconds: 60.0001\n      socket: 96\n      start: 0\n  - receiver:\n      bits_per_second: 265756000.0\n      bytes: 1993172988\n      end: 60.0001\n      seconds: 60.0001\n      socket: 98\n      start: 0\n    sender:\n      bits_per_second: 265860000.0\n      bytes: 1993952986\n      end: 60.0001\n      retransmits: 85\n      seconds: 60.0001\n      socket: 98\n      start: 0\n  - receiver:\n      bits_per_second: 221549000.0\n      bytes: 1661619206\n      end: 60.0001\n      seconds: 60.0001\n      socket: 100\n      start: 0\n    sender:\n      bits_per_second: 221620000.0\n      bytes: 1662153086\n      end: 60.0001\n      retransmits: 34\n      seconds: 60.0001\n      socket: 100\n      start: 0\n  - receiver:\n      bits_per_second: 276538000.0\n      bytes: 2074040886\n      end: 60.0001\n      seconds: 60.0001\n      socket: 102\n      start: 0\n    sender:\n      bits_per_second: 276673000.0\n      bytes: 2075054602\n      end: 60.0001\n      retransmits: 119\n      seconds: 60.0001\n      socket: 102\n      start: 0\n  sum_received:\n    bits_per_second: 10626200000.0\n    bytes: 79696848914\n    end: 60.0001\n    seconds: 60.0001\n    start: 0\n  sum_sent:\n    bits_per_second: 10629600000.0\n    bytes: 79721938888\n    end: 60.0001\n    retransmits: 2996\n    seconds: 60.0001\n    start: 0\nstart:\n  connected:\n  - local_host: 10.1.0.3\n    local_port: 34045\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 4\n  - local_host: 10.1.0.3\n    local_port: 34046\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 6\n  - local_host: 10.1.0.3\n    local_port: 34047\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 8\n  - local_host: 10.1.0.3\n    local_port: 34048\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 10\n  - local_host: 10.1.0.3\n    local_port: 34049\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 12\n  - local_host: 10.1.0.3\n    local_port: 34050\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 14\n  - local_host: 10.1.0.3\n    local_port: 34051\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 16\n  - local_host: 10.1.0.3\n    local_port: 34052\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 18\n  - local_host: 10.1.0.3\n    local_port: 34053\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 20\n  - local_host: 10.1.0.3\n    local_port: 34054\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 22\n  - local_host: 10.1.0.3\n    local_port: 34055\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 24\n  - local_host: 10.1.0.3\n    local_port: 34056\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 26\n  - local_host: 10.1.0.3\n    local_port: 34057\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 28\n  - local_host: 10.1.0.3\n    local_port: 34058\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 30\n  - local_host: 10.1.0.3\n    local_port: 34059\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 32\n  - local_host: 10.1.0.3\n    local_port: 34060\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 34\n  - local_host: 10.1.0.3\n    local_port: 34061\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 36\n  - local_host: 10.1.0.3\n    local_port: 34062\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 38\n  - local_host: 10.1.0.3\n    local_port: 34063\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 40\n  - local_host: 10.1.0.3\n    local_port: 34064\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 42\n  - local_host: 10.1.0.3\n    local_port: 34065\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 44\n  - local_host: 10.1.0.3\n    local_port: 34066\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 46\n  - local_host: 10.1.0.3\n    local_port: 34067\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 48\n  - local_host: 10.1.0.3\n    local_port: 34068\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 50\n  - local_host: 10.1.0.3\n    local_port: 34069\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 52\n  - local_host: 10.1.0.3\n    local_port: 34070\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 54\n  - local_host: 10.1.0.3\n    local_port: 34071\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 56\n  - local_host: 10.1.0.3\n    local_port: 34072\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 58\n  - local_host: 10.1.0.3\n    local_port: 34073\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 60\n  - local_host: 10.1.0.3\n    local_port: 34074\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 62\n  - local_host: 10.1.0.3\n    local_port: 34075\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 64\n  - local_host: 10.1.0.3\n    local_port: 34076\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 66\n  - local_host: 10.1.0.3\n    local_port: 34077\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 68\n  - local_host: 10.1.0.3\n    local_port: 34078\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 70\n  - local_host: 10.1.0.3\n    local_port: 34079\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 72\n  - local_host: 10.1.0.3\n    local_port: 34080\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 74\n  - local_host: 10.1.0.3\n    local_port: 34081\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 76\n  - local_host: 10.1.0.3\n    local_port: 34082\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 78\n  - local_host: 10.1.0.3\n    local_port: 34083\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 80\n  - local_host: 10.1.0.3\n    local_port: 34084\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 82\n  - local_host: 10.1.0.3\n    local_port: 34085\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 84\n  - local_host: 10.1.0.3\n    local_port: 34086\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 86\n  - local_host: 10.1.0.3\n    local_port: 34087\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 88\n  - local_host: 10.1.0.3\n    local_port: 34088\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 90\n  - local_host: 10.1.0.3\n    local_port: 34089\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 92\n  - local_host: 10.1.0.3\n    local_port: 34090\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 94\n  - local_host: 10.1.0.3\n    local_port: 34091\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 96\n  - local_host: 10.1.0.3\n    local_port: 34092\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 98\n  - local_host: 10.1.0.3\n    local_port: 34093\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 100\n  - local_host: 10.1.0.3\n    local_port: 34094\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 102\n  connecting_to:\n    host: 10.2.0.5\n    port: 5201\n  cookie: shaker-persui-master-0.1471350512.22\n  system_info: 'Linux shaker-persui-master-0 3.13.0-93-generic #140-Ubuntu SMP Mon\n    Jul 18 21:21:05 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux\n\n    '\n  tcp_mss_default: 8898\n  test_start:\n    blksize: 64000\n    blocks: 0\n    bytes: 0\n    duration: 60\n    num_streams: 50\n    omit: 0\n    protocol: TCP\n    reverse: 0\n  timestamp:\n    time: Tue, 16 Aug 2016 12:28:32 GMT\n    timesecs: 1471350512\n  version: iperf 3.0.7\n", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471350512.207753, "agent": "shaker_persui_master_0", "id": "7a5a1893-7378-45e1-8808-adbe19f874fc", "start": 1471350512.217879, "meta": [["time", "s"], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "command": {"data": "iperf3 --client 10.2.0.5 --format m --len 64000 --time 60 --parallel 50 --interval 1 --json", "type": "program"}, "samples": [[1.0, 8486.013412475586, 169], [2.0, 8449.959182739258, 68], [3.0, 8470.401763916016, 37], [4.0, 8858.060836791992, 2], [5.0, 9116.487503051758, 2], [6.0, 9298.019409179688, 0], [7.0, 10222.244262695312, 0], [8.0, 10449.21875, 7], [9.0, 9707.54623413086, 649], [10.0, 9788.680953979492, 0], [11.0, 10069.27490234375, 0], [12.0, 10260.200500488281, 0], [13.0, 10215.282440185547, 0], [14.0, 10393.714904785156, 0], [15.0, 10286.04507446289, 0], [16.0, 10360.527038574219, 0], [17.0, 10334.014892578125, 0], [18.0, 10432.43408203125, 0], [19.0, 10329.055786132812, 0], [20.0, 10230.159759521484, 0], [21.0, 10099.029541015625, 0], [22.0, 10038.66195678711, 130], [23.0, 10296.440124511719, 0], [24.0, 10525.60806274414, 0], [25.0, 10456.562042236328, 0], [26.0, 10080.528259277344, 0], [27.0, 10002.708435058594, 0], [28.0, 10038.280487060547, 261], [29.0, 9895.038604736328, 0], [30.0, 10215.85464477539, 0], [31.0, 10242.652893066406, 0], [32.0, 10284.709930419922, 0], [33.0, 10206.222534179688, 0], [34.0, 10469.341278076172, 0], [35.0, 10449.504852294922, 0], [36.0, 10480.880737304688, 156], [37.0, 10175.609588623047, 0], [38.0, 10464.38217163086, 0], [39.0, 10521.984100341797, 0], [40.0, 10618.019104003906, 0], [41.0, 10660.171508789062, 0], [42.0, 10654.449462890625, 0], [43.0, 10487.27035522461, 278], [44.0, 10133.647918701172, 532], [45.0, 10137.462615966797, 0], [46.0, 10227.108001708984, 0], [47.0, 10388.660430908203, 0], [48.0, 10375.690460205078, 0], [49.0, 10406.303405761719, 0], [50.0, 10224.533081054688, 430], [51.0, 10211.944580078125, 0], [52.0, 10281.085968017578, 32], [53.0, 10530.662536621094, 0], [54.0, 10361.289978027344, 0], [55.0, 10453.033447265625, 0], [56.0, 10242.843627929688, 243], [57.0, 10153.1982421875, 0], [58.0, 10224.342346191406, 0], [59.0, 10339.546203613281, 0], [60.0, 10416.603088378906, 0]], "executor": "iperf3", "test": "Download", "type": "agent", "stderr": ""}, "3f5338c4-af6b-4f93-9cc8-065efb992fd3": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471350653.464528, "stats": {"bandwidth": {"max": 11024.093627929688, "avg": 10075.200104014079, "unit": "Mbit/s", "min": 8327.54135131836}, "retransmits": {"max": 1153, "avg": 84, "unit": "", "min": 0}}, "verbose": "end:\n  cpu_utilization_percent:\n    host_system: 26.7923\n    host_total: 28.0818\n    host_user: 1.28955\n    remote_system: 45.8571\n    remote_total: 47.8764\n    remote_user: 2.01922\n  streams:\n  - receiver:\n      bits_per_second: 180416000.0\n      bytes: 1353118182\n      end: 60.0001\n      seconds: 60.0001\n      socket: 4\n      start: 0\n    sender:\n      bits_per_second: 180445000.0\n      bytes: 1353340632\n      end: 60.0001\n      retransmits: 115\n      seconds: 60.0001\n      socket: 4\n      start: 0\n  - receiver:\n      bits_per_second: 184227000.0\n      bytes: 1381702314\n      end: 60.0001\n      seconds: 60.0001\n      socket: 6\n      start: 0\n    sender:\n      bits_per_second: 184262000.0\n      bytes: 1381969254\n      end: 60.0001\n      retransmits: 46\n      seconds: 60.0001\n      socket: 6\n      start: 0\n  - receiver:\n      bits_per_second: 187015000.0\n      bytes: 1402614476\n      end: 60.0001\n      seconds: 60.0001\n      socket: 8\n      start: 0\n    sender:\n      bits_per_second: 187045000.0\n      bytes: 1402836926\n      end: 60.0001\n      retransmits: 80\n      seconds: 60.0001\n      socket: 8\n      start: 0\n  - receiver:\n      bits_per_second: 197281000.0\n      bytes: 1479607738\n      end: 60.0001\n      seconds: 60.0001\n      socket: 10\n      start: 0\n    sender:\n      bits_per_second: 197281000.0\n      bytes: 1479607738\n      end: 60.0001\n      retransmits: 66\n      seconds: 60.0001\n      socket: 10\n      start: 0\n  - receiver:\n      bits_per_second: 184595000.0\n      bytes: 1384462228\n      end: 60.0001\n      seconds: 60.0001\n      socket: 12\n      start: 0\n    sender:\n      bits_per_second: 184636000.0\n      bytes: 1384773658\n      end: 60.0001\n      retransmits: 42\n      seconds: 60.0001\n      socket: 12\n      start: 0\n  - receiver:\n      bits_per_second: 187616000.0\n      bytes: 1407118176\n      end: 60.0001\n      seconds: 60.0001\n      socket: 14\n      start: 0\n    sender:\n      bits_per_second: 187645000.0\n      bytes: 1407340626\n      end: 60.0001\n      retransmits: 44\n      seconds: 60.0001\n      socket: 14\n      start: 0\n  - receiver:\n      bits_per_second: 226519000.0\n      bytes: 1698891878\n      end: 60.0001\n      seconds: 60.0001\n      socket: 16\n      start: 0\n    sender:\n      bits_per_second: 226619000.0\n      bytes: 1699645838\n      end: 60.0001\n      retransmits: 141\n      seconds: 60.0001\n      socket: 16\n      start: 0\n  - receiver:\n      bits_per_second: 217026000.0\n      bytes: 1627697406\n      end: 60.0001\n      seconds: 60.0001\n      socket: 18\n      start: 0\n    sender:\n      bits_per_second: 217123000.0\n      bytes: 1628427042\n      end: 60.0001\n      retransmits: 116\n      seconds: 60.0001\n      socket: 18\n      start: 0\n  - receiver:\n      bits_per_second: 248395000.0\n      bytes: 1862965104\n      end: 60.0001\n      seconds: 60.0001\n      socket: 20\n      start: 0\n    sender:\n      bits_per_second: 248511000.0\n      bytes: 1863837108\n      end: 60.0001\n      retransmits: 140\n      seconds: 60.0001\n      socket: 20\n      start: 0\n  - receiver:\n      bits_per_second: 208795000.0\n      bytes: 1565962426\n      end: 60.0001\n      seconds: 60.0001\n      socket: 22\n      start: 0\n    sender:\n      bits_per_second: 208878000.0\n      bytes: 1566585286\n      end: 60.0001\n      retransmits: 130\n      seconds: 60.0001\n      socket: 22\n      start: 0\n  - receiver:\n      bits_per_second: 250575000.0\n      bytes: 1879316338\n      end: 60.0001\n      seconds: 60.0001\n      socket: 24\n      start: 0\n    sender:\n      bits_per_second: 250741000.0\n      bytes: 1880562058\n      end: 60.0001\n      retransmits: 155\n      seconds: 60.0001\n      socket: 24\n      start: 0\n  - receiver:\n      bits_per_second: 224857000.0\n      bytes: 1686429126\n      end: 60.0001\n      seconds: 60.0001\n      socket: 26\n      start: 0\n    sender:\n      bits_per_second: 224957000.0\n      bytes: 1687176558\n      end: 60.0001\n      retransmits: 136\n      seconds: 60.0001\n      socket: 26\n      start: 0\n  - receiver:\n      bits_per_second: 255496000.0\n      bytes: 1916224682\n      end: 60.0001\n      seconds: 60.0001\n      socket: 28\n      start: 0\n    sender:\n      bits_per_second: 255590000.0\n      bytes: 1916926968\n      end: 60.0001\n      retransmits: 168\n      seconds: 60.0001\n      socket: 28\n      start: 0\n  - receiver:\n      bits_per_second: 216339000.0\n      bytes: 1622542798\n      end: 60.0001\n      seconds: 60.0001\n      socket: 30\n      start: 0\n    sender:\n      bits_per_second: 216392000.0\n      bytes: 1622943208\n      end: 60.0001\n      retransmits: 100\n      seconds: 60.0001\n      socket: 30\n      start: 0\n  - receiver:\n      bits_per_second: 226589000.0\n      bytes: 1699415868\n      end: 60.0001\n      seconds: 60.0001\n      socket: 32\n      start: 0\n    sender:\n      bits_per_second: 226647000.0\n      bytes: 1699851870\n      end: 60.0001\n      retransmits: 140\n      seconds: 60.0001\n      socket: 32\n      start: 0\n  - receiver:\n      bits_per_second: 233429000.0\n      bytes: 1750716890\n      end: 60.0001\n      seconds: 60.0001\n      socket: 34\n      start: 0\n    sender:\n      bits_per_second: 233512000.0\n      bytes: 1751339750\n      end: 60.0001\n      retransmits: 134\n      seconds: 60.0001\n      socket: 34\n      start: 0\n  - receiver:\n      bits_per_second: 212879000.0\n      bytes: 1596592146\n      end: 60.0001\n      seconds: 60.0001\n      socket: 36\n      start: 0\n    sender:\n      bits_per_second: 212980000.0\n      bytes: 1597348476\n      end: 60.0001\n      retransmits: 141\n      seconds: 60.0001\n      socket: 36\n      start: 0\n  - receiver:\n      bits_per_second: 242933000.0\n      bytes: 1821999178\n      end: 60.0001\n      seconds: 60.0001\n      socket: 38\n      start: 0\n    sender:\n      bits_per_second: 243107000.0\n      bytes: 1823307184\n      end: 60.0001\n      retransmits: 117\n      seconds: 60.0001\n      socket: 38\n      start: 0\n  - receiver:\n      bits_per_second: 195374000.0\n      bytes: 1465307414\n      end: 60.0001\n      seconds: 60.0001\n      socket: 40\n      start: 0\n    sender:\n      bits_per_second: 195438000.0\n      bytes: 1465787906\n      end: 60.0001\n      retransmits: 70\n      seconds: 60.0001\n      socket: 40\n      start: 0\n  - receiver:\n      bits_per_second: 235900000.0\n      bytes: 1769250260\n      end: 60.0001\n      seconds: 60.0001\n      socket: 42\n      start: 0\n    sender:\n      bits_per_second: 235978000.0\n      bytes: 1769837528\n      end: 60.0001\n      retransmits: 119\n      seconds: 60.0001\n      socket: 42\n      start: 0\n  - receiver:\n      bits_per_second: 186481000.0\n      bytes: 1398606292\n      end: 60.0001\n      seconds: 60.0001\n      socket: 44\n      start: 0\n    sender:\n      bits_per_second: 186528000.0\n      bytes: 1398962212\n      end: 60.0001\n      retransmits: 73\n      seconds: 60.0001\n      socket: 44\n      start: 0\n  - receiver:\n      bits_per_second: 246662000.0\n      bytes: 1849964546\n      end: 60.0001\n      seconds: 60.0001\n      socket: 46\n      start: 0\n    sender:\n      bits_per_second: 246689000.0\n      bytes: 1850168544\n      end: 60.0001\n      retransmits: 100\n      seconds: 60.0001\n      socket: 46\n      start: 0\n  - receiver:\n      bits_per_second: 227672000.0\n      bytes: 1707545360\n      end: 60.0001\n      seconds: 60.0001\n      socket: 48\n      start: 0\n    sender:\n      bits_per_second: 227729000.0\n      bytes: 1707972464\n      end: 60.0001\n      retransmits: 88\n      seconds: 60.0001\n      socket: 48\n      start: 0\n  - receiver:\n      bits_per_second: 236495000.0\n      bytes: 1773717236\n      end: 60.0001\n      seconds: 60.0001\n      socket: 50\n      start: 0\n    sender:\n      bits_per_second: 236581000.0\n      bytes: 1774357892\n      end: 60.0001\n      retransmits: 121\n      seconds: 60.0001\n      socket: 50\n      start: 0\n  - receiver:\n      bits_per_second: 182021000.0\n      bytes: 1365161588\n      end: 60.0001\n      seconds: 60.0001\n      socket: 52\n      start: 0\n    sender:\n      bits_per_second: 182045000.0\n      bytes: 1365339548\n      end: 60.0001\n      retransmits: 82\n      seconds: 60.0001\n      socket: 52\n      start: 0\n  - receiver:\n      bits_per_second: 212027000.0\n      bytes: 1590205138\n      end: 60.0001\n      seconds: 60.0001\n      socket: 54\n      start: 0\n    sender:\n      bits_per_second: 212084000.0\n      bytes: 1590632242\n      end: 60.0001\n      retransmits: 114\n      seconds: 60.0001\n      socket: 54\n      start: 0\n  - receiver:\n      bits_per_second: 190898000.0\n      bytes: 1431740180\n      end: 60.0001\n      seconds: 60.0001\n      socket: 56\n      start: 0\n    sender:\n      bits_per_second: 190952000.0\n      bytes: 1432140590\n      end: 60.0001\n      retransmits: 103\n      seconds: 60.0001\n      socket: 56\n      start: 0\n  - receiver:\n      bits_per_second: 199766000.0\n      bytes: 1498249630\n      end: 60.0001\n      seconds: 60.0001\n      socket: 58\n      start: 0\n    sender:\n      bits_per_second: 199830000.0\n      bytes: 1498730122\n      end: 60.0001\n      retransmits: 101\n      seconds: 60.0001\n      socket: 58\n      start: 0\n  - receiver:\n      bits_per_second: 213988000.0\n      bytes: 1604914262\n      end: 60.0001\n      seconds: 60.0001\n      socket: 60\n      start: 0\n    sender:\n      bits_per_second: 214054000.0\n      bytes: 1605403652\n      end: 60.0001\n      retransmits: 109\n      seconds: 60.0001\n      socket: 60\n      start: 0\n  - receiver:\n      bits_per_second: 208881000.0\n      bytes: 1566609282\n      end: 60.0001\n      seconds: 60.0001\n      socket: 62\n      start: 0\n    sender:\n      bits_per_second: 208881000.0\n      bytes: 1566609282\n      end: 60.0001\n      retransmits: 89\n      seconds: 60.0001\n      socket: 62\n      start: 0\n  - receiver:\n      bits_per_second: 211606000.0\n      bytes: 1587049268\n      end: 60.0001\n      seconds: 60.0001\n      socket: 64\n      start: 0\n    sender:\n      bits_per_second: 211656000.0\n      bytes: 1587422984\n      end: 60.0001\n      retransmits: 77\n      seconds: 60.0001\n      socket: 64\n      start: 0\n  - receiver:\n      bits_per_second: 187278000.0\n      bytes: 1404588626\n      end: 60.0001\n      seconds: 60.0001\n      socket: 66\n      start: 0\n    sender:\n      bits_per_second: 187330000.0\n      bytes: 1404980138\n      end: 60.0001\n      retransmits: 66\n      seconds: 60.0001\n      socket: 66\n      start: 0\n  - receiver:\n      bits_per_second: 190592000.0\n      bytes: 1429443078\n      end: 60.0001\n      seconds: 60.0001\n      socket: 68\n      start: 0\n    sender:\n      bits_per_second: 190622000.0\n      bytes: 1429665528\n      end: 60.0001\n      retransmits: 61\n      seconds: 60.0001\n      socket: 68\n      start: 0\n  - receiver:\n      bits_per_second: 197103000.0\n      bytes: 1478271504\n      end: 60.0001\n      seconds: 60.0001\n      socket: 70\n      start: 0\n    sender:\n      bits_per_second: 197150000.0\n      bytes: 1478627424\n      end: 60.0001\n      retransmits: 93\n      seconds: 60.0001\n      socket: 70\n      start: 0\n  - receiver:\n      bits_per_second: 185631000.0\n      bytes: 1392236414\n      end: 60.0001\n      seconds: 60.0001\n      socket: 72\n      start: 0\n    sender:\n      bits_per_second: 185684000.0\n      bytes: 1392627926\n      end: 60.0001\n      retransmits: 101\n      seconds: 60.0001\n      socket: 72\n      start: 0\n  - receiver:\n      bits_per_second: 185264000.0\n      bytes: 1389484710\n      end: 60.0001\n      seconds: 60.0001\n      socket: 74\n      start: 0\n    sender:\n      bits_per_second: 185293000.0\n      bytes: 1389698262\n      end: 60.0001\n      retransmits: 52\n      seconds: 60.0001\n      socket: 74\n      start: 0\n  - receiver:\n      bits_per_second: 229112000.0\n      bytes: 1718342062\n      end: 60.0001\n      seconds: 60.0001\n      socket: 76\n      start: 0\n    sender:\n      bits_per_second: 229154000.0\n      bytes: 1718653492\n      end: 60.0001\n      retransmits: 67\n      seconds: 60.0001\n      socket: 76\n      start: 0\n  - receiver:\n      bits_per_second: 213446000.0\n      bytes: 1600847220\n      end: 60.0001\n      seconds: 60.0001\n      socket: 78\n      start: 0\n    sender:\n      bits_per_second: 213488000.0\n      bytes: 1601158650\n      end: 60.0001\n      retransmits: 111\n      seconds: 60.0001\n      socket: 78\n      start: 0\n  - receiver:\n      bits_per_second: 206681000.0\n      bytes: 1550112390\n      end: 60.0001\n      seconds: 60.0001\n      socket: 80\n      start: 0\n    sender:\n      bits_per_second: 206767000.0\n      bytes: 1550753046\n      end: 60.0001\n      retransmits: 111\n      seconds: 60.0001\n      socket: 80\n      start: 0\n  - receiver:\n      bits_per_second: 196231000.0\n      bytes: 1471731876\n      end: 60.0001\n      seconds: 60.0001\n      socket: 82\n      start: 0\n    sender:\n      bits_per_second: 196273000.0\n      bytes: 1472052204\n      end: 60.0001\n      retransmits: 75\n      seconds: 60.0001\n      socket: 82\n      start: 0\n  - receiver:\n      bits_per_second: 227881000.0\n      bytes: 1709109472\n      end: 60.0001\n      seconds: 60.0001\n      socket: 84\n      start: 0\n    sender:\n      bits_per_second: 227953000.0\n      bytes: 1709652250\n      end: 60.0001\n      retransmits: 110\n      seconds: 60.0001\n      socket: 84\n      start: 0\n  - receiver:\n      bits_per_second: 233117000.0\n      bytes: 1748378906\n      end: 60.0001\n      seconds: 60.0001\n      socket: 86\n      start: 0\n    sender:\n      bits_per_second: 233224000.0\n      bytes: 1749179726\n      end: 60.0001\n      retransmits: 91\n      seconds: 60.0001\n      socket: 86\n      start: 0\n  - receiver:\n      bits_per_second: 224290000.0\n      bytes: 1682176072\n      end: 60.0001\n      seconds: 60.0001\n      socket: 88\n      start: 0\n    sender:\n      bits_per_second: 224373000.0\n      bytes: 1682798932\n      end: 60.0001\n      retransmits: 180\n      seconds: 60.0001\n      socket: 88\n      start: 0\n  - receiver:\n      bits_per_second: 234089000.0\n      bytes: 1755667934\n      end: 60.0001\n      seconds: 60.0001\n      socket: 90\n      start: 0\n    sender:\n      bits_per_second: 234146000.0\n      bytes: 1756095038\n      end: 60.0001\n      retransmits: 89\n      seconds: 60.0001\n      socket: 90\n      start: 0\n  - receiver:\n      bits_per_second: 180763000.0\n      bytes: 1355727634\n      end: 60.0001\n      seconds: 60.0001\n      socket: 92\n      start: 0\n    sender:\n      bits_per_second: 180805000.0\n      bytes: 1356039064\n      end: 60.0001\n      retransmits: 77\n      seconds: 60.0001\n      socket: 92\n      start: 0\n  - receiver:\n      bits_per_second: 221312000.0\n      bytes: 1659844716\n      end: 60.0001\n      seconds: 60.0001\n      socket: 94\n      start: 0\n    sender:\n      bits_per_second: 221398000.0\n      bytes: 1660485372\n      end: 60.0001\n      retransmits: 43\n      seconds: 60.0001\n      socket: 94\n      start: 0\n  - receiver:\n      bits_per_second: 186981000.0\n      bytes: 1402356434\n      end: 60.0001\n      seconds: 60.0001\n      socket: 96\n      start: 0\n    sender:\n      bits_per_second: 187028000.0\n      bytes: 1402712354\n      end: 60.0001\n      retransmits: 56\n      seconds: 60.0001\n      socket: 96\n      start: 0\n  - receiver:\n      bits_per_second: 212952000.0\n      bytes: 1597144922\n      end: 60.0001\n      seconds: 60.0001\n      socket: 98\n      start: 0\n    sender:\n      bits_per_second: 213016000.0\n      bytes: 1597625414\n      end: 60.0001\n      retransmits: 140\n      seconds: 60.0001\n      socket: 98\n      start: 0\n  - receiver:\n      bits_per_second: 208558000.0\n      bytes: 1564189206\n      end: 60.0001\n      seconds: 60.0001\n      socket: 100\n      start: 0\n    sender:\n      bits_per_second: 208671000.0\n      bytes: 1565034516\n      end: 60.0001\n      retransmits: 135\n      seconds: 60.0001\n      socket: 100\n      start: 0\n  - receiver:\n      bits_per_second: 207354000.0\n      bytes: 1555155800\n      end: 60.0001\n      seconds: 60.0001\n      socket: 102\n      start: 0\n    sender:\n      bits_per_second: 207419000.0\n      bytes: 1555645190\n      end: 60.0001\n      retransmits: 133\n      seconds: 60.0001\n      socket: 102\n      start: 0\n  sum_received:\n    bits_per_second: 10561400000.0\n    bytes: 79210506386\n    end: 60.0001\n    seconds: 60.0001\n    start: 0\n  sum_sent:\n    bits_per_second: 10564600000.0\n    bytes: 79234669672\n    end: 60.0001\n    retransmits: 5048\n    seconds: 60.0001\n    start: 0\nstart:\n  connected:\n  - local_host: 10.1.0.3\n    local_port: 34096\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 4\n  - local_host: 10.1.0.3\n    local_port: 34097\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 6\n  - local_host: 10.1.0.3\n    local_port: 34098\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 8\n  - local_host: 10.1.0.3\n    local_port: 34099\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 10\n  - local_host: 10.1.0.3\n    local_port: 34100\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 12\n  - local_host: 10.1.0.3\n    local_port: 34101\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 14\n  - local_host: 10.1.0.3\n    local_port: 34102\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 16\n  - local_host: 10.1.0.3\n    local_port: 34103\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 18\n  - local_host: 10.1.0.3\n    local_port: 34104\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 20\n  - local_host: 10.1.0.3\n    local_port: 34105\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 22\n  - local_host: 10.1.0.3\n    local_port: 34106\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 24\n  - local_host: 10.1.0.3\n    local_port: 34107\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 26\n  - local_host: 10.1.0.3\n    local_port: 34108\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 28\n  - local_host: 10.1.0.3\n    local_port: 34109\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 30\n  - local_host: 10.1.0.3\n    local_port: 34110\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 32\n  - local_host: 10.1.0.3\n    local_port: 34111\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 34\n  - local_host: 10.1.0.3\n    local_port: 34112\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 36\n  - local_host: 10.1.0.3\n    local_port: 34113\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 38\n  - local_host: 10.1.0.3\n    local_port: 34114\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 40\n  - local_host: 10.1.0.3\n    local_port: 34115\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 42\n  - local_host: 10.1.0.3\n    local_port: 34116\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 44\n  - local_host: 10.1.0.3\n    local_port: 34117\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 46\n  - local_host: 10.1.0.3\n    local_port: 34118\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 48\n  - local_host: 10.1.0.3\n    local_port: 34119\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 50\n  - local_host: 10.1.0.3\n    local_port: 34120\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 52\n  - local_host: 10.1.0.3\n    local_port: 34121\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 54\n  - local_host: 10.1.0.3\n    local_port: 34122\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 56\n  - local_host: 10.1.0.3\n    local_port: 34123\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 58\n  - local_host: 10.1.0.3\n    local_port: 34124\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 60\n  - local_host: 10.1.0.3\n    local_port: 34125\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 62\n  - local_host: 10.1.0.3\n    local_port: 34126\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 64\n  - local_host: 10.1.0.3\n    local_port: 34127\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 66\n  - local_host: 10.1.0.3\n    local_port: 34128\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 68\n  - local_host: 10.1.0.3\n    local_port: 34129\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 70\n  - local_host: 10.1.0.3\n    local_port: 34130\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 72\n  - local_host: 10.1.0.3\n    local_port: 34131\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 74\n  - local_host: 10.1.0.3\n    local_port: 34132\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 76\n  - local_host: 10.1.0.3\n    local_port: 34133\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 78\n  - local_host: 10.1.0.3\n    local_port: 34134\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 80\n  - local_host: 10.1.0.3\n    local_port: 34135\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 82\n  - local_host: 10.1.0.3\n    local_port: 34136\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 84\n  - local_host: 10.1.0.3\n    local_port: 34137\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 86\n  - local_host: 10.1.0.3\n    local_port: 34138\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 88\n  - local_host: 10.1.0.3\n    local_port: 34139\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 90\n  - local_host: 10.1.0.3\n    local_port: 34140\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 92\n  - local_host: 10.1.0.3\n    local_port: 34141\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 94\n  - local_host: 10.1.0.3\n    local_port: 34142\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 96\n  - local_host: 10.1.0.3\n    local_port: 34143\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 98\n  - local_host: 10.1.0.3\n    local_port: 34144\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 100\n  - local_host: 10.1.0.3\n    local_port: 34145\n    remote_host: 10.2.0.5\n    remote_port: 5201\n    socket: 102\n  connecting_to:\n    host: 10.2.0.5\n    port: 5201\n  cookie: shaker-persui-master-0.1471350593.29\n  system_info: 'Linux shaker-persui-master-0 3.13.0-93-generic #140-Ubuntu SMP Mon\n    Jul 18 21:21:05 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux\n\n    '\n  tcp_mss_default: 8898\n  test_start:\n    blksize: 64000\n    blocks: 0\n    bytes: 0\n    duration: 60\n    num_streams: 50\n    omit: 0\n    protocol: TCP\n    reverse: 0\n  timestamp:\n    time: Tue, 16 Aug 2016 12:29:53 GMT\n    timesecs: 1471350593\n  version: iperf 3.0.7\n", "scenario": "OpenStack L3 East-West", "concurrency": 1, "schedule": 1471350593.275887, "agent": "shaker_persui_master_0", "id": "3f5338c4-af6b-4f93-9cc8-065efb992fd3", "start": 1471350593.286074, "meta": [["time", "s"], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "command": {"data": "iperf3 --client 10.2.0.5 --format m --len 64000 --time 60 --parallel 50 --interval 1 --json", "type": "program"}, "samples": [[1.0, 8666.744232177734, 144], [2.0, 8631.315231323242, 98], [3.0, 8836.774826049805, 17], [4.0, 8890.457153320312, 7], [5.0, 8943.796157836914, 0], [6.0, 9024.56283569336, 1], [7.0, 9121.904373168945, 0], [8.0, 9042.024612426758, 0], [9.0, 9778.976440429688, 0], [10.0, 10254.383087158203, 0], [11.0, 9700.775146484375, 477], [12.0, 9840.679168701172, 0], [13.0, 10174.46517944336, 0], [14.0, 9950.542449951172, 0], [15.0, 10296.821594238281, 0], [16.0, 10099.601745605469, 0], [17.0, 10635.47134399414, 0], [18.0, 10129.547119140625, 0], [19.0, 10815.811157226562, 0], [20.0, 10768.03207397461, 0], [21.0, 10536.670684814453, 367], [22.0, 9888.744354248047, 0], [23.0, 10386.75308227539, 0], [24.0, 9878.5400390625, 0], [25.0, 10142.803192138672, 0], [26.0, 10780.23910522461, 0], [27.0, 11024.093627929688, 0], [28.0, 10762.02392578125, 0], [29.0, 10849.189758300781, 0], [30.0, 10836.505889892578, 0], [31.0, 10734.176635742188, 351], [32.0, 10435.295104980469, 0], [33.0, 10494.518280029297, 290], [34.0, 10452.556610107422, 0], [35.0, 10582.06558227539, 0], [36.0, 10342.025756835938, 0], [37.0, 9368.209838867188, 113], [38.0, 8327.54135131836, 1153], [39.0, 9270.42007446289, 23], [40.0, 9361.114501953125, 0], [41.0, 9410.533905029297, 0], [42.0, 9203.958511352539, 0], [43.0, 10018.730163574219, 0], [44.0, 10169.315338134766, 0], [45.0, 10540.31510925293, 0], [46.0, 10996.437072753906, 0], [47.0, 10707.950592041016, 800], [48.0, 10752.86865234375, 0], [49.0, 10626.888275146484, 656], [50.0, 10217.952728271484, 0], [51.0, 10273.551940917969, 0], [52.0, 10177.898406982422, 0], [53.0, 10633.087158203125, 0], [54.0, 10687.16049194336, 0], [55.0, 10197.162628173828, 551], [56.0, 10091.400146484375, 0], [57.0, 10311.412811279297, 0], [58.0, 10539.531707763672, 0], [59.0, 10517.97866821289, 0], [60.0, 10381.698608398438, 0]], "executor": "iperf3", "test": "Upload", "type": "agent", "stderr": ""}, "61506938-7f7f-47bc-83ce-9c535cd38903": {"stats": {"bandwidth": {"max": 11024.093627929688, "avg": 10075.200104014079, "unit": "Mbit/s", "min": 8327.54135131836}, "retransmits": {"max": 1153, "avg": 84, "unit": "", "min": 0}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Upload", "type": "concurrency", "id": "61506938-7f7f-47bc-83ce-9c535cd38903", "node_chart": [["x", "node-2.domain.tld"], ["Avg bandwidth, Mbit/s", 10075.200104014079], ["Max bandwidth, Mbit/s", 11024.093627929688], ["Min bandwidth, Mbit/s", 8327.54135131836], ["Avg retransmits, ", 84], ["Max retransmits, ", 1153], ["Min retransmits, ", 0]]}, "7d6128af-29b0-438d-a077-b95bf7bbd4eb": {"meta": [["concurrency", ""], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "scenario": "OpenStack L3 East-West", "test": "Upload", "type": "test", "chart": [["concurrency", 1], ["bandwidth", 10075.200104014079], ["retransmits", 84]], "id": "7d6128af-29b0-438d-a077-b95bf7bbd4eb"}, "3161a37c-b97c-421d-a8ae-572e16c1c865": {"meta": [["concurrency", ""], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "scenario": "OpenStack L3 East-West", "test": "Download", "type": "test", "chart": [["concurrency", 1], ["bandwidth", 10137.153471628824], ["retransmits", 49]], "id": "3161a37c-b97c-421d-a8ae-572e16c1c865"}, "3d30f9ff-f06f-40d0-be3b-649bf12d4166": {"stats": {"bandwidth": {"max": 10660.171508789062, "avg": 10137.153471628824, "unit": "Mbit/s", "min": 8449.959182739258}, "retransmits": {"max": 649, "avg": 49, "unit": "", "min": 0}}, "scenario": "OpenStack L3 East-West", "concurrency": 1, "test": "Download", "type": "concurrency", "id": "3d30f9ff-f06f-40d0-be3b-649bf12d4166", "node_chart": [["x", "node-2.domain.tld"], ["Avg bandwidth, Mbit/s", 10137.153471628824], ["Max bandwidth, Mbit/s", 10660.171508789062], ["Min bandwidth, Mbit/s", 8449.959182739258], ["Avg retransmits, ", 49], ["Max retransmits, ", 649], ["Min retransmits, ", 0]]}}, "tests": {"Download": {"title": "Download", "interval": 1, "method": "tcp_download", "threads": 50, "buffer_size": 64000, "class": "iperf3"}, "Upload": {"title": "Upload", "interval": 1, "method": "tcp_upload", "threads": 50, "buffer_size": 64000, "class": "iperf3"}}, "agents": {"shaker_persui_slave_0": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.2.0.5", "master": {"node": "node-2.domain.tld", "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.3", "mode": "master", "slave_id": "shaker_persui_slave_0", "id": "shaker_persui_master_0"}, "mode": "slave", "master_id": "shaker_persui_master_0", "id": "shaker_persui_slave_0"}, "shaker_persui_master_0": {"node": "node-2.domain.tld", "slave": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.2.0.5", "mode": "slave", "master_id": "shaker_persui_master_0", "id": "shaker_persui_slave_0"}, "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.3", "mode": "master", "slave_id": "shaker_persui_slave_0", "id": "shaker_persui_master_0"}}, "sla": []};
+  </script>
+
+  <script type="text/javascript">
+    "use strict";
+
+    $(function () {
+
+      var fields = ["scenario", "test", "concurrency", "node", "agent"];
+      var state = {
+        scenario: "",
+        test: "",
+        concurrency: "",
+        node: "",
+        agent: ""
+      };
+      var tablePageSize = 10;
+
+      // compiled templates
+      var scenario_source_template = Handlebars.compile($("#scenario_source_template").html());
+      var test_specification_template = Handlebars.compile($("#test_specification_template").html());
+      var agents_table_template = Handlebars.compile($("#agents_table_template").html());
+      var records_table_template = Handlebars.compile($("#records_table_template").html());
+      var executor_template = Handlebars.compile($("#executor_template").html());
+      var concurrency_summary_template = Handlebars.compile($("#concurrency_summary_template").html());
+      var test_summary_template = Handlebars.compile($("#test_summary_template").html());
+      var sla_table_template = Handlebars.compile($("#sla_table_template").html());
+      var errors_template = Handlebars.compile($("#errors_template").html());
+
+      function concatenate(strings) {
+        // returns strings concatenated via comma (like join() but omits empty strings)
+        var f = false;
+        var result = "";
+        $.each(strings, function (_i, string) {
+          if (string.length > 0) {
+            if (f) result += ", ";
+            result += string;
+            f = true;
+          }
+        });
+        return result;
+      }
+
+      function initSingleSelector(name, values) {
+        var selectorId = "#" + name + "_selector";
+
+        var selector_inst = $(selectorId);
+        selector_inst.empty();
+        selector_inst.append($("<option>", {
+          style: "font-style: italic; text-decoration: underline;",
+          value: "",
+          text: selector_inst.data('placeholder')
+        }));
+
+        $.each(values, function (key, item) {
+          selector_inst.append($('<option>', {
+            value: item, //(key + 1),
+            text: item
+          }));
+        });
+
+        selector_inst.val(state[name]);
+
+        selector_inst.
+            on("change", function (e) {
+              state[name] = this.value;
+
+              // convert state -> url
+              var tokens = [];
+              $.each(fields.sort(), function (i, field) {
+                if (state[field] != "") {
+                  tokens.push(field + "=" + state[field]);
+                }
+              });
+              window.location.href = "#" + tokens.join(":");
+            });
+      }
+
+      function getFieldValues(field, records) {
+        var values_set = {};
+
+        $.each(records, function (j, record) {
+          if (record[field]) {
+            values_set["" + record[field]] = true;
+          }
+        });
+
+        return $.map(values_set, function (_i, value) {
+          return value;
+        }).sort();
+      }
+
+      function updateSelectors() {
+        $.each(fields, function (i, field) {
+          var values = getFieldValues(field, filterRecords(report.records, null, field));
+          console.log(values);
+          initSingleSelector(field, values);
+        });
+      }
+
+      function filterRecords(records, type, except_field) {
+        var res = [];
+        $.each(records, function(_i, record){
+          if (!type || typeof type === 'undefined' || record.type == type) {
+            var flag = true;
+            $.each(state, function (key, value) {
+              if (key != except_field && value) {
+                flag &= record[key] == value;
+              }
+            });
+            if (flag) {
+              res.push(record);
+            }
+          }
+        });
+        return res;
+      }
+
+      function getAgentsByIds(agent_ids) {
+        var agents = [];
+        $.each(agent_ids, function(agent_id){
+          agents.push(report.agents[agent_id]);
+        });
+        return agents;
+      }
+
+      /* Template Rendering Funcs */
+
+      function showScenarioSource(contentArea, scenario) {
+        contentArea.append(scenario_source_template(
+            {data: jsyaml.safeDump(scenario)}));
+      }
+
+      function showTestSpecification(contentArea, test) {
+        contentArea.append(test_specification_template(
+            {data: jsyaml.safeDump(test)}
+        ))
+      }
+
+      function showAgentRecord(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = {
+          command_yaml: jsyaml.safeDump(record["command"]),
+          chart_id: chart_id};
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        if ((record["start"]) && (record["finish"])) {
+          ext_options["time_info"] = jsyaml.safeDump({
+            "start": new Date(record["start"] * 1000).toISOString(),
+            "finish": new Date(record["finish"] * 1000).toISOString()
+          });
+        }
+        contentArea.append(executor_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["samples"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          var chart = [];
+          $.each(meta, function(_i, meta_item){  // row titles
+            chart.push([meta_item[0]]);
+          });
+          var samples = record["samples"];
+          for (var i=0; i < samples.length; i++) {
+            var point = samples[i];
+            for (var j=0; j < point.length; j++) {
+              chart[j].push(point[j]);
+            }
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'time',
+              columns: chart,
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showConcurrencySummary(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var node_chart_id = "node_chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id, node_chart_id: node_chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        console.log(record);
+        contentArea.append(concurrency_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["node_chart"]) {
+          c3.generate({
+            bindto: "#" + node_chart_id,
+            data: {
+              x: 'x',
+              columns: record["node_chart"],
+              type: 'step',
+              order: null
+            },
+            axis: {
+              x: { type: 'category' }
+            }
+          });
+        }
+      }
+
+      function showTestSummary(contentArea, record) {
+        console.log(record);
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        contentArea.append(test_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["chart"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'concurrency',
+              columns: record["chart"],
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showAgentsTable(contentArea, filteredRecords) {
+        var agent_ids = {};
+        $.each(filteredRecords, function(_i, record){
+          if (record.agent) {
+            agent_ids[record.agent] = true;
+          }
+        });
+
+        var agents = getAgentsByIds(agent_ids);
+        if (agents.length == 0) return;
+
+        // add slave agents
+        var slave_agent_ids = {};
+        $.each(agents, function(_i, agent){
+          if (agent.slave_id) {
+            slave_agent_ids[agent.slave_id] = true;
+          }
+        });
+        agents = $.merge(agents, getAgentsByIds(slave_agent_ids));
+
+        contentArea.append(agents_table_template({
+          agents: agents,
+          table_id: "agents_table"
+        }));
+        $("#agents_table").dataTable({
+          "autoWidth": true,
+          "paging": false,
+          "ordering": true,
+          "info": false
+        });
+      }
+
+      function makeURL(record, s) {
+        var extra = {};
+        extra[s] = record[s];
+        return "#" + $.map($.extend({}, state, extra), function (val, index) {
+          return val? (index + "=" + val) : null;
+        }).join(":")
+      }
+
+      function showRecordsTable(contentArea, filteredRecords) {
+        $.each(filteredRecords, function(_i, record) {
+          $.each(fields, function(_j, field){
+            if (record[field]) {
+              record[field + "_url"] = makeURL(record, field);
+            }
+          });
+        });
+
+        contentArea.append(records_table_template({
+          records: filteredRecords,
+          table_id: "records_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: filteredRecords.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: filteredRecords.length > tablePageSize
+        });
+      }
+
+      function showSlaTable(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(sla_table_template({
+          records: records,
+          table_id: "sla_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: records.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: records.length > tablePageSize
+        });
+      }
+
+      function showErrors(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(errors_template({
+          records: records,
+          table_id: "errors_list"
+        }));
+      }
+
+      /* Update cycle */
+
+      function update() {
+        var filteredRecords = filterRecords(report.records);
+        console.log(filteredRecords);
+        var slaRecords = [];
+        var errorRecords = [];
+        $.each(filterRecords(report.records), function(_i, record) {
+          if (record["sla_info"]) {
+            slaRecords.push(record);
+          }
+          if (record["is_status_error"]) {
+            errorRecords.push(record);
+          }
+        });
+
+        var contentArea = $("#content_area");
+        contentArea.empty();
+
+        updateSelectors();
+
+        showRecordsTable(contentArea, filteredRecords);
+        showSlaTable(contentArea, slaRecords);
+        showErrors(contentArea, errorRecords);
+
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" &&
+                state["agent"] != "") {
+          showAgentRecord(contentArea, filteredRecords[0]);
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var agg_recs = filterRecords(report.records, "concurrency");
+          if (agg_recs.length > 0) {
+            showConcurrencySummary(contentArea, agg_recs[0]);
+          }
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] == "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var test_recs = filterRecords(report.records, "test");
+          if (test_recs.length > 0) {
+            showTestSummary(contentArea, test_recs[0]);
+          }
+        }
+        if (state["test"] != "") {
+          showTestSpecification(contentArea, report.tests[state["test"]]);
+        }
+        if (state["agent"] == "") {
+          showAgentsTable(contentArea, filteredRecords);
+        }
+        if (state["scenario"] != "") {
+          showScenarioSource(contentArea, report.scenarios[state["scenario"]]);
+        }
+      }
+
+      function parseUrlToState() {
+        var hashUrl = window.location.hash.substr(1);
+
+        $.each(hashUrl.split(":"), function (_i, pair) {
+          var kv = pair.split("=");
+          if (kv.length == 2) {
+            state[kv[0]] = decodeURIComponent(kv[1]);
+          }
+        });
+      }
+
+      // entry-point
+      parseUrlToState();
+      console.log(state);
+
+      // pre-process records
+      $.each(report.records, function(_i, record) {
+        if (record.status) {
+          record["is_status_ok"] = record.status == "ok";
+          record["is_status_lost"] = record.status == "lost";
+          record["is_status_interrupted"] = record.status == "interrupted";
+          record["is_status_error"] = record.status == "error";
+        }
+      });
+
+      // auto-select filters with 1 option
+      $.each(fields, function(_i, field) {
+        var values = getFieldValues(field, report.records);
+        if (values.length == 1) {
+          state[field] = values[0];
+        }
+      });
+
+      update();
+
+      $(window).on('hashchange', function() {
+        parseUrlToState();
+        update()
+      });
+
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+
+<div class="container" id="container">
+  <div class="row text-center">
+    <h1>Shaker | The Report</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <label for="scenario_selector" title="Scenario name">Scenario</label>
+      <select id="scenario_selector" class="form-control" data-placeholder="- Any scenario -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="test_selector" title="Test name">Test Case</label>
+      <select id="test_selector" class="form-control" data-placeholder="- Any test case -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="concurrency_selector" title="Concurrency">Concurrency</label>
+      <select id="concurrency_selector" class="form-control" data-placeholder="- Any concurrency -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="node_selector" title="Host / Compute node">Host</label>
+      <select id="node_selector" class="form-control" data-placeholder="- Any node -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="agent_selector" title="Agent">Agent</label>
+      <select id="agent_selector" class="form-control" data-placeholder="- Any agent -"></select>
+    </div>
+  </div>
+
+  <div id="content_area" class="row">
+    <!-- Container for the screen content -->
+  </div>
+
+  <div id="footer" class="row">&nbsp;</div>
+</div>
+
+<!-- TEMPLATES --------------------------------------------------------------->
+
+<!-- Scenario File -->
+<script id="scenario_source_template" type="text/x-handlebars-template">
+  <h3>Scenario</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Test Specification -->
+<script id="test_specification_template" type="text/x-handlebars-template">
+  <h3>Test Specification</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Executor Result -->
+<script id="executor_template" type="text/x-handlebars-template">
+  <h3>Execution Summary</h3>
+  {{#with record}}
+  <div id="{{ chart_id }}"></div>
+  {{#if is_status_ok}}<span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>success</span>{{/if}}
+  {{#if is_status_lost}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>lost</span>{{/if}}
+  {{#if is_status_interrupted}}<span class="label label-warning"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>interrupted</span>{{/if}}
+  {{#if is_status_error}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>error</span>{{/if}}
+  {{#if stats_yaml}}
+    <h4>Stats</h4>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{#if time_info}}
+    <h4>Time Info</h4>
+    <pre>{{ time_info }}</pre>
+  {{/if}}
+  <h4>Command</h4>
+  <pre>{{ command_yaml }}</pre>
+  {{#if stdout}}
+    <h4>Stdout</h4>
+    <pre>{{ stdout }}</pre>
+  {{/if}}
+  {{#if verbose}}
+    <h4>Verbose Info</h4>
+    <pre>{{ verbose }}</pre>
+  {{/if}}
+  {{#if stderr}}
+    <h4>Stderr</h4>
+    <pre>{{ stderr }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Concurrency summary -->
+<script id="concurrency_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id  }}"></div>
+  <h3>Per-node chart</h3>
+  <div id="{{ node_chart_id  }}"></div>
+  <h3>Stats</h3>
+  <pre>{{ stats_yaml }}</pre>
+  {{/with}}
+</script>
+
+<!-- Test summary -->
+<script id="test_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id   }}"></div>
+  {{#if stats_yaml}}
+    <h3>Stats</h3>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Records Table -->
+<script id="records_table_template" type="text/x-handlebars-template">
+  <h3>Records</h3>
+  <table class="table table-striped" id="{{ table_id  }}">
+    <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Test Case</th>
+      <th>Concurrency</th>
+      <th>Host / Compute Node</th>
+      <th>Agent</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td><a href="{{ scenario_url }}">{{ scenario }}</a></td>
+      <td><a href="{{ test_url }}">{{ test }}</a></td>
+      <td><a href="{{ concurrency_url }}">{{ concurrency }}</a></td>
+      <td><a href="{{ node_url }}">{{ node }}</a></td>
+      <td><a href="{{ agent_url }}">{{ agent }}</a></td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="label label-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            success
+          </span>
+        {{/if}}
+        {{#if is_status_lost }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            lost
+          </span>
+        {{/if}}
+        {{#if is_status_interrupted }}
+          <span class="label label-warning">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            interrupted
+          </span>
+        {{/if}}
+        {{#if is_status_error }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            error
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Agents List -->
+<script id="agents_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{ table_id }}">
+    <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Mode</th>
+      <th>IP</th>
+      <th>Node</th>
+      <th>AZ</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#agents}}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ mode }}</td>
+      <td>{{ ip }}</td>
+      <td>{{ node }}</td>
+      <td>{{ zone }}</td>
+    </tr>
+    {{/agents}}
+    </tbody>
+  </table>
+</script>
+
+<!-- SLA List -->
+<script id="sla_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{  table_id }}">
+    <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td>{{ sla }}</td>
+      <td>{{ location }}</td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="text-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{else}}
+          <span class="text-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Errors -->
+<script id="errors_template" type="text/x-handlebars-template">
+  <h3>Errors</h3>
+  <div class="text-danger">
+    <ul>
+    {{#records}}
+      <li>{{ info }}<br/>{{ stderr }}{{ traceback }}</li>
+    {{/records}}
+    </ul>
+  </div>
+</script>
+
+</body>
+</html>

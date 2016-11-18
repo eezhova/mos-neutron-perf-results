@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+  <title>Shaker | The distributed data-plane testing tool for OpenStack</title>
+
+  <!-- LIBS -->
+
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js"></script>
+  <script type="text/javascript"
+          src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.2.7/js-yaml.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+
+  <!-- STYLES -->
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/simplex/bootstrap.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
+  <link rel='stylesheet' type='text/css'
+        href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic'>
+
+  <script type="application/javascript">
+    var report = {"scenarios": {"OpenStack L2 Performance": {"file_name": "shaker/shaker/scenarios/openstack/perf_l2.yaml", "title": "OpenStack L2 Performance", "execution": {"tests": [{"title": "Ping", "class": "flent", "time": 10, "sla": ["[type == 'agent'] >> (stats.ping_icmp.avg < 2.0)"], "method": "ping"}, {"title": "TCP", "sla": ["[type == 'agent'] >> (stats.bandwidth.avg > 5000)", "[type == 'agent'] >> (stats.retransmits.max < 10)"], "class": "iperf3"}, {"udp": true, "title": "UDP", "datagram_size": 32, "bandwidth": 0, "class": "iperf3", "sla": ["[type == 'agent'] >> (stats.packets.avg > 100000)"]}]}, "description": "In this scenario Shaker launches 1 pair of instances in the same tenant network. Each instance is hosted on a separate compute node. The traffic goes within the tenant network (L2 domain).", "deployment": {"accommodation": ["pair", "single_room", {"compute_nodes": 2}], "template": "l2.hot"}}}, "records": {"2fb20608-af07-49ca-a499-806d790aa4fe": {"status": "ok", "node": "node-5.domain.tld", "finish": 1471359531.478786, "stats": {"bandwidth": {"max": 9389.13345336914, "avg": 9377.667848968505, "unit": "Mbit/s", "min": 9310.0}, "retransmits": {"max": 50, "avg": 0, "unit": "", "min": 0}}, "verbose": "end:\n  cpu_utilization_percent:\n    host_system: 17.547\n    host_total: 17.6644\n    host_user: 0.117368\n    remote_system: 12.16\n    remote_total: 12.477\n    remote_user: 0.316936\n  streams:\n  - receiver:\n      bits_per_second: 9832840000.0\n      bytes: 73746431162\n      end: 60.0001\n      seconds: 60.0001\n      socket: 4\n      start: 0\n    sender:\n      bits_per_second: 9833200000.0\n      bytes: 73749108560\n      end: 60.0001\n      retransmits: 50\n      seconds: 60.0001\n      socket: 4\n      start: 0\n  sum_received:\n    bits_per_second: 9832840000.0\n    bytes: 73746431162\n    end: 60.0001\n    seconds: 60.0001\n    start: 0\n  sum_sent:\n    bits_per_second: 9833200000.0\n    bytes: 73749108560\n    end: 60.0001\n    retransmits: 50\n    seconds: 60.0001\n    start: 0\nstart:\n  connected:\n  - local_host: 10.0.0.4\n    local_port: 45824\n    remote_host: 10.0.0.5\n    remote_port: 5201\n    socket: 4\n  connecting_to:\n    host: 10.0.0.5\n    port: 5201\n  cookie: shaker-apuzor-master-0.1471359471.31\n  system_info: 'Linux shaker-apuzor-master-0 3.13.0-93-generic #140-Ubuntu SMP Mon\n    Jul 18 21:21:05 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux\n\n    '\n  tcp_mss_default: 8898\n  test_start:\n    blksize: 131072\n    blocks: 0\n    bytes: 0\n    duration: 60\n    num_streams: 1\n    omit: 0\n    protocol: TCP\n    reverse: 0\n  timestamp:\n    time: Tue, 16 Aug 2016 14:57:51 GMT\n    timesecs: 1471359471\n  version: iperf 3.0.7\n", "scenario": "OpenStack L2 Performance", "concurrency": 1, "schedule": 1471359471.304588, "agent": "shaker_apuzor_master_0", "id": "2fb20608-af07-49ca-a499-806d790aa4fe", "start": 1471359471.314911, "meta": [["time", "s"], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "command": {"data": "iperf3 --client 10.0.0.5 --format m --time 60 --parallel 1 --interval 1 --json", "type": "program"}, "samples": [[1.0, 9377.307891845703, 0], [2.0, 9373.416900634766, 0], [3.0, 9380.006790161133, 0], [4.0, 9379.901885986328, 0], [5.0, 9380.102157592773, 0], [6.0, 9379.97817993164, 0], [7.0, 9379.987716674805, 0], [8.0, 9379.920959472656, 0], [9.0, 9380.083084106445, 0], [10.0, 9310.0, 0], [11.0, 9380.016326904297, 0], [12.0, 9379.83512878418, 0], [13.0, 9379.911422729492, 0], [14.0, 9350.07095336914, 0], [15.0, 9380.0, 0], [16.0, 9388.227462768555, 0], [17.0, 9371.776580810547, 0], [18.0, 9388.38005065918, 0], [19.0, 9371.623992919922, 0], [20.0, 9388.866424560547, 0], [21.0, 9379.777908325195, 0], [22.0, 9371.24252319336, 50], [23.0, 9378.490447998047, 0], [24.0, 9380.407333374023, 0], [25.0, 9379.863739013672, 0], [26.0, 9379.663467407227, 0], [27.0, 9379.720687866211, 0], [28.0, 9371.833801269531, 0], [29.0, 9389.13345336914, 0], [30.0, 9380.226135253906, 0], [31.0, 9379.100799560547, 0], [32.0, 9380.130767822266, 0], [33.0, 9361.31477355957, 0], [34.0, 9379.983123779297, 0], [35.0, 9379.987716674805, 0], [36.0, 9379.987716674805, 0], [37.0, 9380.006790161133, 0], [38.0, 9380.016326904297, 0], [39.0, 9379.825592041016, 0], [40.0, 9380.168914794922, 0], [41.0, 9379.97817993164, 0], [42.0, 9380.025863647461, 0], [43.0, 9380.0, 0], [44.0, 9380.0, 0], [45.0, 9380.0, 0], [46.0, 9379.987716674805, 0], [47.0, 9380.006790161133, 0], [48.0, 9380.0, 0], [49.0, 9380.0, 0], [50.0, 9380.0, 0], [51.0, 9380.0, 0], [52.0, 9380.0, 0], [53.0, 9369.993209838867, 0], [54.0, 9380.0, 0], [55.0, 9380.006790161133, 0], [56.0, 9379.987716674805, 0], [57.0, 9380.006790161133, 0], [58.0, 9379.873275756836, 0], [59.0, 9380.006790161133, 0], [60.0, 9379.901885986328, 0]], "executor": "iperf3", "test": "TCP", "type": "agent", "stderr": ""}, "54c27597-5432-4166-93ce-1d2add0f596e": {"stats": {"loss": {"avg": 0.0610227, "unit": "%"}, "jitter": {"avg": 0.00264731, "unit": "ms"}, "packets": {"max": 227780, "avg": 217982, "unit": "pps", "min": 182620}}, "scenario": "OpenStack L2 Performance", "concurrency": 1, "test": "UDP", "type": "concurrency", "id": "54c27597-5432-4166-93ce-1d2add0f596e", "node_chart": [["x", "node-5.domain.tld"], ["Avg loss, %", 0.0610227], ["Avg jitter, ms", 0.00264731], ["Avg packets, pps", 217982], ["Max packets, pps", 227780], ["Min packets, pps", 182620]]}, "8776dc01-db82-44da-a6ae-43a456f7cbaa": {"stats": {"bandwidth": {"max": 9389.13345336914, "avg": 9377.667848968505, "unit": "Mbit/s", "min": 9310.0}, "retransmits": {"max": 50, "avg": 0, "unit": "", "min": 0}}, "scenario": "OpenStack L2 Performance", "concurrency": 1, "test": "TCP", "type": "concurrency", "id": "8776dc01-db82-44da-a6ae-43a456f7cbaa", "node_chart": [["x", "node-5.domain.tld"], ["Avg bandwidth, Mbit/s", 9377.667848968505], ["Max bandwidth, Mbit/s", 9389.13345336914], ["Min bandwidth, Mbit/s", 9310.0], ["Avg retransmits, ", 0], ["Max retransmits, ", 50], ["Min retransmits, ", 0]]}, "8667819f-a690-4901-ab6e-2ff983e5218e": {"status": "ok", "node": "node-5.domain.tld", "finish": 1471359451.150101, "stats": {"ping_icmp": {"max": 1.12, "avg": 0.5257187080745943, "unit": "ms", "min": 0.2903398863789143}}, "stderr": "", "scenario": "OpenStack L2 Performance", "concurrency": 1, "schedule": 1471359440.825449, "agent": "shaker_apuzor_master_0", "start": 1471359440.839545, "meta": [["time", "s"], ["ping_icmp", "ms"]], "command": {"data": "zcat `flent -H 10.0.0.5 -l 10 -s 1 ping 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.12], [1.0, 0.5000003508243537], [2.0, 0.5140357318940982], [3.0, 0.5489530250362878], [4.0, 0.5244979123452086], [5.0, 0.2903398863789143], [6.0, 0.43232314394345717], [7.0, 0.5765753177328987], [8.0, 0.3700229000117063], [9.0, 0.38043881257901935]], "executor": "flent", "test": "Ping", "type": "agent", "id": "8667819f-a690-4901-ab6e-2ff983e5218e"}, "e5ecb1cf-b631-491e-9b77-d6fcec2a4b1a": {"status": "ok", "node": "node-5.domain.tld", "finish": 1471359611.787158, "stats": {"loss": {"avg": 0.0610227, "unit": "%"}, "jitter": {"avg": 0.00264731, "unit": "ms"}, "packets": {"max": 227780, "avg": 217982, "unit": "pps", "min": 182620}}, "verbose": "end:\n  cpu_utilization_percent:\n    host_system: 19.7639\n    host_total: 22.0505\n    host_user: 2.28655\n    remote_system: 34.3846\n    remote_total: 37.9768\n    remote_user: 3.59223\n  streams:\n  - udp:\n      bits_per_second: 55803400.0\n      bytes: 418525760\n      end: 60\n      jitter_ms: 0.00264731\n      lost_packets: 7981\n      lost_percent: 0.0610227\n      packets: 13078744\n      seconds: 60\n      socket: 4\n      start: 0\n  sum:\n    bits_per_second: 55803400.0\n    bytes: 418525760\n    end: 60\n    jitter_ms: 0.00264731\n    lost_packets: 7981\n    lost_percent: 0.0610227\n    packets: 13078744\n    seconds: 60\n    start: 0\nstart:\n  connected:\n  - local_host: 10.0.0.4\n    local_port: 57542\n    remote_host: 10.0.0.5\n    remote_port: 5201\n    socket: 4\n  connecting_to:\n    host: 10.0.0.5\n    port: 5201\n  cookie: shaker-apuzor-master-0.1471359551.61\n  system_info: 'Linux shaker-apuzor-master-0 3.13.0-93-generic #140-Ubuntu SMP Mon\n    Jul 18 21:21:05 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux\n\n    '\n  test_start:\n    blksize: 32\n    blocks: 0\n    bytes: 0\n    duration: 60\n    num_streams: 1\n    omit: 0\n    protocol: UDP\n    reverse: 0\n  timestamp:\n    time: Tue, 16 Aug 2016 14:59:11 GMT\n    timesecs: 1471359551\n  version: iperf 3.0.7\n", "scenario": "OpenStack L2 Performance", "concurrency": 1, "schedule": 1471359551.605609, "agent": "shaker_apuzor_master_0", "id": "e5ecb1cf-b631-491e-9b77-d6fcec2a4b1a", "start": 1471359551.615952, "meta": [["time", "s"], ["packets", "pps"]], "command": {"data": "iperf3 --client 10.0.0.5 --format m --udp --bandwidth 0 --len 32 --time 60 --parallel 1 --interval 1 --json", "type": "program"}, "samples": [[1.0, 218730], [2.0, 218500], [3.0, 225730], [4.0, 220140], [5.0, 224440], [6.0, 214800], [7.0, 199720], [8.0, 204070], [9.0, 205050], [10.0, 210370], [11.0, 216480], [12.0, 217010], [13.0, 221580], [14.0, 214480], [15.0, 215920], [16.0, 221380], [17.0, 225020], [18.0, 227780], [19.0, 201820], [20.0, 182620], [21.0, 227500], [22.0, 225780], [23.0, 223390], [24.0, 223800], [25.0, 222390], [26.0, 223180], [27.0, 219070], [28.0, 219300], [29.0, 221720], [30.0, 220170], [31.0, 218790], [32.0, 217430], [33.0, 215100], [34.0, 214190], [35.0, 216490], [36.0, 212670], [37.0, 209730], [38.0, 214980], [39.0, 206150], [40.0, 212920], [41.0, 221000], [42.0, 219980], [43.0, 213270], [44.0, 218090], [45.0, 221280], [46.0, 220760], [47.0, 221020], [48.0, 219970], [49.0, 220880], [50.0, 222670], [51.0, 220360], [52.0, 225550], [53.0, 223940], [54.0, 218470], [55.0, 221600], [56.0, 223020], [57.0, 220850], [58.0, 224100], [59.0, 226170], [60.0, 225560]], "executor": "iperf3", "test": "UDP", "type": "agent", "stderr": ""}, "97537fb5-8e4b-4155-a68b-0a8f6346e68b": {"meta": [["concurrency", ""], ["ping_icmp", "ms"]], "scenario": "OpenStack L2 Performance", "test": "Ping", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 0.5257187080745943]], "id": "97537fb5-8e4b-4155-a68b-0a8f6346e68b"}, "1b61afa0-bc52-44ae-a5f1-b3d77b905136": {"meta": [["concurrency", ""], ["bandwidth", "Mbit/s"], ["retransmits", ""]], "scenario": "OpenStack L2 Performance", "test": "TCP", "type": "test", "chart": [["concurrency", 1], ["bandwidth", 9377.667848968505], ["retransmits", 0]], "id": "1b61afa0-bc52-44ae-a5f1-b3d77b905136"}, "978e217b-1661-4a6a-9090-80859bf97303": {"meta": [["concurrency", ""], ["loss", "%"], ["jitter", "ms"], ["packets", "pps"]], "scenario": "OpenStack L2 Performance", "test": "UDP", "type": "test", "chart": [["concurrency", 1], ["loss", 0.0610227], ["jitter", 0.00264731], ["packets", 217982]], "id": "978e217b-1661-4a6a-9090-80859bf97303"}, "44ed396a-f43b-495b-bcaf-c68bcc2d903c": {"stats": {"ping_icmp": {"max": 1.12, "avg": 0.5257187080745943, "unit": "ms", "min": 0.2903398863789143}}, "scenario": "OpenStack L2 Performance", "concurrency": 1, "test": "Ping", "type": "concurrency", "id": "44ed396a-f43b-495b-bcaf-c68bcc2d903c", "node_chart": [["x", "node-5.domain.tld"], ["Avg ping_icmp, ms", 0.5257187080745943], ["Max ping_icmp, ms", 1.12], ["Min ping_icmp, ms", 0.2903398863789143]]}}, "tests": {"UDP": {"udp": true, "title": "UDP", "datagram_size": 32, "interval": 1, "class": "iperf3", "bandwidth": 0, "sla": ["[type == 'agent'] >> (stats.packets.avg > 100000)"]}, "Ping": {"sla": ["[type == 'agent'] >> (stats.ping_icmp.avg < 2.0)"], "method": "ping", "time": 10, "class": "flent", "title": "Ping"}, "TCP": {"class": "iperf3", "interval": 1, "sla": ["[type == 'agent'] >> (stats.bandwidth.avg > 5000)", "[type == 'agent'] >> (stats.retransmits.max < 10)"], "title": "TCP"}}, "agents": {"shaker_apuzor_slave_0": {"node": "node-2.domain.tld", "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.0.0.5", "master": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.0.0.4", "mode": "master", "slave_id": "shaker_apuzor_slave_0", "id": "shaker_apuzor_master_0"}, "mode": "slave", "master_id": "shaker_apuzor_master_0", "id": "shaker_apuzor_slave_0"}, "shaker_apuzor_master_0": {"node": "node-5.domain.tld", "slave": {"node": "node-2.domain.tld", "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.0.0.5", "mode": "slave", "master_id": "shaker_apuzor_master_0", "id": "shaker_apuzor_slave_0"}, "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "10.0.0.4", "mode": "master", "slave_id": "shaker_apuzor_slave_0", "id": "shaker_apuzor_master_0"}}, "sla": [{"record": "e5ecb1cf-b631-491e-9b77-d6fcec2a4b1a", "state": "OK", "expression": "stats.packets.avg > 100000"}, {"record": "8667819f-a690-4901-ab6e-2ff983e5218e", "state": "OK", "expression": "stats.ping_icmp.avg < 2.0"}, {"record": "2fb20608-af07-49ca-a499-806d790aa4fe", "state": "OK", "expression": "stats.bandwidth.avg > 5000"}, {"record": "2fb20608-af07-49ca-a499-806d790aa4fe", "state": "FAIL", "expression": "stats.retransmits.max < 10"}]};
+  </script>
+
+  <script type="text/javascript">
+    "use strict";
+
+    $(function () {
+
+      var fields = ["scenario", "test", "concurrency", "node", "agent"];
+      var state = {
+        scenario: "",
+        test: "",
+        concurrency: "",
+        node: "",
+        agent: ""
+      };
+      var tablePageSize = 10;
+
+      // compiled templates
+      var scenario_source_template = Handlebars.compile($("#scenario_source_template").html());
+      var test_specification_template = Handlebars.compile($("#test_specification_template").html());
+      var agents_table_template = Handlebars.compile($("#agents_table_template").html());
+      var records_table_template = Handlebars.compile($("#records_table_template").html());
+      var executor_template = Handlebars.compile($("#executor_template").html());
+      var concurrency_summary_template = Handlebars.compile($("#concurrency_summary_template").html());
+      var test_summary_template = Handlebars.compile($("#test_summary_template").html());
+      var sla_table_template = Handlebars.compile($("#sla_table_template").html());
+      var errors_template = Handlebars.compile($("#errors_template").html());
+
+      function concatenate(strings) {
+        // returns strings concatenated via comma (like join() but omits empty strings)
+        var f = false;
+        var result = "";
+        $.each(strings, function (_i, string) {
+          if (string.length > 0) {
+            if (f) result += ", ";
+            result += string;
+            f = true;
+          }
+        });
+        return result;
+      }
+
+      function initSingleSelector(name, values) {
+        var selectorId = "#" + name + "_selector";
+
+        var selector_inst = $(selectorId);
+        selector_inst.empty();
+        selector_inst.append($("<option>", {
+          style: "font-style: italic; text-decoration: underline;",
+          value: "",
+          text: selector_inst.data('placeholder')
+        }));
+
+        $.each(values, function (key, item) {
+          selector_inst.append($('<option>', {
+            value: item, //(key + 1),
+            text: item
+          }));
+        });
+
+        selector_inst.val(state[name]);
+
+        selector_inst.
+            on("change", function (e) {
+              state[name] = this.value;
+
+              // convert state -> url
+              var tokens = [];
+              $.each(fields.sort(), function (i, field) {
+                if (state[field] != "") {
+                  tokens.push(field + "=" + state[field]);
+                }
+              });
+              window.location.href = "#" + tokens.join(":");
+            });
+      }
+
+      function getFieldValues(field, records) {
+        var values_set = {};
+
+        $.each(records, function (j, record) {
+          if (record[field]) {
+            values_set["" + record[field]] = true;
+          }
+        });
+
+        return $.map(values_set, function (_i, value) {
+          return value;
+        }).sort();
+      }
+
+      function updateSelectors() {
+        $.each(fields, function (i, field) {
+          var values = getFieldValues(field, filterRecords(report.records, null, field));
+          console.log(values);
+          initSingleSelector(field, values);
+        });
+      }
+
+      function filterRecords(records, type, except_field) {
+        var res = [];
+        $.each(records, function(_i, record){
+          if (!type || typeof type === 'undefined' || record.type == type) {
+            var flag = true;
+            $.each(state, function (key, value) {
+              if (key != except_field && value) {
+                flag &= record[key] == value;
+              }
+            });
+            if (flag) {
+              res.push(record);
+            }
+          }
+        });
+        return res;
+      }
+
+      function getAgentsByIds(agent_ids) {
+        var agents = [];
+        $.each(agent_ids, function(agent_id){
+          agents.push(report.agents[agent_id]);
+        });
+        return agents;
+      }
+
+      /* Template Rendering Funcs */
+
+      function showScenarioSource(contentArea, scenario) {
+        contentArea.append(scenario_source_template(
+            {data: jsyaml.safeDump(scenario)}));
+      }
+
+      function showTestSpecification(contentArea, test) {
+        contentArea.append(test_specification_template(
+            {data: jsyaml.safeDump(test)}
+        ))
+      }
+
+      function showAgentRecord(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = {
+          command_yaml: jsyaml.safeDump(record["command"]),
+          chart_id: chart_id};
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        if ((record["start"]) && (record["finish"])) {
+          ext_options["time_info"] = jsyaml.safeDump({
+            "start": new Date(record["start"] * 1000).toISOString(),
+            "finish": new Date(record["finish"] * 1000).toISOString()
+          });
+        }
+        contentArea.append(executor_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["samples"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          var chart = [];
+          $.each(meta, function(_i, meta_item){  // row titles
+            chart.push([meta_item[0]]);
+          });
+          var samples = record["samples"];
+          for (var i=0; i < samples.length; i++) {
+            var point = samples[i];
+            for (var j=0; j < point.length; j++) {
+              chart[j].push(point[j]);
+            }
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'time',
+              columns: chart,
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showConcurrencySummary(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var node_chart_id = "node_chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id, node_chart_id: node_chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        console.log(record);
+        contentArea.append(concurrency_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["node_chart"]) {
+          c3.generate({
+            bindto: "#" + node_chart_id,
+            data: {
+              x: 'x',
+              columns: record["node_chart"],
+              type: 'step',
+              order: null
+            },
+            axis: {
+              x: { type: 'category' }
+            }
+          });
+        }
+      }
+
+      function showTestSummary(contentArea, record) {
+        console.log(record);
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        contentArea.append(test_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["chart"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'concurrency',
+              columns: record["chart"],
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showAgentsTable(contentArea, filteredRecords) {
+        var agent_ids = {};
+        $.each(filteredRecords, function(_i, record){
+          if (record.agent) {
+            agent_ids[record.agent] = true;
+          }
+        });
+
+        var agents = getAgentsByIds(agent_ids);
+        if (agents.length == 0) return;
+
+        // add slave agents
+        var slave_agent_ids = {};
+        $.each(agents, function(_i, agent){
+          if (agent.slave_id) {
+            slave_agent_ids[agent.slave_id] = true;
+          }
+        });
+        agents = $.merge(agents, getAgentsByIds(slave_agent_ids));
+
+        contentArea.append(agents_table_template({
+          agents: agents,
+          table_id: "agents_table"
+        }));
+        $("#agents_table").dataTable({
+          "autoWidth": true,
+          "paging": false,
+          "ordering": true,
+          "info": false
+        });
+      }
+
+      function makeURL(record, s) {
+        var extra = {};
+        extra[s] = record[s];
+        return "#" + $.map($.extend({}, state, extra), function (val, index) {
+          return val? (index + "=" + val) : null;
+        }).join(":")
+      }
+
+      function showRecordsTable(contentArea, filteredRecords) {
+        $.each(filteredRecords, function(_i, record) {
+          $.each(fields, function(_j, field){
+            if (record[field]) {
+              record[field + "_url"] = makeURL(record, field);
+            }
+          });
+        });
+
+        contentArea.append(records_table_template({
+          records: filteredRecords,
+          table_id: "records_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: filteredRecords.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: filteredRecords.length > tablePageSize
+        });
+      }
+
+      function showSlaTable(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(sla_table_template({
+          records: records,
+          table_id: "sla_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: records.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: records.length > tablePageSize
+        });
+      }
+
+      function showErrors(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(errors_template({
+          records: records,
+          table_id: "errors_list"
+        }));
+      }
+
+      /* Update cycle */
+
+      function update() {
+        var filteredRecords = filterRecords(report.records);
+        console.log(filteredRecords);
+        var slaRecords = [];
+        var errorRecords = [];
+        $.each(filterRecords(report.records), function(_i, record) {
+          if (record["sla_info"]) {
+            slaRecords.push(record);
+          }
+          if (record["is_status_error"]) {
+            errorRecords.push(record);
+          }
+        });
+
+        var contentArea = $("#content_area");
+        contentArea.empty();
+
+        updateSelectors();
+
+        showRecordsTable(contentArea, filteredRecords);
+        showSlaTable(contentArea, slaRecords);
+        showErrors(contentArea, errorRecords);
+
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" &&
+                state["agent"] != "") {
+          showAgentRecord(contentArea, filteredRecords[0]);
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var agg_recs = filterRecords(report.records, "concurrency");
+          if (agg_recs.length > 0) {
+            showConcurrencySummary(contentArea, agg_recs[0]);
+          }
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] == "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var test_recs = filterRecords(report.records, "test");
+          if (test_recs.length > 0) {
+            showTestSummary(contentArea, test_recs[0]);
+          }
+        }
+        if (state["test"] != "") {
+          showTestSpecification(contentArea, report.tests[state["test"]]);
+        }
+        if (state["agent"] == "") {
+          showAgentsTable(contentArea, filteredRecords);
+        }
+        if (state["scenario"] != "") {
+          showScenarioSource(contentArea, report.scenarios[state["scenario"]]);
+        }
+      }
+
+      function parseUrlToState() {
+        var hashUrl = window.location.hash.substr(1);
+
+        $.each(hashUrl.split(":"), function (_i, pair) {
+          var kv = pair.split("=");
+          if (kv.length == 2) {
+            state[kv[0]] = decodeURIComponent(kv[1]);
+          }
+        });
+      }
+
+      // entry-point
+      parseUrlToState();
+      console.log(state);
+
+      // pre-process records
+      $.each(report.records, function(_i, record) {
+        if (record.status) {
+          record["is_status_ok"] = record.status == "ok";
+          record["is_status_lost"] = record.status == "lost";
+          record["is_status_interrupted"] = record.status == "interrupted";
+          record["is_status_error"] = record.status == "error";
+        }
+      });
+
+      // auto-select filters with 1 option
+      $.each(fields, function(_i, field) {
+        var values = getFieldValues(field, report.records);
+        if (values.length == 1) {
+          state[field] = values[0];
+        }
+      });
+
+      update();
+
+      $(window).on('hashchange', function() {
+        parseUrlToState();
+        update()
+      });
+
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+
+<div class="container" id="container">
+  <div class="row text-center">
+    <h1>Shaker | The Report</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <label for="scenario_selector" title="Scenario name">Scenario</label>
+      <select id="scenario_selector" class="form-control" data-placeholder="- Any scenario -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="test_selector" title="Test name">Test Case</label>
+      <select id="test_selector" class="form-control" data-placeholder="- Any test case -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="concurrency_selector" title="Concurrency">Concurrency</label>
+      <select id="concurrency_selector" class="form-control" data-placeholder="- Any concurrency -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="node_selector" title="Host / Compute node">Host</label>
+      <select id="node_selector" class="form-control" data-placeholder="- Any node -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="agent_selector" title="Agent">Agent</label>
+      <select id="agent_selector" class="form-control" data-placeholder="- Any agent -"></select>
+    </div>
+  </div>
+
+  <div id="content_area" class="row">
+    <!-- Container for the screen content -->
+  </div>
+
+  <div id="footer" class="row">&nbsp;</div>
+</div>
+
+<!-- TEMPLATES --------------------------------------------------------------->
+
+<!-- Scenario File -->
+<script id="scenario_source_template" type="text/x-handlebars-template">
+  <h3>Scenario</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Test Specification -->
+<script id="test_specification_template" type="text/x-handlebars-template">
+  <h3>Test Specification</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Executor Result -->
+<script id="executor_template" type="text/x-handlebars-template">
+  <h3>Execution Summary</h3>
+  {{#with record}}
+  <div id="{{ chart_id }}"></div>
+  {{#if is_status_ok}}<span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>success</span>{{/if}}
+  {{#if is_status_lost}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>lost</span>{{/if}}
+  {{#if is_status_interrupted}}<span class="label label-warning"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>interrupted</span>{{/if}}
+  {{#if is_status_error}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>error</span>{{/if}}
+  {{#if stats_yaml}}
+    <h4>Stats</h4>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{#if time_info}}
+    <h4>Time Info</h4>
+    <pre>{{ time_info }}</pre>
+  {{/if}}
+  <h4>Command</h4>
+  <pre>{{ command_yaml }}</pre>
+  {{#if stdout}}
+    <h4>Stdout</h4>
+    <pre>{{ stdout }}</pre>
+  {{/if}}
+  {{#if verbose}}
+    <h4>Verbose Info</h4>
+    <pre>{{ verbose }}</pre>
+  {{/if}}
+  {{#if stderr}}
+    <h4>Stderr</h4>
+    <pre>{{ stderr }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Concurrency summary -->
+<script id="concurrency_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id  }}"></div>
+  <h3>Per-node chart</h3>
+  <div id="{{ node_chart_id  }}"></div>
+  <h3>Stats</h3>
+  <pre>{{ stats_yaml }}</pre>
+  {{/with}}
+</script>
+
+<!-- Test summary -->
+<script id="test_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id   }}"></div>
+  {{#if stats_yaml}}
+    <h3>Stats</h3>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Records Table -->
+<script id="records_table_template" type="text/x-handlebars-template">
+  <h3>Records</h3>
+  <table class="table table-striped" id="{{ table_id  }}">
+    <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Test Case</th>
+      <th>Concurrency</th>
+      <th>Host / Compute Node</th>
+      <th>Agent</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td><a href="{{ scenario_url }}">{{ scenario }}</a></td>
+      <td><a href="{{ test_url }}">{{ test }}</a></td>
+      <td><a href="{{ concurrency_url }}">{{ concurrency }}</a></td>
+      <td><a href="{{ node_url }}">{{ node }}</a></td>
+      <td><a href="{{ agent_url }}">{{ agent }}</a></td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="label label-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            success
+          </span>
+        {{/if}}
+        {{#if is_status_lost }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            lost
+          </span>
+        {{/if}}
+        {{#if is_status_interrupted }}
+          <span class="label label-warning">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            interrupted
+          </span>
+        {{/if}}
+        {{#if is_status_error }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            error
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Agents List -->
+<script id="agents_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{ table_id }}">
+    <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Mode</th>
+      <th>IP</th>
+      <th>Node</th>
+      <th>AZ</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#agents}}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ mode }}</td>
+      <td>{{ ip }}</td>
+      <td>{{ node }}</td>
+      <td>{{ zone }}</td>
+    </tr>
+    {{/agents}}
+    </tbody>
+  </table>
+</script>
+
+<!-- SLA List -->
+<script id="sla_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{  table_id }}">
+    <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td>{{ sla }}</td>
+      <td>{{ location }}</td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="text-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{else}}
+          <span class="text-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Errors -->
+<script id="errors_template" type="text/x-handlebars-template">
+  <h3>Errors</h3>
+  <div class="text-danger">
+    <ul>
+    {{#records}}
+      <li>{{ info }}<br/>{{ stderr }}{{ traceback }}</li>
+    {{/records}}
+    </ul>
+  </div>
+</script>
+
+</body>
+</html>

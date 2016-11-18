@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+  <title>Shaker | The distributed data-plane testing tool for OpenStack</title>
+
+  <!-- LIBS -->
+
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js"></script>
+  <script type="text/javascript"
+          src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.2.7/js-yaml.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="application/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+
+  <!-- STYLES -->
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/simplex/bootstrap.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <link rel=stylesheet type=text/css
+        href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
+  <link rel='stylesheet' type='text/css'
+        href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic'>
+
+  <script type="application/javascript">
+    var report = {"scenarios": {"OpenStack L3 North-South": {"file_name": "shaker/shaker/scenarios/openstack/full_l3_north_south.yaml", "title": "OpenStack L3 North-South", "execution": {"tests": [{"title": "Download", "method": "tcp_download", "class": "flent"}, {"title": "Upload", "method": "tcp_upload", "class": "flent"}, {"title": "Bi-directional", "method": "tcp_bidirectional", "class": "flent"}], "progression": "quadratic"}, "description": "In this scenario Shaker launches pairs of instances on different compute nodes. All available compute nodes are utilized. Instances are in different networks connected to different routers, master accesses slave by floating ip. The traffic goes from one network via external network to the other network.", "deployment": {"accommodation": ["pair", "single_room"], "template": "l3_north_south.hot"}}}, "records": {"9d649881-a80f-48d2-9a49-62ffb7645175": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471434958.487478, "stats": {"ping_icmp": {"max": 1.61, "avg": 0.5069698546506779, "unit": "ms", "min": 0.30328805605535736}, "tcp_download": {"max": 7585.757084798813, "avg": 7213.534691451337, "unit": "Mbits/s", "min": 6555.52}}, "stderr": "", "scenario": "OpenStack L3 North-South", "concurrency": 1, "schedule": 1471434888.038447, "agent": "shaker_mtofrs_master_0", "start": 1471434888.049962, "meta": [["time", "s"], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"]], "command": {"data": "zcat `flent -H 172.20.156.201 -l 60 -s 1 tcp_download 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.61, null], [1.0, 0.9265672048473184, null], [2.0, 0.5020827533149814, null], [3.0, 0.636401753719026, null], [4.0, 0.9069664103611408, null], [5.0, 0.8780312785834027, null], [6.0, 0.4322476774159383, 6555.52], [7.0, 0.4410098747123644, 7125.693621406555], [8.0, 0.4640281652654785, 7112.457921888828], [9.0, 0.4840321654937888, 7091.928509500027], [10.0, 0.5029491541305876, 7131.130044531822], [11.0, 0.47197952950281197, 7126.729769275188], [12.0, 0.4603020455917156, 7216.3024532938], [13.0, 0.6379838174732069, 7310.698940313893], [14.0, 0.653899362377708, 7300.069384872913], [15.0, 0.5418229794003887, 7307.430410084725], [16.0, 0.434180743927409, 7313.716672296524], [17.0, 0.536968860791243, 7251.303170895577], [18.0, 0.517889514760709, 7313.725183947086], [19.0, 0.45086520207028546, 7282.906213960648], [20.0, 0.37319774706940945, 7218.592245795727], [21.0, 0.482697728456392, 7302.241880369186], [22.0, 0.30328805605535736, 7184.530413677692], [23.0, 0.4558694168973375, 7247.858762526512], [24.0, 0.38, 7325.427967691422], [25.0, 0.38024904847882957, 7568.256640985012], [26.0, 0.5191227501320139, 7500.886339390278], [27.0, 0.5926491589629733, 7545.60943554163], [28.0, 0.3711702200699881, 7585.757084798813], [29.0, 0.46486801383778775, 7404.617564792633], [30.0, 0.388480734165376, 7354.412205790689], [31.0, 0.6576354952347612, 7243.4224875926975], [32.0, 0.4160157412544414, 7264.074459881783], [33.0, 0.4252315584447749, 7199.103242835999], [34.0, 0.5579357615451448, 7246.605870428085], [35.0, 0.4459528192881167, 7210.2924175596245], [36.0, 0.4178805241475735, 7152.386065540314], [37.0, 0.3500578823118784, 6968.445178289413], [38.0, 0.38207636484575974, 7043.923531441688], [39.0, 0.4249406358715439, 7012.17460313797], [40.0, 0.3910980533095883, 6988.896451444626], [41.0, 0.44612577442180756, 7082.922273755074], [42.0, 0.5188558292411632, 7140.866015810966], [43.0, 0.43210051262147403, 7144.777483563424], [44.0, 0.4899293518663782, 7153.405380296707], [45.0, 0.44825377529137705, 7154.235080442429], [46.0, 0.5958774558976235, 7116.549229254723], [47.0, 0.517983410768028, 7150.006125388146], [48.0, 0.5079451210222428, 7098.4407551367185], [49.0, 0.474910908568085, 7090.624729824066], [50.0, 0.42212963010201343, 7077.079302845001], [51.0, 0.4959114265195167, 7049.968824901582], [52.0, 0.4429389590724783, 7033.043123836517], [53.0, 0.4079965180827711, 7033.704227428437], [54.0, 0.40595961139001957, 7162.819644737244], [55.0, 0.3832319027179983, 7244.287324962616], [56.0, 0.5117686747332693, 7285.352091464996], [57.0, 0.3741072692473844, 7211.664594631195], [58.0, 0.4339930276455143, 7188.05302734454], [59.0, 0.42997376434449486, 7193.929161281585], [60.0, 0.4152399802804787, 7261.772134838105], [61.0, 0.5518942436763412, 7308.384306912422], [62.0, 0.48692368396518726, 7324.250328040123], [63.0, 0.4408821200898549, 7452.685242910386], [64.0, 0.37302578248924156, 7369.46609331131], [65.0, 0.4461363408395786, 7345.152529834038], [66.0, 0.552896606590059, 7345.05], [67.0, 0.48631035887427304, null], [68.0, 0.6759614144082178, null], [69.0, 0.648000166662024, null]], "executor": "flent", "test": "Download", "type": "agent", "id": "9d649881-a80f-48d2-9a49-62ffb7645175"}, "6092a4f3-d807-4232-8a41-80354256330c": {"stats": {"ping_icmp": {"max": 1.61, "avg": 0.5069698546506779, "unit": "ms", "min": 0.30328805605535736}, "tcp_download": {"max": 7585.757084798813, "avg": 7213.534691451337, "unit": "Mbits/s", "min": 6555.52}}, "scenario": "OpenStack L3 North-South", "concurrency": 1, "test": "Download", "type": "concurrency", "id": "6092a4f3-d807-4232-8a41-80354256330c", "node_chart": [["x", "node-2.domain.tld"], ["Avg ping_icmp, ms", 0.5069698546506779], ["Max ping_icmp, ms", 1.61], ["Min ping_icmp, ms", 0.30328805605535736], ["Avg tcp_download, Mbits/s", 7213.534691451337], ["Max tcp_download, Mbits/s", 7585.757084798813], ["Min tcp_download, Mbits/s", 6555.52]]}, "a7d1a47b-a1ff-4d81-8030-8268bc0193ec": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471435139.367945, "stats": {"ping_icmp": {"max": 2.320907802613565, "avg": 1.0169256335413552, "unit": "ms", "min": 0.4923878254641011}, "tcp_download": {"max": 7135.676774215698, "avg": 5318.280595180078, "unit": "Mbits/s", "min": 2196.767831286848}, "tcp_upload": {"max": 4436.723532352447, "avg": 3082.9025443212604, "unit": "Mbits/s", "min": 1983.7457038950977}}, "stderr": "", "scenario": "OpenStack L3 North-South", "concurrency": 1, "schedule": 1471435068.95442, "agent": "shaker_mtofrs_master_0", "start": 1471435068.965417, "meta": [["time", "s"], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"], ["tcp_upload", "Mbits/s"]], "command": {"data": "zcat `flent -H 172.20.156.201 -l 60 -s 1 tcp_bidirectional 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.42, null, null], [1.0, 0.851439470585909, null, null], [2.0, 0.8050184499220833, null, null], [3.0, 0.8689668768011398, null, null], [4.0, 0.8421736209401816, null, null], [5.0, 0.9322160936979875, null, null], [6.0, 0.5050131162595559, 2475.98, 3722.19], [7.0, 0.5294212221794186, 2314.3115452361108, 3973.0336272215845], [8.0, 0.8056890038068222, 2253.9238137352927, 3926.8395447087287], [9.0, 0.6515413017932015, 2224.382422218323, 3939.526575144254], [10.0, 0.8989998793719634, 2259.3140415120124, 4014.384635617309], [11.0, 1.4099401875278224, 2418.607453854084, 4168.277394897557], [12.0, 0.6046435073778389, 2311.3546867036816, 4184.567948842658], [13.0, 0.7560041355188357, 2348.767754570801, 4276.590060620308], [14.0, 0.9153434827677109, 2261.897505514622, 4329.162476190294], [15.0, 1.3101637165761784, 2213.8089171648026, 4436.723532352447], [16.0, 1.4199617802684328, 2196.767831286848, 4388.533639900832], [17.0, 0.9516975096264928, 2365.1603819465636, 4396.649564722908], [18.0, 0.9250642625015602, 2713.3020941448212, 4335.294709703327], [19.0, 1.219301373746709, 3044.1476402465833, 3949.1140591254302], [20.0, 1.1004250192594145, 3842.419390130043, 3642.7727440878275], [21.0, 0.8213548133318348, 5878.016023635864, 3319.315516653061], [22.0, 0.7622194672489646, 6485.734778995515, 3078.6937193775175], [23.0, 0.6981746530452871, 7002.682635154724, 2876.906111187782], [24.0, 0.9644280186552476, 6908.686844414359, 2315.8740027958916], [25.0, 1.2589609968008033, 7094.6960627746585, 2309.5586660695076], [26.0, 1.528527551566011, 7135.676774215698, 2413.71014788137], [27.0, 1.122568990358502, 7111.850853404999, 2843.4602810195456], [28.0, 1.5168538304160037, 6919.6428769493095, 2277.8593713991595], [29.0, 1.9856296666109565, 6660.747906875611, 2379.866255955117], [30.0, 1.118367177695116, 6853.681969604492, 2081.1687160697193], [31.0, 0.6915123441046426, 6979.632131843567, 2407.3331374176364], [32.0, 1.214474715923658, 6652.195544929504, 2494.116481959386], [33.0, 1.7238105711984677, 6486.823326500733, 2831.1844191360474], [34.0, 1.7497205958191944, 6203.294599182605, 2351.2289272804333], [35.0, 2.320907802613565, 5988.995651311874, 2435.0938818359373], [36.0, 1.005219573028736, 6258.557445800304, 3105.6963720703125], [37.0, 1.1275818555009383, 6870.0713480963905, 2777.1042236328126], [38.0, 0.7458023852913781, 6813.828203902244, 2714.008553863787], [39.0, 0.8244033470991505, 5020.652710018158, 2938.4499981059757], [40.0, 1.0946394193664686, 5141.935823624134, 2895.4187995578072], [41.0, 0.8002504884592132, 5206.767032045746, 3040.59293840321], [42.0, 0.7224160312986521, 5412.963657412529, 3208.037558209896], [43.0, 0.9437700547990768, 5100.824951381683, 3065.1246291056714], [44.0, 1.0186916010457994, 4838.729722697734, 2970.9325578260423], [45.0, 0.8287215997263617, 5352.266037499904, 2624.918279294167], [46.0, 1.0360612683451538, 5893.3145376610755, 3137.102356315912], [47.0, 0.8527366914550101, 5325.913129209541, 3074.461266842776], [48.0, 1.368844462389885, 5219.1894830513, 3013.437522902828], [49.0, 0.9692528790248649, 4924.827535684109, 2968.064397091198], [50.0, 0.69712836321628, 5439.802377493382, 3396.680349539288], [51.0, 0.9374256766187279, 5724.821196379661, 3357.305075302124], [52.0, 1.4580694594235228, 5934.003356750011, 3337.75743306596], [53.0, 1.0502109140011575, 6038.521872737408, 3169.2652161884307], [54.0, 1.2739765200223618, 6244.231999604703, 2877.23662858003], [55.0, 0.63311651967973, 6933.7049455976485, 2682.0068550681694], [56.0, 0.7026866582998721, 6981.363777938259, 2101.4407697588185], [57.0, 0.9328672757740375, 6730.9630568599705, 1983.7457038950977], [58.0, 1.0177916526746738, 6717.077838627051, 2017.9658547771132], [59.0, 0.9412310502537787, 6501.44804728508, 2035.6845845704822], [60.0, 0.8659903218138312, 6178.029076733589, 2472.937232560311], [61.0, 1.2008683402816922, 6827.825607175828, 2876.10260173219], [62.0, 1.25861414217123, 6867.061647577286, 2870.105867888945], [63.0, 0.9655799248843384, 6940.496275877953, 2919.8288215823245], [64.0, 1.3868248212665966, 6878.512355895043, 2964.1851057696344], [65.0, 0.4923878254641011, 6247.897797309029, 2682.37750092197], [66.0, 0.9295241945195543, 6243.01, 2680.05], [67.0, 0.7657128676858536, null, null], [68.0, 0.5718013841674597, null, null], [69.0, 0.5640595729278732, null, null]], "executor": "flent", "test": "Bi-directional", "type": "agent", "id": "a7d1a47b-a1ff-4d81-8030-8268bc0193ec"}, "d77b542f-16f6-4948-9e79-44012a94255d": {"stats": {"ping_icmp": {"max": 2.320907802613565, "avg": 1.0169256335413552, "unit": "ms", "min": 0.4923878254641011}, "tcp_download": {"max": 7135.676774215698, "avg": 5318.280595180078, "unit": "Mbits/s", "min": 2196.767831286848}, "tcp_upload": {"max": 4436.723532352447, "avg": 3082.9025443212604, "unit": "Mbits/s", "min": 1983.7457038950977}}, "scenario": "OpenStack L3 North-South", "concurrency": 1, "test": "Bi-directional", "type": "concurrency", "id": "d77b542f-16f6-4948-9e79-44012a94255d", "node_chart": [["x", "node-2.domain.tld"], ["Avg ping_icmp, ms", 1.0169256335413552], ["Max ping_icmp, ms", 2.320907802613565], ["Min ping_icmp, ms", 0.4923878254641011], ["Avg tcp_download, Mbits/s", 5318.280595180078], ["Max tcp_download, Mbits/s", 7135.676774215698], ["Min tcp_download, Mbits/s", 2196.767831286848], ["Avg tcp_upload, Mbits/s", 3082.9025443212604], ["Max tcp_upload, Mbits/s", 4436.723532352447], ["Min tcp_upload, Mbits/s", 1983.7457038950977]]}, "99c6984a-0cdb-4afc-b609-277bbdc6f45f": {"meta": [["concurrency", ""], ["ping_icmp", "ms"], ["tcp_upload", "Mbits/s"]], "scenario": "OpenStack L3 North-South", "test": "Upload", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 1.270656565768487], ["tcp_upload", 6776.116725629643]], "id": "99c6984a-0cdb-4afc-b609-277bbdc6f45f"}, "3730e31a-4f20-4135-9236-7df58bf0108f": {"stats": {"ping_icmp": {"max": 2.743011713822653, "avg": 1.270656565768487, "unit": "ms", "min": 0.6290442201327434}, "tcp_upload": {"max": 7281.886613807678, "avg": 6776.116725629643, "unit": "Mbits/s", "min": 6275.93}}, "scenario": "OpenStack L3 North-South", "concurrency": 1, "test": "Upload", "type": "concurrency", "id": "3730e31a-4f20-4135-9236-7df58bf0108f", "node_chart": [["x", "node-2.domain.tld"], ["Avg ping_icmp, ms", 1.270656565768487], ["Max ping_icmp, ms", 2.743011713822653], ["Min ping_icmp, ms", 0.6290442201327434], ["Avg tcp_upload, Mbits/s", 6776.116725629643], ["Max tcp_upload, Mbits/s", 7281.886613807678], ["Min tcp_upload, Mbits/s", 6275.93]]}, "9896623d-56fb-40f0-9bcf-23f71474eb1d": {"status": "ok", "node": "node-2.domain.tld", "finish": 1471435048.945219, "stats": {"ping_icmp": {"max": 2.743011713822653, "avg": 1.270656565768487, "unit": "ms", "min": 0.6290442201327434}, "tcp_upload": {"max": 7281.886613807678, "avg": 6776.116725629643, "unit": "Mbits/s", "min": 6275.93}}, "stderr": "", "scenario": "OpenStack L3 North-South", "concurrency": 1, "schedule": 1471434978.541825, "agent": "shaker_mtofrs_master_0", "start": 1471434978.552813, "meta": [["time", "s"], ["ping_icmp", "ms"], ["tcp_upload", "Mbits/s"]], "command": {"data": "zcat `flent -H 172.20.156.201 -l 60 -s 1 tcp_upload 2>&1 | grep \"se with\" | grep -Po '\\./\\S+'`", "type": "script"}, "samples": [[0.0, 1.31, null], [1.0, 0.769518407213159, null], [2.0, 0.6839997630330059, null], [3.0, 0.6770003854885609, null], [4.0, 0.8029756703583867, null], [5.0, 0.6290442201327434, null], [6.0, 0.8117011939727092, 6275.93], [7.0, 0.9668762083930177, 6594.521671855449], [8.0, 1.4588387510438359, 6479.941753089428], [9.0, 0.8996524886286981, 6476.876219936272], [10.0, 1.4785117837376287, 6543.1667428027695], [11.0, 0.8998786490104789, 6497.914002914429], [12.0, 0.7884476683246622, 6446.440134735107], [13.0, 1.5562593240500013, 6522.993606070552], [14.0, 0.8543914798354898, 6660.151036732414], [15.0, 1.2481972060398914, 6771.624964794553], [16.0, 1.419049517080218, 6876.904739643067], [17.0, 0.8109620494330463, 6954.107994328449], [18.0, 1.257310459058315, 7073.353312950134], [19.0, 1.0713399008865627, 6710.365832605362], [20.0, 0.7275847072385048, 6741.023184162527], [21.0, 1.235059748709729, 6727.588263779095], [22.0, 1.665110999993574, 7024.185366105839], [23.0, 0.8549950135596394, 7078.9576439738275], [24.0, 1.6296723536780842, 6994.488310198075], [25.0, 1.009033084982621, 7094.420712456703], [26.0, 1.6100119755121836, 7145.62921132803], [27.0, 1.8657165426234288, 7033.469635577202], [28.0, 1.0649663944276337, 6843.447213528156], [29.0, 1.2264713571428572, 6668.86512316227], [30.0, 0.7627816623261666, 6740.611233017141], [31.0, 0.7667190154085124, 7046.403436205387], [32.0, 1.6217140003468238, 6941.90732104063], [33.0, 0.8658264819439124, 6692.107326049143], [34.0, 0.9263922417125898, 6383.58250928402], [35.0, 0.9985406803144755, 6430.687178536995], [36.0, 0.9109690468101256, 6399.181917748451], [37.0, 1.2917631807342278, 6440.882076210975], [38.0, 0.7168846310744942, 6359.090665523559], [39.0, 0.8900426499064036, 6298.670026178409], [40.0, 0.8195289089344824, 6391.049299602509], [41.0, 0.7964709431744776, 6360.148299296558], [42.0, 1.015352100793822, 6504.376724190712], [43.0, 0.8350921756624332, 6576.145623406275], [44.0, 0.7781128532998038, 6519.838068978786], [45.0, 1.0640397447332148, 6652.386930407748], [46.0, 0.7902497466554593, 6554.428349242991], [47.0, 0.8584060714143382, 6582.760454514924], [48.0, 0.9971569399313855, 6729.618447957039], [49.0, 1.6845748486234622, 6822.9757938241955], [50.0, 1.6511888288643364, 6841.509177799018], [51.0, 1.8644775643193008, 7167.49255152676], [52.0, 2.171525190042162, 7132.196242251396], [53.0, 2.743011713822653, 7187.799137258134], [54.0, 2.4886350979572045, 7191.457944689275], [55.0, 2.2961235688209936, 7217.224950757026], [56.0, 1.4874961195881475, 6865.698839370651], [57.0, 2.511090127532725, 6883.225133507269], [58.0, 2.646254940158775, 6879.212822908854], [59.0, 2.486632582302967, 6926.363718634617], [60.0, 2.6334715675508953, 6991.621169663532], [61.0, 2.3142321012659672, 7179.510294824412], [62.0, 1.706413187305384, 6997.186547775268], [63.0, 1.6417699276811113, 7281.886613807678], [64.0, 1.802162638111604, 7017.465797378015], [65.0, 0.6290548600462589, 6960.160963310002], [66.0, 0.7775466437997713, 6959.89], [67.0, 0.8308300561747523, null], [68.0, 0.833951781884679, null], [69.0, 0.7568958791751197, null]], "executor": "flent", "test": "Upload", "type": "agent", "id": "9896623d-56fb-40f0-9bcf-23f71474eb1d"}, "1eb61efd-e6a5-478a-acac-09c1d5d226c2": {"meta": [["concurrency", ""], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"]], "scenario": "OpenStack L3 North-South", "test": "Download", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 0.5069698546506779], ["tcp_download", 7213.534691451337]], "id": "1eb61efd-e6a5-478a-acac-09c1d5d226c2"}, "e9f37950-37d8-4b12-b1a4-c1a7bc454a0e": {"meta": [["concurrency", ""], ["ping_icmp", "ms"], ["tcp_download", "Mbits/s"], ["tcp_upload", "Mbits/s"]], "scenario": "OpenStack L3 North-South", "test": "Bi-directional", "type": "test", "chart": [["concurrency", 1], ["ping_icmp", 1.0169256335413552], ["tcp_download", 5318.280595180078], ["tcp_upload", 3082.9025443212604]], "id": "e9f37950-37d8-4b12-b1a4-c1a7bc454a0e"}}, "tests": {"Download": {"class": "flent", "method": "tcp_download", "title": "Download"}, "Bi-directional": {"class": "flent", "method": "tcp_bidirectional", "title": "Bi-directional"}, "Upload": {"class": "flent", "method": "tcp_upload", "title": "Upload"}}, "agents": {"shaker_mtofrs_slave_0": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "172.20.156.201", "master": {"node": "node-2.domain.tld", "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.5", "mode": "master", "slave_id": "shaker_mtofrs_slave_0", "id": "shaker_mtofrs_master_0"}, "mode": "slave", "master_id": "shaker_mtofrs_master_0", "id": "shaker_mtofrs_slave_0"}, "shaker_mtofrs_master_0": {"node": "node-2.domain.tld", "slave": {"node": "node-5.domain.tld", "zone": "nova", "availability_zone": "nova:node-5.domain.tld", "ip": "172.20.156.201", "mode": "slave", "master_id": "shaker_mtofrs_master_0", "id": "shaker_mtofrs_slave_0"}, "zone": "nova", "availability_zone": "nova:node-2.domain.tld", "ip": "10.1.0.5", "mode": "master", "slave_id": "shaker_mtofrs_slave_0", "id": "shaker_mtofrs_master_0"}}, "sla": []};
+  </script>
+
+  <script type="text/javascript">
+    "use strict";
+
+    $(function () {
+
+      var fields = ["scenario", "test", "concurrency", "node", "agent"];
+      var state = {
+        scenario: "",
+        test: "",
+        concurrency: "",
+        node: "",
+        agent: ""
+      };
+      var tablePageSize = 10;
+
+      // compiled templates
+      var scenario_source_template = Handlebars.compile($("#scenario_source_template").html());
+      var test_specification_template = Handlebars.compile($("#test_specification_template").html());
+      var agents_table_template = Handlebars.compile($("#agents_table_template").html());
+      var records_table_template = Handlebars.compile($("#records_table_template").html());
+      var executor_template = Handlebars.compile($("#executor_template").html());
+      var concurrency_summary_template = Handlebars.compile($("#concurrency_summary_template").html());
+      var test_summary_template = Handlebars.compile($("#test_summary_template").html());
+      var sla_table_template = Handlebars.compile($("#sla_table_template").html());
+      var errors_template = Handlebars.compile($("#errors_template").html());
+
+      function concatenate(strings) {
+        // returns strings concatenated via comma (like join() but omits empty strings)
+        var f = false;
+        var result = "";
+        $.each(strings, function (_i, string) {
+          if (string.length > 0) {
+            if (f) result += ", ";
+            result += string;
+            f = true;
+          }
+        });
+        return result;
+      }
+
+      function initSingleSelector(name, values) {
+        var selectorId = "#" + name + "_selector";
+
+        var selector_inst = $(selectorId);
+        selector_inst.empty();
+        selector_inst.append($("<option>", {
+          style: "font-style: italic; text-decoration: underline;",
+          value: "",
+          text: selector_inst.data('placeholder')
+        }));
+
+        $.each(values, function (key, item) {
+          selector_inst.append($('<option>', {
+            value: item, //(key + 1),
+            text: item
+          }));
+        });
+
+        selector_inst.val(state[name]);
+
+        selector_inst.
+            on("change", function (e) {
+              state[name] = this.value;
+
+              // convert state -> url
+              var tokens = [];
+              $.each(fields.sort(), function (i, field) {
+                if (state[field] != "") {
+                  tokens.push(field + "=" + state[field]);
+                }
+              });
+              window.location.href = "#" + tokens.join(":");
+            });
+      }
+
+      function getFieldValues(field, records) {
+        var values_set = {};
+
+        $.each(records, function (j, record) {
+          if (record[field]) {
+            values_set["" + record[field]] = true;
+          }
+        });
+
+        return $.map(values_set, function (_i, value) {
+          return value;
+        }).sort();
+      }
+
+      function updateSelectors() {
+        $.each(fields, function (i, field) {
+          var values = getFieldValues(field, filterRecords(report.records, null, field));
+          console.log(values);
+          initSingleSelector(field, values);
+        });
+      }
+
+      function filterRecords(records, type, except_field) {
+        var res = [];
+        $.each(records, function(_i, record){
+          if (!type || typeof type === 'undefined' || record.type == type) {
+            var flag = true;
+            $.each(state, function (key, value) {
+              if (key != except_field && value) {
+                flag &= record[key] == value;
+              }
+            });
+            if (flag) {
+              res.push(record);
+            }
+          }
+        });
+        return res;
+      }
+
+      function getAgentsByIds(agent_ids) {
+        var agents = [];
+        $.each(agent_ids, function(agent_id){
+          agents.push(report.agents[agent_id]);
+        });
+        return agents;
+      }
+
+      /* Template Rendering Funcs */
+
+      function showScenarioSource(contentArea, scenario) {
+        contentArea.append(scenario_source_template(
+            {data: jsyaml.safeDump(scenario)}));
+      }
+
+      function showTestSpecification(contentArea, test) {
+        contentArea.append(test_specification_template(
+            {data: jsyaml.safeDump(test)}
+        ))
+      }
+
+      function showAgentRecord(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = {
+          command_yaml: jsyaml.safeDump(record["command"]),
+          chart_id: chart_id};
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        if ((record["start"]) && (record["finish"])) {
+          ext_options["time_info"] = jsyaml.safeDump({
+            "start": new Date(record["start"] * 1000).toISOString(),
+            "finish": new Date(record["finish"] * 1000).toISOString()
+          });
+        }
+        contentArea.append(executor_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["samples"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          var chart = [];
+          $.each(meta, function(_i, meta_item){  // row titles
+            chart.push([meta_item[0]]);
+          });
+          var samples = record["samples"];
+          for (var i=0; i < samples.length; i++) {
+            var point = samples[i];
+            for (var j=0; j < point.length; j++) {
+              chart[j].push(point[j]);
+            }
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'time',
+              columns: chart,
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showConcurrencySummary(contentArea, record) {
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var node_chart_id = "node_chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id, node_chart_id: node_chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        console.log(record);
+        contentArea.append(concurrency_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["node_chart"]) {
+          c3.generate({
+            bindto: "#" + node_chart_id,
+            data: {
+              x: 'x',
+              columns: record["node_chart"],
+              type: 'step',
+              order: null
+            },
+            axis: {
+              x: { type: 'category' }
+            }
+          });
+        }
+      }
+
+      function showTestSummary(contentArea, record) {
+        console.log(record);
+        var chart_id = "chart_" + Math.round(Math.random() * 10000);
+        var ext_options = { chart_id: chart_id };
+        if (record["stats"]) {
+          ext_options["stats_yaml"] = jsyaml.safeDump(record["stats"]);
+        }
+        contentArea.append(test_summary_template(
+            {record: $.extend({}, record, ext_options)}
+        ));
+        if (record["chart"]) {
+          var meta = record["meta"];
+          var axes = [];
+          axes[meta[1][0]] = 'y';
+          var axis = {
+            x: {label: concatenate(meta[0])},
+            y: {label: concatenate(meta[1]), min: 0}
+          };
+          if (meta.length > 2) {
+            axes[meta[2][0]] = 'y2';
+            axis['y2'] = {label: concatenate(meta[2]), min: 0, show: true}
+          }
+
+          c3.generate({
+            bindto: "#" + chart_id,
+            data: {
+              x: 'concurrency',
+              columns: record["chart"],
+              axes: axes
+            },
+            axis: axis
+          });
+        }
+      }
+
+      function showAgentsTable(contentArea, filteredRecords) {
+        var agent_ids = {};
+        $.each(filteredRecords, function(_i, record){
+          if (record.agent) {
+            agent_ids[record.agent] = true;
+          }
+        });
+
+        var agents = getAgentsByIds(agent_ids);
+        if (agents.length == 0) return;
+
+        // add slave agents
+        var slave_agent_ids = {};
+        $.each(agents, function(_i, agent){
+          if (agent.slave_id) {
+            slave_agent_ids[agent.slave_id] = true;
+          }
+        });
+        agents = $.merge(agents, getAgentsByIds(slave_agent_ids));
+
+        contentArea.append(agents_table_template({
+          agents: agents,
+          table_id: "agents_table"
+        }));
+        $("#agents_table").dataTable({
+          "autoWidth": true,
+          "paging": false,
+          "ordering": true,
+          "info": false
+        });
+      }
+
+      function makeURL(record, s) {
+        var extra = {};
+        extra[s] = record[s];
+        return "#" + $.map($.extend({}, state, extra), function (val, index) {
+          return val? (index + "=" + val) : null;
+        }).join(":")
+      }
+
+      function showRecordsTable(contentArea, filteredRecords) {
+        $.each(filteredRecords, function(_i, record) {
+          $.each(fields, function(_j, field){
+            if (record[field]) {
+              record[field + "_url"] = makeURL(record, field);
+            }
+          });
+        });
+
+        contentArea.append(records_table_template({
+          records: filteredRecords,
+          table_id: "records_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: filteredRecords.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: filteredRecords.length > tablePageSize
+        });
+      }
+
+      function showSlaTable(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(sla_table_template({
+          records: records,
+          table_id: "sla_table"
+        }));
+        $("#records_table").dataTable({
+          autoWidth: true,
+          paging: records.length > tablePageSize,
+          ordering: true,
+          info: false,
+          searching: records.length > tablePageSize
+        });
+      }
+
+      function showErrors(contentArea, records) {
+        if (records.length == 0) return;
+
+        contentArea.append(errors_template({
+          records: records,
+          table_id: "errors_list"
+        }));
+      }
+
+      /* Update cycle */
+
+      function update() {
+        var filteredRecords = filterRecords(report.records);
+        console.log(filteredRecords);
+        var slaRecords = [];
+        var errorRecords = [];
+        $.each(filterRecords(report.records), function(_i, record) {
+          if (record["sla_info"]) {
+            slaRecords.push(record);
+          }
+          if (record["is_status_error"]) {
+            errorRecords.push(record);
+          }
+        });
+
+        var contentArea = $("#content_area");
+        contentArea.empty();
+
+        updateSelectors();
+
+        showRecordsTable(contentArea, filteredRecords);
+        showSlaTable(contentArea, slaRecords);
+        showErrors(contentArea, errorRecords);
+
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" &&
+                state["agent"] != "") {
+          showAgentRecord(contentArea, filteredRecords[0]);
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] != "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var agg_recs = filterRecords(report.records, "concurrency");
+          if (agg_recs.length > 0) {
+            showConcurrencySummary(contentArea, agg_recs[0]);
+          }
+        }
+        if (state["scenario"] != "" && state["test"] != "" &&
+                state["concurrency"] == "" && state["node"] == "" &&
+                state["agent"] == "") {
+          var test_recs = filterRecords(report.records, "test");
+          if (test_recs.length > 0) {
+            showTestSummary(contentArea, test_recs[0]);
+          }
+        }
+        if (state["test"] != "") {
+          showTestSpecification(contentArea, report.tests[state["test"]]);
+        }
+        if (state["agent"] == "") {
+          showAgentsTable(contentArea, filteredRecords);
+        }
+        if (state["scenario"] != "") {
+          showScenarioSource(contentArea, report.scenarios[state["scenario"]]);
+        }
+      }
+
+      function parseUrlToState() {
+        var hashUrl = window.location.hash.substr(1);
+
+        $.each(hashUrl.split(":"), function (_i, pair) {
+          var kv = pair.split("=");
+          if (kv.length == 2) {
+            state[kv[0]] = decodeURIComponent(kv[1]);
+          }
+        });
+      }
+
+      // entry-point
+      parseUrlToState();
+      console.log(state);
+
+      // pre-process records
+      $.each(report.records, function(_i, record) {
+        if (record.status) {
+          record["is_status_ok"] = record.status == "ok";
+          record["is_status_lost"] = record.status == "lost";
+          record["is_status_interrupted"] = record.status == "interrupted";
+          record["is_status_error"] = record.status == "error";
+        }
+      });
+
+      // auto-select filters with 1 option
+      $.each(fields, function(_i, field) {
+        var values = getFieldValues(field, report.records);
+        if (values.length == 1) {
+          state[field] = values[0];
+        }
+      });
+
+      update();
+
+      $(window).on('hashchange', function() {
+        parseUrlToState();
+        update()
+      });
+
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+
+<div class="container" id="container">
+  <div class="row text-center">
+    <h1>Shaker | The Report</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <label for="scenario_selector" title="Scenario name">Scenario</label>
+      <select id="scenario_selector" class="form-control" data-placeholder="- Any scenario -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="test_selector" title="Test name">Test Case</label>
+      <select id="test_selector" class="form-control" data-placeholder="- Any test case -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="concurrency_selector" title="Concurrency">Concurrency</label>
+      <select id="concurrency_selector" class="form-control" data-placeholder="- Any concurrency -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="node_selector" title="Host / Compute node">Host</label>
+      <select id="node_selector" class="form-control" data-placeholder="- Any node -"></select>
+    </div>
+    <div class="col-md-2">
+      <label for="agent_selector" title="Agent">Agent</label>
+      <select id="agent_selector" class="form-control" data-placeholder="- Any agent -"></select>
+    </div>
+  </div>
+
+  <div id="content_area" class="row">
+    <!-- Container for the screen content -->
+  </div>
+
+  <div id="footer" class="row">&nbsp;</div>
+</div>
+
+<!-- TEMPLATES --------------------------------------------------------------->
+
+<!-- Scenario File -->
+<script id="scenario_source_template" type="text/x-handlebars-template">
+  <h3>Scenario</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Test Specification -->
+<script id="test_specification_template" type="text/x-handlebars-template">
+  <h3>Test Specification</h3>
+  <pre>{{ data }}</pre>
+</script>
+
+<!-- Executor Result -->
+<script id="executor_template" type="text/x-handlebars-template">
+  <h3>Execution Summary</h3>
+  {{#with record}}
+  <div id="{{ chart_id }}"></div>
+  {{#if is_status_ok}}<span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>success</span>{{/if}}
+  {{#if is_status_lost}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>lost</span>{{/if}}
+  {{#if is_status_interrupted}}<span class="label label-warning"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span>interrupted</span>{{/if}}
+  {{#if is_status_error}}<span class="label label-danger"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>error</span>{{/if}}
+  {{#if stats_yaml}}
+    <h4>Stats</h4>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{#if time_info}}
+    <h4>Time Info</h4>
+    <pre>{{ time_info }}</pre>
+  {{/if}}
+  <h4>Command</h4>
+  <pre>{{ command_yaml }}</pre>
+  {{#if stdout}}
+    <h4>Stdout</h4>
+    <pre>{{ stdout }}</pre>
+  {{/if}}
+  {{#if verbose}}
+    <h4>Verbose Info</h4>
+    <pre>{{ verbose }}</pre>
+  {{/if}}
+  {{#if stderr}}
+    <h4>Stderr</h4>
+    <pre>{{ stderr }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Concurrency summary -->
+<script id="concurrency_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id  }}"></div>
+  <h3>Per-node chart</h3>
+  <div id="{{ node_chart_id  }}"></div>
+  <h3>Stats</h3>
+  <pre>{{ stats_yaml }}</pre>
+  {{/with}}
+</script>
+
+<!-- Test summary -->
+<script id="test_summary_template" type="text/x-handlebars-template">
+  {{#with record}}
+  <div id="{{ chart_id   }}"></div>
+  {{#if stats_yaml}}
+    <h3>Stats</h3>
+    <pre>{{ stats_yaml }}</pre>
+  {{/if}}
+  {{/with}}
+</script>
+
+<!-- Records Table -->
+<script id="records_table_template" type="text/x-handlebars-template">
+  <h3>Records</h3>
+  <table class="table table-striped" id="{{ table_id  }}">
+    <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Test Case</th>
+      <th>Concurrency</th>
+      <th>Host / Compute Node</th>
+      <th>Agent</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td><a href="{{ scenario_url }}">{{ scenario }}</a></td>
+      <td><a href="{{ test_url }}">{{ test }}</a></td>
+      <td><a href="{{ concurrency_url }}">{{ concurrency }}</a></td>
+      <td><a href="{{ node_url }}">{{ node }}</a></td>
+      <td><a href="{{ agent_url }}">{{ agent }}</a></td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="label label-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            success
+          </span>
+        {{/if}}
+        {{#if is_status_lost }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            lost
+          </span>
+        {{/if}}
+        {{#if is_status_interrupted }}
+          <span class="label label-warning">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            interrupted
+          </span>
+        {{/if}}
+        {{#if is_status_error }}
+          <span class="label label-danger">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+            error
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Agents List -->
+<script id="agents_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{ table_id }}">
+    <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Mode</th>
+      <th>IP</th>
+      <th>Node</th>
+      <th>AZ</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#agents}}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ mode }}</td>
+      <td>{{ ip }}</td>
+      <td>{{ node }}</td>
+      <td>{{ zone }}</td>
+    </tr>
+    {{/agents}}
+    </tbody>
+  </table>
+</script>
+
+<!-- SLA List -->
+<script id="sla_table_template" type="text/x-handlebars-template">
+  <h3>Agents</h3>
+  <table class="table table-striped" id="{{  table_id }}">
+    <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+    <tr>
+      <td>{{ sla }}</td>
+      <td>{{ location }}</td>
+      <td>
+        {{#if is_status_ok }}
+          <span class="text-success">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{else}}
+          <span class="text-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{ status }}
+          </span>
+        {{/if}}
+      </td>
+    </tr>
+    {{/records}}
+    </tbody>
+  </table>
+</script>
+
+<!-- Errors -->
+<script id="errors_template" type="text/x-handlebars-template">
+  <h3>Errors</h3>
+  <div class="text-danger">
+    <ul>
+    {{#records}}
+      <li>{{ info }}<br/>{{ stderr }}{{ traceback }}</li>
+    {{/records}}
+    </ul>
+  </div>
+</script>
+
+</body>
+</html>
